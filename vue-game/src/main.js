@@ -1,12 +1,19 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import { fb } from './firebase'
+import VueFire from 'vuefire'
+
 
 Vue.config.productionTip = false
+Vue.use(VueFire)
+let app = '';
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+fb.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      render: h => h(App)
+    }).$mount('#app');
+  }
+})
