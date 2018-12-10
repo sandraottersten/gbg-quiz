@@ -1,0 +1,10 @@
+      <script>
+      
+      
+      this.num = Math.floor(Math.random() * 3);
+
+  <input v-model.number="userAnswer" type="number" v-on:keypress.enter = "makeGuess" onfocus="this.value=''" />
+
+
+
+</script>
