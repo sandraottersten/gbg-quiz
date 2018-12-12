@@ -23,8 +23,9 @@
     
     
      var numberKeys = new Array();
+          numberKeys.push(8); 
         function OnlyNumbers(e) {
-            var keyCode = e.keyCode
+            var keyCode = e.which
             var ret = ((keyCode >= 48 && keyCode <= 57) || numberKeys.indexOf(keyCode) != -1);
             document.getElementById("errormess").style.display = ret ? "none" : "inline";
             return ret;
