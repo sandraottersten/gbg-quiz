@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div id="app">
     <h3>Question</h3>
     <h1>{{questions[number].question}}</h1>
-    <input type="number" :value="value" @input="newValue">
+    <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>       
     <button @click="makeGuess">Make a guess</button>
+    <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer />
     <p>My guess: {{value}}</p>
     <p>Bot guess: {{bot}}</p>
@@ -11,13 +12,21 @@
 </template>
 
 <script>
+
 import Timer from '@/components/Timer.vue'
 
 export default {
   name: 'PlayGame',
+  data: function () {
+    return {
+      numberKeys: []
+    }
+  },
+
   components: {
     Timer
   },
+
   computed: {
       questions() {
         return this.$store.state.questions;
@@ -32,9 +41,13 @@ export default {
         return this.$store.state.bot;
       }
       },
+
   methods: {
       newValue(event) {
         this.$store.dispatch('newValue', event.target.value)
+      },
+      randNum: function(){
+        this.num = Math.floor(Math.this.questions.length);
       },
       ranNumBot() {
         this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
@@ -43,7 +56,6 @@ export default {
         if(this.value < this.questions[this.number].answer){
           alert("högre");
         this.ranNumBot();
-
         }
         else if (this.value > this.questions[this.number].answer){
           alert("lägre");
@@ -52,15 +64,17 @@ export default {
         else {
           alert("rätt");
         }
-
-      }
+      },
+      OnlyNumbers(e) {
+        var keyCode = e.which;
+        var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
+        document.getElementById("errormess").style.display = ret ? "none" : "inline";
+        return ret;
+     }
     }
-
 };
 
 </script>
 
-
 <style scoped>
-
 </style>
