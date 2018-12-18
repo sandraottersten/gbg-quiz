@@ -3,10 +3,10 @@
     <h3>Question</h3>
     <h1>{{questions[number].question}}</h1>
     <input ref="my_input" @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>       
-    <button @click="easyBot">Make a guess</button>
+    <button @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Only numbers! </span>
     <p id="guess" style="display: none"><br>Guess a {{highLow}} number!</p>
-    <Timer />
+    <!-- <Timer /> -->
     <p>My guess: {{userGuess}}</p>
     <p>Bot guess: {{bot}}</p>
   </div>
@@ -14,7 +14,7 @@
 
 <script>
 
-import Timer from '@/components/Timer.vue'
+// import Timer from '@/components/Timer.vue'
 
 export default {
   name: 'PlayGame',
@@ -26,9 +26,9 @@ export default {
     }
   },
 
-  components: {
-    Timer
-  },
+  // components: {
+  //   Timer
+  // },
 
   computed: {
       questions() {
@@ -58,6 +58,7 @@ export default {
         this.$store.state.bot = Math.floor(Math.random() * (max - min)) + min;
       },
       makeGuess(value, number, bot) {
+        this.easyBot();
         if(this.value < this.questions[this.number].answer){
           this.getFormValues();
           this.highLow = 'higher';
@@ -70,7 +71,7 @@ export default {
         }
         else {
           this.getFormValues();
-          alert("rätt");
+          alert("Player1 wins this round!");
         }
       },
       getFormValues() {

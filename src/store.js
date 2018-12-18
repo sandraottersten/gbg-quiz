@@ -8,17 +8,17 @@ export default new Vuex.Store({
     questions: [
           {
             id: 1,
-            question: "Gissa priset på bullen",
+            question: "Guess the price of the cinnamon bun",
             answer: 25
          },
           {
             id: 2,
-            question: "Gissa priset på kakan",
+            question: "Guess the price of the cookie",
             answer: 10
           },
           {
             id: 3,
-            question: "Gissa priset på kaffet",
+            question: "Guess the price of the coffee",
             answer: 32
           }
       ],
