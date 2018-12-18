@@ -1,12 +1,19 @@
 <template>
   <div id="app">
+    <nav>
+      <router-link to="/home">Home</router-link>|
+      <router-link to="/highscore">High Score</router-link>|
+      <router-link to="/playgame">Playgame</router-link>|
+      <router-link to="/login">Login</router-link>|
+      <router-link to="/sign-up">Sign Up</router-link>
+    </nav>
     <router-view/>
   </div>
 </template>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
