@@ -12,14 +12,18 @@
 </template>
 
 <script>
-
+import {db} from '../firebase'
 
 export default {
   name: 'home',
+    firebase: {
+      questions: db.ref('questions')
+    },
+
   methods: {
     randNum: function(){
-      this.$store.state.number = Math.floor(Math.random() * 3);
-      },
+      this.$store.state.number = Math.floor(Math.random() * this.questions.length);
+    }
   }
 }
 </script>

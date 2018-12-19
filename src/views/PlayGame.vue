@@ -14,6 +14,7 @@
 <script>
 
 import Timer from '@/components/Timer.vue'
+import {db} from '../firebase'
 
 export default {
   name: 'PlayGame',
@@ -23,14 +24,15 @@ export default {
       show: true
     }
   },
+  firebase: {
+  questions: db.ref('questions')
+  },
+
   components: {
     Timer
   },
 
   computed: {
-      questions() {
-        return this.$store.state.questions;
-      },
       value() {
         return this.$store.getters.value;
       },
@@ -40,7 +42,7 @@ export default {
       bot() {
         return this.$store.state.bot;
       }
-      },
+    },
 
   methods: {
       stop() {
@@ -54,9 +56,6 @@ export default {
       },
       newValue(event) {
         this.$store.dispatch('newValue', event.target.value)
-      },
-      randNum: function(){
-        this.num = Math.floor(Math.this.questions.length);
       },
       ranNumBot() {
         this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
