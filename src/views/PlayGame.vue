@@ -2,7 +2,6 @@
   <div id="app">
     <h3>Question</h3>
     <h1>{{questions[number].question}}</h1>
-
     <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
     <button @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
@@ -94,6 +93,3 @@ export default {
 };
 
 </script>
-
-<style scoped>
-</style>

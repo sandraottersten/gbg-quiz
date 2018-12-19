@@ -1,17 +1,12 @@
 
 <template>
   <div>
-    <p>countdown: {{ time }}</p>
-    <div class="healthbar">
-      <div class="healthbar"
-        :style = "{width: barTime + '%'}"
-        style="background-color: rgb(83, 179, 238); margin: 0; color: white;">
+    <div class="timeBar" style="position: relative; margin-top: 20px;">
+      <p>{{ time }}</p>
+      <div class="timeBar"
+           :style = "{width: barTime + '%'}"
+           style="background-color: rgb(83, 179, 238); position: absolute;">
       </div>
-    </div>
-    <div>
-       <button v-if="!isRunning" @click="start">Start</button>
-       <button v-if="isRunning" @click="stop">Stop</button>
-       <button @click="reset">Reset</button>
     </div>
  </div>
 </template>
@@ -42,8 +37,8 @@ methods: {
              this.time--
              this.barTime = this.barTime - (100/this.barTimer)
           } else {
-             clearInterval(this.timer)
              this.sound.play()
+             clearInterval(this.timer)
              this.reset()
           }
         }, 1000 )
@@ -63,36 +58,25 @@ methods: {
 }
   </script>
 
-  <style scoped>
+<style scoped>
   html {
-  box-sizing:border-box;
+    box-sizing:border-box;
   }
-
-  *, *::before, *::after {
-  box-sizing: inherit;
-  }
-
-  body {
-  font-family: sans-serif;
-  padding: 0;
-  margin: 0;
-  }
-
-  button {
-  padding:10px;
-  }
-
   p {
-  font-size: 2em;
-  margin: 20px;
+    z-index: 3;
+    font-size: 2em;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
   }
-
-  .healthbar {
-      width: 250px;
-      height: 40px;
-      background-color: #eee;
-      margin: auto;
-      transition: width 1000ms;
-      border-radius: 5px;
+  .timeBar {
+    width: 250px;
+    height: 40px;
+    background-color: #eee;
+    margin: auto;
+    transition: width 1000ms;
+    border-radius: 5px;
+    text-align: center;
   }
   </style>
