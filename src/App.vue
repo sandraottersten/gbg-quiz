@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <nav>
+    <div id="nav">
       <router-link to="/home">Home</router-link>|
+      <!-- detta kommer bort -->
       <router-link to="/playgame">Playgame</router-link>
-    </nav>
+      <!-- detta kommer bort -->
+    </div>
     <router-view/>
   </div>
 </template>
