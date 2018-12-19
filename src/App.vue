@@ -4,7 +4,9 @@
       <!-- detta kommer bort -->
       <router-link to="/home">Home</router-link>|
       <router-link to="/playgame">Playgame</router-link>|
-      <router-link to="/highScore">Highscore</router-link>
+      <router-link to="/highScore">Highscore</router-link>|
+      <router-link to="/login">Login</router-link>|
+      <router-link to="/sign-up">Sign Up</router-link>
       <!-- detta kommer bort -->
     </div>
     <router-view/>
