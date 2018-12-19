@@ -1,14 +1,22 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/home">Home</router-link>|
       <!-- detta kommer bort -->
-      <router-link to="/playgame">Playgame</router-link>
+      <router-link to="/home">Home</router-link>|
+      <router-link to="/playgame">Playgame</router-link>|
+      <router-link to="/highScore">Highscore</router-link>
       <!-- detta kommer bort -->
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: "app"
+};
+</script>
+
 
 <style>
 #app {
