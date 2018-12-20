@@ -29,7 +29,7 @@ mounted(){
   this.start()
 },
 methods: {
-   start () {
+   start() {
      this.isRunning = true
      if (!this.timer) {
         this.timer = setInterval( () => {
@@ -44,12 +44,12 @@ methods: {
         }, 1000 )
      }
    },
-   stop () {
+   stop() {
      this.isRunning = false
      clearInterval(this.timer)
      this.timer = null
    },
-   reset () {
+   reset() {
       this.stop()
       this.time = 10
       this.barTime = 100

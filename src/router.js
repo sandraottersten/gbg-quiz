@@ -1,26 +1,66 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import firebase from 'firebase'
+
 import Home from './views/Home.vue'
+import PlayGame from './views/PlayGame.vue'
+import Login from './views/Login.vue'
+import SignUp from './views/SignUp.vue'
+import HighScore from './views/HighScore.vue'
 
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
+      redirect: 'home',
+    },
+    {
+      path: '*',
+      redirect: '/home'
+    },
+    {
+      path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/sign-up',
+      name: 'signUp',
+      component: SignUp
+    },
+    {
+      path: '/highscore',
+      name: 'highScore',
+      component: HighScore,
     },
     {
       path: '/playgame',
       name: 'playgame',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/PlayGame.vue')
+      component: PlayGame
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  var requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  var currentUser = firebase.auth().currentUser;
+  if (requiresAuth && !currentUser) {
+    next('/login');
+  } else if (!requiresAuth && currentUser) {
+    next('/');
+  } else {
+    next();
+  }
+});
+
+export default router;

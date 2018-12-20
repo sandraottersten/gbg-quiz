@@ -8,6 +8,9 @@
     Good luck!</p>
     </div>
     <router-link to="/playgame"><button @click="randNum">Start Game</button></router-link>
+    <p>
+      <router-link to="/login">Login</router-link> to save your results and put your name on the high score list.
+    </p>
   </div>
 </template>
 
