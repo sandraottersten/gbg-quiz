@@ -6,15 +6,15 @@
     <button @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer v-show="show" ref="form"/>
-    <p>My guess: {{value}}</p>
-    <p>Bot guess: {{bot}}</p>
+    <p>My guess: {{value}} </p>
+    <p>Bot guess: {{bot}} </p>
   </div>
 </template>
 
 <script>
 
 import Timer from '@/components/Timer.vue'
-import {db} from '../firebase'
+import {db} from '../firebase-config'
 
 export default {
   name: 'PlayGame',
@@ -79,7 +79,7 @@ export default {
         else {
           this.show = false
           this.stop()
-          alert("rätt");
+          this.$router.push({ path: 'winner' })
         }
       },
       OnlyNumbers(e) {

@@ -4,7 +4,7 @@ import VueFire from 'vuefire'
 import router from './router'
 import store from './store'
 
-import {fb} from './firebase'
+import {fb} from './firebase-config'
 
 Vue.config.productionTip = false
 

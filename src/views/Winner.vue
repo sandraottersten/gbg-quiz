@@ -1,7 +1,7 @@
 <template>
-  <div id="highscore">
-    <p>High score list</p>
-    <router-link to="/gamemenu"><button>Back</button></router-link>
+  <div>
+    <p>You won!</p>
+    <router-link to="/settings"><button>Play again</button></router-link>
     <button @click="logout">Logout</button>
   </div>
 </template>
