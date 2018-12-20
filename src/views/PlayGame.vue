@@ -22,7 +22,9 @@ export default {
     return {
       numberKeys: [],
       highLow: '',
-      userGuess: 0
+      userGuess: 0,
+      maxGuess: 100,
+      minGuess: 3
     }
   },
 
@@ -78,13 +80,18 @@ export default {
         this.userGuess = this.$refs.my_input.value
       },
       easyBot(number, bot) {
-        console.log(this.bot + " Current guess")
+        // console.log(this.bot + " Current guess");
+
         if (this.bot < this.questions[this.number].answer) {
-          this.ranNumBot(0, 100);
+          this.maxGuess--;
+          this.ranNumBot(0, this.maxGuess);
+          console.log(this.maxGuess + " max Guess");
           console.log(this.bot + " Guess higher");
       }
         else if (this.bot > this.questions[this.number].answer) {
-          this.ranNumBot(10, 80);
+          this.maxGuess--;
+          this.ranNumBot(this.minGuess, this.maxGuess);
+          console.log(this.minGuess + " min Guess");
           console.log(this.bot + " Guess lower");
       } 
         else {

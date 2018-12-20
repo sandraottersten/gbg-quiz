@@ -24,7 +24,7 @@ export default new Vuex.Store({
       ],
       number: 0,
       value: 0,
-      bot: 0
+      bot: 1
 
   },
   getters: {
