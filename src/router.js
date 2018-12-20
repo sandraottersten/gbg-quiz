@@ -46,10 +46,7 @@ const router = new Router({
     {
       path: '/highscore',
       name: 'highScore',
-      component: HighScore,
-      meta: {
-        requiresAuth: true
-      }
+      component: HighScore
     }
   ]
 })
