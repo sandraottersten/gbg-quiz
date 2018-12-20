@@ -3,7 +3,7 @@ import App from './App.vue'
 
 import store from './store'
 import router from './router'
-import { fb } from './firebase'
+import { fb } from './firebase-config'
 import VueFire from 'vuefire'
 
 Vue.config.productionTip = false

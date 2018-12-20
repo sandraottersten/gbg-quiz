@@ -1,25 +1,19 @@
 <template>
   <div id="highscore">
     <p>This is just to see if it works!</p>
+    <List/>
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
-import List from "@/components/List.vue";
+import List from "@/components/List";
 
 export default {
   name: "highscore",
-  components: {},
+  components: {
+    List
+  },
   methods: {
-    logout: function() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.replace("login");
-        });
-    }
   }
 };
 </script>
