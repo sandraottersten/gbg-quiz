@@ -21,6 +21,7 @@ export default {
   data: function () {
     return {
       numberKeys: [],
+      botGuesses: [],
       highLow: '',
       userGuess: 0,
       maxGuess: 100,
@@ -55,10 +56,15 @@ export default {
         this.num = Math.floor(Math.this.questions.length);
       },
       ranNumBot(min, max) {
+        const isInArray = this.botGuesses.includes(this.bot);
         min = Math.ceil(min);
         max = Math.floor(max);
         this.$store.state.bot = Math.floor(Math.random() * (max - min)) + min;
-      },
+        if (this.$store.state.bot != isInArray) {
+            this.botGuesses.push(this.$store.state.bot);
+        } 
+        console.log(this.botGuesses);
+        },
       makeGuess(value, number, bot) {
         this.easyBot();
         if(this.value < this.questions[this.number].answer){
@@ -79,9 +85,9 @@ export default {
       getFormValues() {
         this.userGuess = this.$refs.my_input.value
       },
-      easyBot(number, bot) {
+      easyBot(number, bot, botGuesses) {
         // console.log(this.bot + " Current guess");
-
+        const isInArray = this.botGuesses.includes(bot);
         if (this.bot < this.questions[this.number].answer) {
           this.maxGuess--;
           this.ranNumBot(0, this.maxGuess);
