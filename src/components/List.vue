@@ -29,7 +29,8 @@ export default {
     this.$bindAsObject('allUsers', db.ref('allUsers/'+ this.user.uid))
   },
   firebase: {
-    users: db.ref('users')
+    users: db.ref('users'),
+    allUsers: db.ref('allUsers')
   },
   methods: {
     storeData() {
@@ -42,8 +43,7 @@ export default {
         }
         else {
           this.$firebaseRefs.allUsers.push({
-            point: point,
-          
+            point: point
           })
         }
       })

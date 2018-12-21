@@ -23,7 +23,7 @@ export default {
         this.$bindAsArray('allUsers', db.ref('allUsers'))
     },
     firebase: {
-        allUsers: db.ref('allUsers'['.key'])
+        allUsers: db.ref('allUsers')
     }
 }
 </script>
