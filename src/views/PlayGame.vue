@@ -24,8 +24,8 @@ export default {
       botGuesses: [],
       highLow: '',
       userGuess: 0,
-      maxGuess: 100,
-      minGuess: 3
+      maxGuess: 0,
+      minGuess: 0
     }
   },
 
@@ -46,6 +46,7 @@ export default {
       bot() {
         return this.$store.state.bot;
       },
+      
       },
 
   methods: {
@@ -56,17 +57,21 @@ export default {
         this.num = Math.floor(Math.this.questions.length);
       },
       ranNumBot(min, max) {
-        const isInArray = this.botGuesses.includes(this.bot);
         min = Math.ceil(min);
         max = Math.floor(max);
-        this.$store.state.bot = Math.floor(Math.random() * (max - min)) + min;
-        if (this.$store.state.bot != isInArray) {
-            this.botGuesses.push(this.$store.state.bot);
-        } 
-        console.log(this.botGuesses);
-        },
-      makeGuess(value, number, bot) {
-        this.easyBot();
+        var rng = Math.floor(Math.random() * (max - min)) + min;
+        if (this.botGuesses.includes(rng) !== true) {
+                this.botGuesses.push(rng);
+                this.$store.state.bot = rng;
+                console.log(rng + " pushed in");
+            } else {
+              console.log(rng + " already inside");
+              console.log(this.botGuesses);
+              this.ranNumBot(min, max);
+            }
+        }, 
+        makeGuess(value, number, bot) {
+          this.easyBot(1,26);
         if(this.value < this.questions[this.number].answer){
           this.getFormValues();
           this.highLow = 'higher';
@@ -82,36 +87,35 @@ export default {
           alert("Player1 wins this round!");
         }
       },
-      getFormValues() {
-        this.userGuess = this.$refs.my_input.value
+        getFormValues() {
+          this.userGuess = this.$refs.my_input.value;
       },
-      easyBot(number, bot, botGuesses) {
-        // console.log(this.bot + " Current guess");
-        const isInArray = this.botGuesses.includes(bot);
+      easyBot(minGuess, maxGuess) {
         if (this.bot < this.questions[this.number].answer) {
-          this.maxGuess--;
-          this.ranNumBot(0, this.maxGuess);
-          console.log(this.maxGuess + " max Guess");
-          console.log(this.bot + " Guess higher");
+          // this.maxGuess--;
+          this.ranNumBot(0, maxGuess);
+          // console.log(this.maxGuess + " max Guess");
+          // console.log(this.bot + " Guess higher");
       }
         else if (this.bot > this.questions[this.number].answer) {
-          this.maxGuess--;
-          this.ranNumBot(this.minGuess, this.maxGuess);
-          console.log(this.minGuess + " min Guess");
-          console.log(this.bot + " Guess lower");
+          // this.maxGuess--;
+          this.ranNumBot(minGuess, maxGuess);
+          
+          // console.log(this.minGuess + " min Guess");
+          // console.log(this.bot + " Guess lower");
       } 
         else {
           alert("Bot wins this round!");
           console.log(this.bot + " Correct guess, good bot!")
-          }
+              }
+          console.log(this.bot + " Current guess");
       },
-      
       OnlyNumbers(e) {
         var keyCode = e.which;
         var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
         document.getElementById("errormess").style.display = ret ? "none" : "inline";
         return ret;
-     }
+      }
     }
 };
 
