@@ -6,7 +6,7 @@
     <button @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Only numbers! </span>
     <p id="guess" style="display: none"><br>Guess a {{highLow}} number!</p>
-    <!-- <Timer /> -->
+
     <p>My guess: {{userGuess}}</p>
     <p>Bot guess: {{bot}}</p>
   </div>
@@ -14,7 +14,6 @@
 
 <script>
 
-// import Timer from '@/components/Timer.vue'
 
 export default {
   name: 'PlayGame',
@@ -28,10 +27,6 @@ export default {
       minGuess: 0
     }
   },
-
-  // components: {
-  //   Timer
-  // },
 
   computed: {
       questions() {
@@ -121,5 +116,3 @@ export default {
 
 </script>
 
-<style scoped>
-</style>
