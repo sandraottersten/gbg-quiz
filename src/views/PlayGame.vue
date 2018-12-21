@@ -93,7 +93,7 @@ export default {
       easyBot(minGuess, maxGuess) {
         if (this.bot < this.questions[this.number].answer) {
           // this.maxGuess--;
-          this.ranNumBot(0, maxGuess);
+          this.ranNumBot(minGuess, maxGuess);
           // console.log(this.maxGuess + " max Guess");
           // console.log(this.bot + " Guess higher");
       }
