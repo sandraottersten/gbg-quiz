@@ -2,25 +2,30 @@
   <div id="app">
     <h3>Question</h3>
     <h1>{{questions[number].question}}</h1>
-    <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>       
+    <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
     <button @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
-    <Timer />
-    <p>My guess: {{value}}</p>
-    <p>Bot guess: {{bot}}</p>
+    <Timer v-show="show" ref="form"/>
+    <p>My guess: {{value}} </p>
+    <p>Bot guess: {{bot}} </p>
   </div>
 </template>
 
 <script>
 
 import Timer from '@/components/Timer.vue'
+import {db} from '../firebase-config'
 
 export default {
   name: 'PlayGame',
   data: function () {
     return {
-      numberKeys: []
+      numberKeys: [],
+      show: true
     }
+  },
+  firebase: {
+  questions: db.ref('questions')
   },
 
   components: {
@@ -28,9 +33,6 @@ export default {
   },
 
   computed: {
-      questions() {
-        return this.$store.state.questions;
-      },
       value() {
         return this.$store.getters.value;
       },
@@ -40,9 +42,18 @@ export default {
       bot() {
         return this.$store.state.bot;
       }
-      },
+    },
 
   methods: {
+      stop() {
+        this.$refs.form.stop()
+      },
+      start() {
+        this.$refs.form.start()
+      },
+      reset() {
+        this.$refs.form.reset()
+      },
       newValue(event) {
         this.$store.dispatch('newValue', event.target.value)
       },
@@ -54,15 +65,24 @@ export default {
       },
       makeGuess(value, number, bot) {
         if(this.value < this.questions[this.number].answer){
+          this.stop()
           alert("högre");
-        this.ranNumBot();
+          this.ranNumBot();
+          this.reset()
+          this.start()
+
         }
         else if (this.value > this.questions[this.number].answer){
+          this.stop()
           alert("lägre");
-          this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
+          this.ranNumBot();
+          this.reset()
+          this.start()
         }
         else {
-          alert("rätt");
+          this.show = false
+          this.stop()
+          this.$router.push({ path: 'winner' })
         }
       },
       OnlyNumbers(e) {
@@ -75,6 +95,3 @@ export default {
 };
 
 </script>
-
-<style scoped>
-</style>

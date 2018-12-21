@@ -1,12 +1,32 @@
 <template>
   <div id="app">
+    <div id="nav">
+      <!-- detta kommer bort -->
+      <router-link to="/home">Home</router-link>|
+      <router-link to="/gamemenu">GameMenu</router-link>|
+      <router-link to="/settings">Rules</router-link>|
+      <router-link to="/rules">Settings</router-link>|
+      <router-link to="/playgame">Playgame</router-link>|
+      <router-link to="/highScore">Highscore</router-link>|
+      <router-link to="/login">Login</router-link>|
+      <router-link to="/sign-up">Sign Up</router-link>|
+      <router-link to="/winner">Winner</router-link>
+      <!-- detta kommer bort -->
+    </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+export default {
+  name: "app"
+};
+</script>
+
+
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

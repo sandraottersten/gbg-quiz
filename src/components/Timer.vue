@@ -1,76 +1,82 @@
+
 <template>
-
-<div>
-<svg width="10%" height="10%" viewBox="-1 -1 2 2" class="donut">
- <circle cx="0" cy="0" r="1" fill="#dddddd" />
- <path :d=calc :fill=color ></path>
-</svg>
-<p>{{nowTime}}</p>
-</div>
-
+  <div>
+    <div class="timeBar" style="position: relative; margin-top: 20px;">
+      <p>{{ time }}</p>
+      <div class="timeBar"
+           :style = "{width: barTime + '%'}"
+           style="background-color: rgb(83, 179, 238); position: absolute;">
+      </div>
+    </div>
+ </div>
 </template>
 
 <script>
 export default {
   name: 'Timer',
-  props: {
-    date: {
-      type: String
-    }
-  },
-   data(){
-   return {
-     time: 15,
-     percent:1,
-     color: 'red',
-     startX:1,
-     startY:0,
-     currentPercent:0
-   }
- },
- methods: {
-   getPieVal(per){
-     const x = Math.cos(2 * Math.PI * per);
-     const y = Math.sin(2 * Math.PI * per);
-     return [x, y];
-   },
-   start(){
-     TweenMax.to(this.$data, this.time, {
-       currentPercent : this.$data.percent,
-       onComplete:this.complete,
-       ease: Power0.easeNone
-     });
-   },
-   complete(){
-     alert("Finish")
-   }
- },
- computed : {
-   calc(){
-     const [endX, endY] = this.getPieVal(this.$data.currentPercent);
-     const largeArcFlag = this.currentPercent > .5 ? 1 : 0;
-     const pathData = [
-       `M ${this.$data.startX} ${this.startY}`,
-       `A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`,
-       `L 0 0`,
-       ].join(' ');
-     return pathData;
-   },
-   nowTime(){
-     var vm = this
-     return Math.ceil(vm.time - vm.time * vm.currentPercent)
-   }
- },
- mounted(){
-   setTimeout(()=>{
-     this.start()
-   },1000);
+
+data() {
+  return {
+   isRunning: false,
+   barTimer: 10,
+   barTime: 100,
+   time:10,
+   timer:null,
+   sound:new Audio("http://s1download-universal-soundbank.com/wav/nudge.wav")
  }
-
+},
+mounted(){
+  this.start()
+},
+methods: {
+   start() {
+     this.isRunning = true
+     if (!this.timer) {
+        this.timer = setInterval( () => {
+          if (this.time > 0) {
+             this.time--
+             this.barTime = this.barTime - (100/this.barTimer)
+          } else {
+             this.sound.play()
+             clearInterval(this.timer)
+             this.reset()
+          }
+        }, 1000 )
+     }
+   },
+   stop() {
+     this.isRunning = false
+     clearInterval(this.timer)
+     this.timer = null
+   },
+   reset() {
+      this.stop()
+      this.time = 10
+      this.barTime = 100
+   }
+  }
 }
+  </script>
 
-</script>
-
-<style>
-
-</style>
+<style scoped>
+  html {
+    box-sizing:border-box;
+  }
+  p {
+    z-index: 3;
+    font-size: 2em;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+  }
+  .timeBar {
+    width: 250px;
+    height: 40px;
+    background-color: #eee;
+    margin: auto;
+    transition: width 1000ms;
+    border-radius: 5px;
+    text-align: center;
+  }
+  </style>
