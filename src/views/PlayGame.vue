@@ -6,7 +6,7 @@
     <button @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Only numbers! </span>
     <p id="guess" style="display: none"><br>Guess a {{highLow}} number!</p>
-
+    <Timer v-show="show" ref="form"/>
     <p>My guess: {{userGuess}}</p>
     <p>Bot guess: {{bot}}</p>
   </div>
@@ -32,6 +32,10 @@ export default {
   },
   firebase: {
   questions: db.ref('questions')
+  },
+
+  components: {
+    Timer
   },
 
   computed: {
