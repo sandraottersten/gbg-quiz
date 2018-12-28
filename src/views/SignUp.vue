@@ -41,7 +41,3 @@ export default {
   }
 };
 </script>
-
-<!--Style this specific site -->
-<style scoped>
-</style>
