@@ -62,6 +62,7 @@ export default {
       },
       makeGuess(value, number, bot) {
         if(this.value < this.questions[this.number].answer){
+          this.$store.state.numOfGuesses++
           this.stop()
           alert("högre");
           this.ranNumBot();
@@ -70,6 +71,7 @@ export default {
 
         }
         else if (this.value > this.questions[this.number].answer){
+          this.$store.state.numOfGuesses++
           this.stop()
           alert("lägre");
           this.ranNumBot();
@@ -77,6 +79,9 @@ export default {
           this.start()
         }
         else {
+          this.$store.state.numOfGuesses++
+          //when bot wins
+          //this.$store.state.winner = false
           this.show = false
           this.stop()
           this.$router.push({ path: 'winner' })

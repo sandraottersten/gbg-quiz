@@ -26,6 +26,7 @@ export default {
   methods: {
     randNum: function(){
       this.$store.state.number = Math.floor(Math.random() * this.questions.length);
+      this.$store.state.numOfGuesses = 0
     },
     logout: function() {
       firebase
