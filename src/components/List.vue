@@ -26,7 +26,7 @@ export default {
   },
   created () {
     this.$bindAsObject('users', db.ref('users/' + this.user.uid))
-    this.$bindAsObject('allUsers', db.ref('allUsers/'+ this.user.uid))
+    this.$bindAsObject('allUsers', db.ref('allUsers/'  + this.user.uid ))
   },
   firebase: {
     users: db.ref('users'),
