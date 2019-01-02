@@ -43,7 +43,8 @@ export default {
         }
         else {
           this.$firebaseRefs.allUsers.push({
-            point: point
+            point: point,
+            user: this.user.email
           })
         }
       })

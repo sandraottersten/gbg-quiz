@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {fb, db} from '../firebase-config'
+import {db} from '../firebase-config'
 
 export default {
     name: 'HighscoreList',
