@@ -27,7 +27,7 @@ export default {
       highLow: '',
       userGuess: 0,
       maxGuess: 0,
-      minGuess: 0
+      minGuess: 0,
       show: true
     }
   },
