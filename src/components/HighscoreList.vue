@@ -3,7 +3,7 @@
         <h1>All time scorer</h1>
         <ul>
             <li v-for="point in allUsers" :key="point.id">
-                {{point}}
+                {{point.user}} {{point.newPoint}}
             </li>
         </ul>
     </div>
@@ -16,7 +16,7 @@ export default {
     name: 'HighscoreList',
     data () {
         return {
-            point: ''
+            newPoint: ''
         }
     },
     created () {

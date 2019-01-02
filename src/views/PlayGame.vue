@@ -21,11 +21,13 @@
     <!-- <Timer /> -->
     <p>My guess: {{userGuess}}</p>
     <p>Bot guess: {{bot}}</p>
+    <List/>
   </div>
 </template>
 
 <script>
 // import Timer from '@/components/Timer.vue'
+import List from "@/components/List";
 
 export default {
   name: "PlayGame",
@@ -37,9 +39,10 @@ export default {
     };
   },
 
-  // components: {
-  //   Timer
-  // },
+  components: {
+     //Timer
+     List
+  },
 
   computed: {
     questions() {

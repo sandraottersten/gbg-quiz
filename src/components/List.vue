@@ -3,7 +3,7 @@
     <section v-if="message.length>0"> {{ message }} </section>
     <h2>Highscore input test</h2>
     <label for="">Score</label>
-    <input type="text" name="point" v-model="point">
+    <input type="number" name="newPoint" v-model="newPoint">
     <button @click="storeData">Add highscore</button>
   </div>
 </template>
@@ -15,18 +15,23 @@ export default {
   name: "list",
   data() {
     return {
-      point: '',
+      newPoint: '',
       message: ''
     }
   },
   computed: {
     user() {
       return fb.auth().currentUser;
+    },
+    uid() {
+      return fb.auth().currentUser.uid;
+    },
+    oldScore() {
+      return this.allUsers[this.uid].newPoint
     }
   },
   created () {
-    this.$bindAsObject('users', db.ref('users/' + this.user.uid))
-    this.$bindAsObject('allUsers', db.ref('allUsers/'  + this.user.uid ))
+    this.$bindAsObject('allUsers', db.ref('allUsers/'))
   },
   firebase: {
     users: db.ref('users'),
@@ -34,22 +39,24 @@ export default {
   },
   methods: {
     storeData() {
-      var point = this.point
-      this.$firebaseRefs.users.push({
-        point: point
-      },(error) => {
-        if (error) {
-          console.log(error)
-        }
+      var i;
+      for (let i=0; i< Object.keys(this.allUsers).length; i++) {
+        if (Object.keys(this.allUsers)[i] == this.uid) {
+          console.log(this.oldScore)
+          this.$firebaseRefs.allUsers.child(this.uid).update({
+            newPoint: parseInt(this.oldScore) + parseInt(this.newPoint)
+          });
+          return true;
+          this.oldScore = 0
+      }
         else {
-          this.$firebaseRefs.allUsers.push({
-            point: point,
+          this.$firebaseRefs.allUsers.child(this.uid).set({
+            newPoint: this.newPoint,
             user: this.user.email
           })
         }
-      })
+      };
       this.message = "Your users is now added to the list";
-      this.point = ''
     }
   }
 }
