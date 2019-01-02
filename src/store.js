@@ -7,7 +7,9 @@ export default new Vuex.Store({
   state: {
       number: 0,
       value: 0,
-      bot: 0
+      bot: 0,
+      numOfGuesses: 0,
+      winner: true
   },
   getters: {
     value: state => {

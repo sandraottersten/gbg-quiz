@@ -5,7 +5,7 @@
     <br>
     <input type="password" v-model="password" placeholder="Password">
     <br>
-    <button @click="login">Connection</button>
+    <button class="buttonsubmit" @click="login">Connection</button>
     <p>You don't have an account yet? You can create one
       <router-link to="/sign-up">here</router-link>
     </p>
