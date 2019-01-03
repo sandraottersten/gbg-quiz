@@ -30,8 +30,8 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
-          function(user) {
-            this.$router.replace("home");
+          (user) => {
+            this.$router.replace("/");
           },
           function(err) {
             alert("Whoops.." + err.message);
