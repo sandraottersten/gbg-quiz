@@ -14,8 +14,7 @@ export default {
   name: "list",
   data() {
     return {
-      newPoint: '',
-      message: ''
+      newPoint: ''
     }
   },
   computed: {
@@ -37,20 +36,15 @@ export default {
   },
   methods: {
     storeData() {
-      var i;
-     for (let i = 0; i < Object.keys(this.allUsers).length; i++) {
-        if (Object.keys(this.allUsers)[i] == this.user.email) {
+        if (Object.keys(this.allUsers).includes(this.uid)) {
           this.$firebaseRefs.allUsers.child(this.uid).update({
-            newPoint: parseInt(this.oldScore) + parseInt(this.newPoint = 10)
+          newPoint: parseInt(this.oldScore) + parseInt(this.newPoint = 10)
           });
-          return true;
-      }
-        else {
-          this.$firebaseRefs.allUsers.child(this.uid).set({
-            newPoint: this.newPoint,
-            user: this.user.email
-          })
-        }
+    } else {
+      this.$firebaseRefs.allUsers.child(this.uid).set({
+        newPoint: this.newPoint,
+        user: this.user.email
+        });
       }
     }
   }
