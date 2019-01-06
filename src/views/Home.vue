@@ -1,28 +1,17 @@
 <template>
   <div>
-    <div>
-      <h1>Game rules</h1>
-      <p>
-        Try to guess the correct number. You and your opponents will take turns to answer.
-        After every answer you will be given an indication if the correct number is higher or
-        lower than the last guess. When the correct answer is given, the game is over.
-        Good luck!
-      </p>
-    </div>
-    <router-link to="/playgame">
-      <button @click="randNum">Start Game</button>
-    </router-link>
+    <h2>The GBG Game</h2>
+    <p>The Great Big Game about Gbg</p>
+    <router-link to="/gamemenu"><button class="startgamebutton"> <span>Go for it </span></button></router-link>
+      
+ <br><br>
+      
+    <audio controls>
+  <source src="http://k007.kiwi6.com/hotlink/3h77ek6oz8/gbgsong.mp3" type="audio/mpeg">
+</audio>  
+      
+      
   </div>
-</template>     
+</template>
 
 
-<script>
-export default {
-  name: "home",
-  methods: {
-    randNum: function() {
-      this.$store.state.number = Math.floor(Math.random() * 3);
-    }
-  }
-};
-</script>

@@ -7,6 +7,10 @@ import PlayGame from './views/PlayGame.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import HighScore from './views/HighScore.vue'
+import GameMenu from './views/GameMenu.vue'
+import Rules from './views/Rules.vue'
+import Settings from './views/Settings.vue'
+import Winner from './views/Winner.vue'
 
 
 Vue.use(Router);
@@ -17,7 +21,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: 'home',
     },
     {
       path: '*',
@@ -26,12 +30,7 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
-    },
-    {
-      path: '/playgame',
-      name: 'playgame',
-      component: PlayGame
+      component: Home,
     },
     {
       path: '/login',
@@ -44,22 +43,46 @@ const router = new Router({
       component: SignUp
     },
     {
+      path: '/gamemenu',
+      name: 'gamemenu',
+      component: GameMenu,
+    },
+    {
       path: '/highscore',
       name: 'highScore',
-      component: HighScore
+      component: HighScore,
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings,
+    },
+    {
+      path: '/rules',
+      name: 'rules',
+      component: Rules,
+    },
+    {
+      path: '/playgame',
+      name: 'playgame',
+      component: PlayGame
+    },
+    {
+      path: '/winner',
+      name: 'winner',
+      component: Winner,
     }
   ]
 })
+
 router.beforeEach((to, from, next) => {
   var requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   var currentUser = firebase.auth().currentUser;
 
   if (requiresAuth && !currentUser) {
     next('/login');
-
   } else if (to.path == '/login' && currentUser) {
     next('/');
-
   } else {
     next(); 
   }

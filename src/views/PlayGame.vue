@@ -2,120 +2,105 @@
   <div>
     <h3>Question</h3>
     <h1>{{questions[number].question}}</h1>
-    <input
-      ref="my_input"
-      @input="newValue"
-      type="number"
-      onfocus="this.value=''"
-      v-on:keypress="OnlyNumbers"
-    >
-    <button @click="makeGuess">Make a guess</button>
-    <span id="errormess" style="color: orangered; display: none">
-      <br>
-      <br>* Only numbers!
-    </span>
-    <p id="guess" style="display: none">
-      <br>
-      Guess a {{highLow}} number!
-    </p>
-    <!-- <Timer /> -->
-    <p>My guess: {{userGuess}}</p>
-    <p>Bot guess: {{bot}}</p>
-    <List/>
+    <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
+    <button class="guessbutton" @click="makeGuess">Make a guess</button>
+    <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
+    <Timer v-show="show" ref="form"/>
+    <p>My guess: {{value}} </p>
+    <p>Bot guess: {{bot}} </p>
   </div>
 </template>
 
 <script>
-// import Timer from '@/components/Timer.vue'
-import List from "@/components/List";
 
+ 
+import Timer from '@/components/Timer.vue'
+import {db} from '../firebase-config'
+ 
 export default {
   name: "PlayGame",
   data: function() {
     return {
       numberKeys: [],
-      highLow: "",
-      userGuess: 0
-    };
-  },
-
-  components: {
-     //Timer
-     List
-  },
-
-  computed: {
-    questions() {
-      return this.$store.state.questions;
-    },
-    value() {
-      return this.$store.getters.value;
-    },
-    number() {
-      return this.$store.state.number;
-    },
-    bot() {
-      return this.$store.state.bot;
+      show: true,
+      botGuesses: [],
+      highLow: '',
+      userGuess: 0,
+      maxGuess: 0,
+      minGuess: 0,
+      show: true
     }
   },
-
+  firebase: {
+  questions: db.ref('questions')
+  },
+ 
+  components: {
+    Timer
+  },
+ 
+  computed: {
+      value() {
+        return this.$store.getters.value;
+      },
+      number() {
+        return this.$store.state.number;
+      },
+      bot() {
+        return this.$store.state.bot;
+      }
+    },
+ 
   methods: {
-    newValue(event) {
-      this.$store.dispatch("newValue", event.target.value);
-    },
-    randNum: function() {
-      this.num = Math.floor(Math.this.questions.length);
-    },
-    ranNumBot(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      this.$store.state.bot = Math.floor(Math.random() * (max - min)) + min;
-    },
-    makeGuess(value, number, bot) {
-      this.easyBot();
-      if (this.value < this.questions[this.number].answer) {
-        this.getFormValues();
-        this.highLow = "higher";
-        document.getElementById("guess").style.display = "inline";
-      } else if (this.value > this.questions[this.number].answer) {
-        this.getFormValues();
-        this.highLow = "lower";
-        document.getElementById("guess").style.display = "inline";
-      } else {
-        this.getFormValues();
-        alert("Player1 wins this round!");
-      }
-    },
-    getFormValues() {
-      this.userGuess = this.$refs.my_input.value;
-    },
-    easyBot(number, bot) {
-      console.log(this.bot + " Current guess");
-      if (this.bot < this.questions[this.number].answer) {
-        this.ranNumBot(0, 100);
-        console.log(this.bot + " Guess higher");
-      } else if (this.bot > this.questions[this.number].answer) {
-        this.ranNumBot(10, 80);
-        console.log(this.bot + " Guess lower");
-      } else {
-        alert("Bot wins this round!");
-        console.log(this.bot + " Correct guess, good bot!");
-      }
-    },
-
-    OnlyNumbers(e) {
-      var keyCode = e.which;
-      var ret =
-        (keyCode >= 48 && keyCode <= 57) ||
-        this.numberKeys.indexOf(keyCode) != -1;
-      document.getElementById("errormess").style.display = ret
-        ? "none"
-        : "inline";
-      return ret;
+      stop() {
+        this.$refs.form.stop()
+      },
+      start() {
+        this.$refs.form.start()
+      },
+      reset() {
+        this.$refs.form.reset()
+      },
+      newValue(event) {
+        this.$store.dispatch('newValue', event.target.value)
+      },
+      ranNumBot() {
+        this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
+      },
+      makeGuess(value, number, bot) {
+        if(this.value < this.questions[this.number].answer){
+          this.$store.state.numOfGuesses++
+          this.stop()
+          alert("högre");
+          this.ranNumBot();
+          this.reset()
+          this.start()
+ 
+        }
+        else if (this.value > this.questions[this.number].answer){
+          this.$store.state.numOfGuesses++
+          this.stop()
+          alert("lägre");
+          this.ranNumBot();
+          this.reset()
+          this.start()
+        }
+        else {
+          this.$store.state.numOfGuesses++
+          //when bot wins
+          //this.$store.state.winner = false
+          this.show = false
+          this.stop()
+          this.$router.push({ path: 'winner' })
+        }
+      },
+      OnlyNumbers(e) {
+        var keyCode = e.which;
+        var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
+        document.getElementById("errormess").style.display = ret ? "none" : "inline";
+        return ret;
+     }
     }
   }
 };
 </script>
-
-<style scoped>
-</style>
