@@ -5,8 +5,6 @@ import router from './router'
 import { fb } from './firebase-config'
 import VueFire from 'vuefire'
 
-import {fb} from './firebase-config'
-
 Vue.config.productionTip = false
 Vue.use(VueFire);
 let app = '';

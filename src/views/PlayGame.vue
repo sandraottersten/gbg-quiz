@@ -101,6 +101,5 @@ export default {
         return ret;
      }
     }
-  }
-};
+  };
 </script>

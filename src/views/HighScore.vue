@@ -19,7 +19,7 @@ import HighscoreList from "@/components/HighscoreList"
 export default {
   name: "highscore",
   components: {
-    Highscore,
+    HighscoreList,
     List
   },
   data() {

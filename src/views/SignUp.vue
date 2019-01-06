@@ -1,7 +1,7 @@
 <template>
   <div class="sign-up">
     <p>Let's create you a new account!</p>
-    <input type="email" v-model="email" placeholder="Email">
+    <input type="text" v-model="email" placeholder="Email">
     <br>
     <input type="password" v-model="password" placeholder="Password">
     <br>
