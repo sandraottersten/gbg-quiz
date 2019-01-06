@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link to="/highscore"><button>High score</button></router-link>
-    <router-link to="/rules"><button>How to play</button></router-link>
-    <router-link to="/settings"><button>Start Game</button></router-link>
+    <router-link to="/highscore"><button class="gamebutton">High score</button></router-link>
+    <router-link to="/rules"><button class="gamebutton">How to play</button></router-link>
+    <router-link to="/settings"><button class="gamebutton">Start Game</button></router-link>
     <p>
       <router-link to="/login">Login</router-link> to save your results and put your name on the high score list.
     </p>

@@ -5,7 +5,7 @@
     have 10 seconds to give your answer. After every answer you will be given an indication
     if the correct number is higher or lower than the last guess. When the correct answer
     is given, the game is over. Good luck!</p>
-    <router-link to="/gamemenu"><button>Back</button></router-link>
+    <router-link to="/gamemenu"><button class="gamebutton">Back</button></router-link>
   </div>
 </template>
 

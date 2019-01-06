@@ -2,13 +2,13 @@
   <div>
     <p>Pick a category</p>
     <div>
-      <button @click="afunction('trams')">Trams</button>
-      <button @click="afunction('history')">History</button>
-      <button @click="afunction('food')">Food</button>
-      <button @click="afunction()">All</button>
+      <button class="gamebutton" @click="afunction('trams')">Trams</button>
+      <button class="gamebutton" @click="afunction('history')">History</button>
+      <button class="gamebutton" @click="afunction('food')">Food</button>
+      <button class="gamebutton" @click="afunction()">All</button>
     </div>
     <router-link to="/playgame"><button @click="randNum">Start Game</button></router-link>
-    <button @click="logout">Logout</button>
+    <button class="gamebutton" @click="logout">Logout</button>
   </div>
 </template>
 
