@@ -1,11 +1,11 @@
 <template>
   <div class="login">
     <h3>Sign In</h3>
-    <input type="text" v-model="email" placeholder="Email">
+    <input type="email" v-model="email" placeholder="Email">
     <br>
     <input type="password" v-model="password" placeholder="Password">
     <br>
-    <button @click="login">Connection</button>
+    <button class="buttonsubmit" @click="login">Connection</button>
     <p>You don't have an account yet? You can create one
       <router-link to="/sign-up">here</router-link>
     </p>

@@ -13,9 +13,9 @@ import Settings from './views/Settings.vue'
 import Winner from './views/Winner.vue'
 
 
-Vue.use(Router)
+Vue.use(Router);
 
-const router =  new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -78,12 +78,13 @@ const router =  new Router({
 router.beforeEach((to, from, next) => {
   var requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   var currentUser = firebase.auth().currentUser;
+
   if (requiresAuth && !currentUser) {
     next('/login');
-  } else if (!requiresAuth && currentUser) {
+  } else if (to.path == '/login' && currentUser) {
     next('/');
   } else {
-    next();
+    next(); 
   }
 });
 

@@ -1,11 +1,11 @@
 <template>
   <div class="sign-up">
     <p>Let's create you a new account!</p>
-    <input type="text" v-model="email" placeholder="Email">
+    <input type="email" v-model="email" placeholder="Email">
     <br>
     <input type="password" v-model="password" placeholder="Password">
     <br>
-    <button @click="signUp">Sign Up</button>
+    <button class="buttonsubmit" @click="signUp">Sign Up</button>
     <br>
     <span>or go back to
       <router-link to="/login">login</router-link>.
@@ -30,8 +30,8 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
-          function(user) {
-            this.$router.replace("home");
+          (user) => {
+            this.$router.replace("/");
           },
           function(err) {
             alert("Whoops.." + err.message);

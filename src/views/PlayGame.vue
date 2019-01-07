@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div>
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
     <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
-    <button @click="makeGuess">Make a guess</button>
+    <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
@@ -14,27 +14,34 @@
 
 <script>
 
+ 
 import Timer from '@/components/Timer.vue'
 import {db} from '../firebase-config'
 import Category from '@/components/Category'
 
 export default {
-  name: 'PlayGame',
-  data: function () {
+  name: "PlayGame",
+  data: function() {
     return {
       numberKeys: [],
+      show: true,
+      botGuesses: [],
+      highLow: '',
+      userGuess: 0,
+      maxGuess: 0,
+      minGuess: 0,
       show: true
     }
   },
   firebase: {
   questions: db.ref('questions')
   },
-
+ 
   components: {
     Timer,
     Category
   },
-
+ 
   computed: {
       value() {
         return this.$store.getters.value;
@@ -56,7 +63,7 @@ export default {
         this.$store.state.arr;
       }
     },
-
+ 
   methods: {
       stop() {
         this.$refs.form.stop()
@@ -81,7 +88,7 @@ export default {
           this.ranNumBot();
           this.reset()
           this.start()
-
+ 
         }
         else if (this.value > this.questions[this.number].answer){
           this.$store.state.numOfGuesses++
@@ -107,6 +114,5 @@ export default {
         return ret;
      }
     }
-};
-
+  };
 </script>
