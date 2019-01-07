@@ -16,10 +16,10 @@
 
       
     <h2 v-show="winner">You won! <br>
-    <img width="200px" v-for="img in images" v-bind:src="img"><br>
+    <img width="200px" v-for="img in images" v-bind:key="img"><br>
 </h2>
     <h2 v-show="!winner">You lost! <br>
-        <img width="200px" v-for="img in images2" v-bind:src="img"><br>
+        <img width="200px" v-for="img in images2" v-bind:key="img"><br>
     </h2>
     <p>Correct answer is: {{this.questions[this.number].answer}}</p>
     <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>      

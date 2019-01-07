@@ -26,7 +26,7 @@
     <List/>
     <HighscoreList />
   </div>    
-  <img width="200px" v-for="img in images" v-bind:src="img">
+  <img width="200px" v-for="img in images" v-bind:key="img">
     
     </div>
 </div></div>
