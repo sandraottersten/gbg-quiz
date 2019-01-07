@@ -1,14 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueFire from 'vuefire'
-import router from './router'
 import store from './store'
-
-import {fb} from './firebase-config'
+import router from './router'
+import { fb } from './firebase-config'
+import VueFire from 'vuefire'
 
 Vue.config.productionTip = false
-
-Vue.use(VueFire)
+Vue.use(VueFire);
 let app = '';
 
 fb.auth().onAuthStateChanged(() => {

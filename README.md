@@ -1,4 +1,4 @@
-# Vue-Game-Master
+# Vue-Game-Test
 
 ## Project setup
 ```

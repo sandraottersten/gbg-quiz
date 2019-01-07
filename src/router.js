@@ -13,9 +13,9 @@ import Settings from './views/Settings.vue'
 import Winner from './views/Winner.vue'
 
 
-Vue.use(Router)
+Vue.use(Router);
 
-const router =  new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -81,13 +81,13 @@ router.beforeEach((to, from, next) => {
 
   if (requiresAuth && !currentUser) {
     next('/login');
-
   } else if (to.path == '/login' && currentUser) {
     next('/');
 
   } else {
     next(); 
   }
+
 });
 
 export default router;
