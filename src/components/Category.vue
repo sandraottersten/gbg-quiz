@@ -1,13 +1,11 @@
 <template>
   <div>
-    <p>Pick a category</p>
-    <p>{{theQuestion}}</p>
+    <p>Pick a category {{theQuestion.question}}</p>
     <div>
       <button class="gamebutton" @click="afunction('trams')">Trams</button>
       <button class="gamebutton" @click="afunction('history')">History</button>
       <button class="gamebutton" @click="afunction('food')">Food</button>
       <button class="gamebutton" @click="allCat()">All</button>
-      <FlashMessage></FlashMessage>
     </div>
     <router-link to="/playgame"><button class="gamebutton">Start Game</button></router-link>
     <button class="gamebutton" @click="logout">Logout</button>
@@ -31,7 +29,6 @@
     },
 
     components: {
-
     },
 
     methods: {
@@ -59,15 +56,6 @@
            var num = Math.floor(Math.random() * array.length);
          }
          console.log(array[num].question);
-      },
-
-      logout: function() {
-        firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.replace("login");
-        });
       }
     }
   };

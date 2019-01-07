@@ -3,15 +3,12 @@
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
       <flash-message class="myCustomClass"></flash-message>
-    <input id="guess" @input="newValue" type="number" onfocus="this.value=''" v-on:keypress.enter = "makeGuess"/>
+    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
-    <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
+      <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
     <p>Bot guess: {{bot}} </p>
-
-
-
   </div>
 </template>
 
@@ -20,10 +17,10 @@
 
 import Timer from '@/components/Timer.vue'
 import {db} from '../firebase-config'
-import Category from '@/components/Category'
 import Vue from 'vue';
 import VueFlashMessage from 'vue-flash-message';
 Vue.use(VueFlashMessage);
+
 
 export default {
   name: "PlayGame",
@@ -45,7 +42,6 @@ export default {
 
   components: {
     Timer,
-    Category
   },
 
   computed: {
@@ -60,6 +56,9 @@ export default {
       },
       theQuestion (){
         return this.$store.state.theQuestion;
+      },
+      theAnswer(){
+        return this.$store.state.theAnswer;
       },
       num() {
         this.$store.state.num;
@@ -84,24 +83,23 @@ export default {
         this.$store.dispatch('newValue', event.target.value)
       },
       ranNumBot() {
-        this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
+          this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
+            this.start();
       },
-      makeGuess(value, number, bot) {
+        makeGuess(value, number, bot) {
         var input = document.getElementById("guess");
-        if(this.value < this.questions[this.number].answer){
+        if(this.value < this.$store.state.theAnswer){
           this.$store.state.numOfGuesses++
           this.stop()
-
           this.ranNumBot();
           this.reset();
-          this.start();
           this.flash('Higher', 'error', {
             timeout: 1500,
             important: true
 });
 input.value = "";
         }
-        else if (this.value > this.questions[this.number].answer){
+        else if (this.value > this.$store.state.theAnswer){
           this.$store.state.numOfGuesses++
           this.stop()
           this.ranNumBot();
@@ -127,8 +125,8 @@ input.value = "";
         var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
         document.getElementById("errormess").style.display = ret ? "none" : "inline";
         return ret;
-
      }
     }
+
   };
 </script>
