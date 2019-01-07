@@ -8,6 +8,7 @@
     <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>
     <router-link to="/settings"><button class="gamebutton">Play again</button></router-link>
     <button class="gamebutton" @click="logout">Logout</button>
+
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import {db} from '../firebase-config'
 
 export default {
   name: "Winner",
+
   firebase: {
     questions: db.ref('questions')
   },
