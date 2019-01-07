@@ -1,7 +1,16 @@
 <template>
   <div id="app">
 
+          <div id ="nav2">
       
+          <router-link to="/"><button class="navbutton" type="button">Home</button></router-link>
+
+      <router-link to="/sign-up"><button class="navbutton" v-if="!user" type="button">Signup</button></router-link>
+      <router-link to="/login"><button class="navbutton" v-if="!user" type="button">Login</button></router-link>
+      <button class="navbutton" v-if="user" @click="logout" type="button">Logout</button>
+    
+    
+</div> 
       
     <router-view/>
       
