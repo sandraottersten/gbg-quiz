@@ -19,11 +19,11 @@ export default {
             newPoint: ''
         }
     },
-    created () {
-        this.$bindAsArray('allUsers', db.ref('allUsers'))
-    },
     firebase: {
         allUsers: db.ref('allUsers').orderByChild("newPoint")
-    }
+    },
 }
 </script>
+
+
+
