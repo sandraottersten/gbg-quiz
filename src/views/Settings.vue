@@ -1,21 +1,13 @@
 <template>
-  <div>
-    <p>Pick a category</p>
-    <div>
-      <button class="gamebutton" @click="afunction('trams')">Trams</button>
-      <button class="gamebutton" @click="afunction('history')">History</button>
-      <button class="gamebutton" @click="afunction('food')">Food</button>
-      <button class="gamebutton" @click="afunction()">All</button>
-    </div><br>
-    <router-link to="/playgame"><button class="gamebutton" @click="randNum">START GAME</button></router-link>
-    <button class="gamebutton" @click="logout">Logout</button>
+
   <Category />
-  </div>
+
 </template>
 
 <script>
 
   import Category from '@/components/Category.vue'
+  import {db} from '../firebase-config'
 
 export default {
   name: "GameMenu",

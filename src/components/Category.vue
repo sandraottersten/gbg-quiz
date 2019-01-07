@@ -3,13 +3,13 @@
     <p>Pick a category</p>
     <p>{{theQuestion}}</p>
     <div>
-      <button @click="afunction('trams')">Trams</button>
-      <button @click="afunction('history')">History</button>
-      <button @click="afunction('food')">Food</button>
-      <button @click="randNum()">All</button>
+      <button class="gamebutton" @click="afunction('trams')">Trams</button>
+      <button class="gamebutton" @click="afunction('history')">History</button>
+      <button class="gamebutton" @click="afunction('food')">Food</button>
+      <button class="gamebutton" @click="allCat()">All</button>
     </div>
-    <router-link to="/playgame"><button>Start Game</button></router-link>
-    <button @click="logout">Logout</button>
+    <router-link to="/playgame"><button class="gamebutton">Start Game</button></router-link>
+    <button class="gamebutton" @click="logout">Logout</button>
   </div>
 </template>
 
@@ -49,6 +49,15 @@
         var theQuestion = arr[num];
         console.log(theQuestion.question);
         console.log(arr);
+      },
+
+      allCat: function() {
+        var array = [];
+         for (var i = 0; i < this.questions.length; i++){
+           array.push(this.questions[i]);
+           var num = Math.floor(Math.random() * array.length);
+         }
+         console.log(array[num].question);
       },
 
       logout: function() {
