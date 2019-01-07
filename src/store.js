@@ -9,7 +9,11 @@ export default new Vuex.Store({
       value: 0,
       bot: 0,
       numOfGuesses: 0,
-      winner: true
+      winner: true,
+      theQuestion: '',
+      arr: [],
+      num: 0
+
   },
   getters: {
     value: state => {

@@ -44,6 +44,16 @@ export default {
       },
       bot() {
         return this.$store.state.bot;
+      },
+      theQuestion (){
+        return this.$store.state.theQuestion;
+      },
+      num() {
+        this.$store.state.num;
+      },
+
+      arr() {
+        this.$store.state.arr;
       }
     },
 

@@ -45,9 +45,9 @@
             arr.push(this.questions[i]);
           }
         }
-        var numm = Math.floor(Math.random() * arr.length);
-        var theQuestion = arr[numm].question;
-        console.log(theQuestion);
+        var num = Math.floor(Math.random() * arr.length);
+        var theQuestion = arr[num];
+        console.log(theQuestion.question);
         console.log(arr);
       },
 
