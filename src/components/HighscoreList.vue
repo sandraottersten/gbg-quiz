@@ -5,6 +5,8 @@
             <li v-for="point in allUsers" :key="point.id">
                 {{point.user}} {{point.newPoint}}
             </li>
+
+            
         </ol>
     </div>
 </template>
@@ -19,11 +21,20 @@ export default {
             newPoint: ''
         }
     },
-    created () {
-        this.$bindAsArray('allUsers', db.ref('allUsers'))
-    },
+    
     firebase: {
-        allUsers: db.ref('allUsers')
+        allUsers: db.ref('allUsers').orderByChild("newPoint").limitToFirst(5)
+
+
+        
     }
 }
+
+
+
+
 </script>
+
+
+
+
