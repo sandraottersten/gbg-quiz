@@ -46,8 +46,8 @@ export default {
   data() {
     return {
         images: ['http://i66.tinypic.com/fy0869.png']
-    }  
-},      
+    }
+},
   methods: {
     logout: function() {
       firebase
