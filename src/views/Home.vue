@@ -18,7 +18,7 @@ Good luck!
     
     </p>
     <router-link to="/gamemenu"><button class="startgamebutton"> <span>Go for it </span></button></router-link>
-      
+
  <br><br>
       
  

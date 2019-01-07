@@ -16,7 +16,7 @@
     <List/>
     <HighscoreList />
   </div>    
-  <img width="200px" v-for="img in images" v-bind:src="img">
+  <img width="200px" v-for="img in images" v-bind:key="img">
     
     </div>
 </div></div>
@@ -36,8 +36,8 @@ export default {
   data() {
     return {
         images: ['http://i66.tinypic.com/fy0869.png']
-    }  
-},      
+    }
+},
   methods: {
     logout: function() {
       firebase

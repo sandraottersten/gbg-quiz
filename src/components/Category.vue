@@ -3,13 +3,13 @@
     <p>Pick a category</p>
     <p>{{theQuestion}}</p>
     <div>
-      <button class="gamebutton" @click="afunction('trams')">Trams</button>
-      <button class="gamebutton" @click="afunction('history')">History</button>
-      <button class="gamebutton" @click="afunction('food')">Food</button>
-      <button class="gamebutton" @click="afunction()">All</button>
+      <button @click="afunction('trams')">Trams</button>
+      <button @click="afunction('history')">History</button>
+      <button @click="afunction('food')">Food</button>
+      <button @click="randNum()">All</button>
     </div>
-    <router-link to="/playgame"><button class="gamebutton" @click="randNum">START GAME</button></router-link>
-    <button class="gamebutton" @click="logout">Logout</button>
+    <router-link to="/playgame"><button>Start Game</button></router-link>
+    <button @click="logout">Logout</button>
   </div>
 </template>
 
@@ -20,7 +20,7 @@
 
   export default {
     name: "GameMenu",
-    data () {
+    data (){
       return {
         theQuestion: '',
       }
@@ -28,7 +28,11 @@
     firebase: {
       questions: db.ref('questions'),
     },
-    components: {},
+
+    components: {
+
+    },
+
     methods: {
       randNum: function(){
         this.$store.state.number = Math.floor(Math.random() * this.question.length);

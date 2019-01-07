@@ -6,16 +6,16 @@
 
       
     <h2 v-show="winner">You won! <br>
-    <img width="200px" v-for="img in images" v-bind:src="img"><br>
+    <img width="200px" v-for="img in images" v-bind:key="img"><br>
 </h2>
     <h2 v-show="!winner">You lost! <br>
-        <img width="200px" v-for="img in images2" v-bind:src="img"><br>
+        <img width="200px" v-for="img in images2" v-bind:key="img"><br>
     </h2>
     <p>Correct answer is: {{this.questions[this.number].answer}}</p>
-    <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>      
-      
-      
-  
+    <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>
+
+
+
     <router-link to="/settings"><button class="gamebutton">Play again</button></router-link>
     <button class="gamebutton" @click="logout">Logout</button>
   </div>
@@ -27,17 +27,23 @@ import firebase from "firebase";
 import {db} from '../firebase-config'
 
 export default {
-    
+
 data() {
     return {
         images: ['http://i67.tinypic.com/155mdzn.png'],
         images2: ['http://i64.tinypic.com/i3uf0z.png']
     }
-    
+
 },
   name: "Winner",
+
   firebase: {
     questions: db.ref('questions')
+  },
+  data() {
+      return {
+          images: ['http://i67.tinypic.com/155mdzn.png']
+      }
   },
   computed: {
     number() {
@@ -47,6 +53,7 @@ data() {
       return this.$store.state.winner;
     }
   },
+
   methods: {
     logout: function() {
       firebase

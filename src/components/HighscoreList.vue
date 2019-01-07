@@ -3,7 +3,7 @@
         <h1>All time scorer</h1>
         <ol>
             <li v-for="point in allUsers" :key="point.id">
-                {{point.user}} {{point.newPoint}}
+                {{point.name}} {{point.newPoint}}
             </li>
 
             
@@ -21,20 +21,11 @@ export default {
             newPoint: ''
         }
     },
-    
     firebase: {
-        allUsers: db.ref('allUsers').orderByChild("newPoint").limitToFirst(5)
-
-
-        
-    }
+        allUsers: db.ref('allUsers').orderByChild("newPoint")
+    },
 }
-
-
-
-
 </script>
-
 
 
 

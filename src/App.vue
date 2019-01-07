@@ -50,12 +50,12 @@ export default {
 
 
 <style>
-    
- @import url('https://fonts.googleapis.com/css?family=Pattaya');    
-    
-    
+
+ @import url('https://fonts.googleapis.com/css?family=Pattaya');
+
+
 body {
-background: lightblue url("gbg.gif"); 
+background: lightblue url("gbg.gif");
     }
     
 #content {
@@ -108,39 +108,39 @@ text-decoration: none;
     transition: 0.4s;
 
 }
-  
-    
+
+
 #highscore{
 
 background-color: #fec84e;
-background-image: linear-gradient(315deg, #fec84e 0%, #ffdea8 74%);    
+background-image: linear-gradient(315deg, #fec84e 0%, #ffdea8 74%);
 border: 2px solid gold;
-display: block;  
+display: block;
 width: 50%;
 padding: 50px;
 margin: auto;
 text-align: center;
 border-radius: 30px;
-    }     
-    
-    
+    }
+
+
 h1 {
 
 color:cornflowerblue;
 font-size:1.6em;
 font-family: 'Avenir', sans-serif;
 margin: 1px 1px 1px 1px;
- 
+
 }
-    
+
 h2 {
 
 color:cornflowerblue;
 font-size: 50px;
 font-family: 'Pattaya', sans-serif;
 margin: 1px 1px 1px 1px;
-}    
-    
+}
+
 
 h3 {
 
@@ -165,7 +165,7 @@ outline: 0;
 
 
 }
-    
+
 .startgamebutton span {
   cursor: pointer;
   display: inline-block;
@@ -189,8 +189,8 @@ outline: 0;
   opacity: 1;
   right: 0;
 }
-    
-    
+
+
 .guessbutton {
 
 background-color: deepskyblue;
@@ -206,14 +206,14 @@ cursor: pointer;
 outline: 0;
 
 }
-    
+
 .guessbutton:hover {
   background-color: skyblue;
   color: white;
   transition: 0.4s;
 
 }
-    
+
 .buttonsubmit {
 
 background-color: deepskyblue;
@@ -254,7 +254,7 @@ margin: 0px 10px 10px 0px;
 outline: 0;
 
 }
-    
+
 .gamebutton:hover {
   background-color: skyblue;
   color: white;

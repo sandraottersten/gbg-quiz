@@ -12,6 +12,8 @@
 
   <div class="sign-up">
     <p>Let's create you a new account!</p>
+    <input type="text" v-model="userName" placeholder="Username">
+    <br>
     <input type="email" v-model="email" placeholder="Email">
     <br>
     <input type="password" v-model="password" placeholder="Password">
@@ -28,14 +30,27 @@
 
 <script>
 import firebase from "firebase";
+import {db, fb} from "../firebase-config";
 
 export default {
   name: "signUp",
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      userName: ""
     };
+  },
+  created () {
+    this.$bindAsObject('allUsers', db.ref('allUsers/'))
+  },
+  firebase: {
+    allUsers: db.ref('allUsers')
+  },
+  computed: {
+    uid() {
+      return fb.auth().currentUser.uid;
+    }
   },
   methods: {
     signUp: function() {
@@ -44,12 +59,16 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           (user) => {
+            console.log(this.userName)
+
             this.$router.replace("/");
+            this.$firebaseRefs.allUsers.child(this.uid).set({
+              name: this.userName,
+              newPoint: 0,
+              user: this.email
+            })
           },
-          function(err) {
-            alert("Whoops.." + err.message);
-          }
-        );
+        )
     }
   }
 };
