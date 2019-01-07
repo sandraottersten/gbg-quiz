@@ -32,13 +32,14 @@ export default {
     this.$bindAsObject('allUsers', db.ref('allUsers/'))
   },
   firebase: {
-    allUsers: db.ref('allUsers')
+    allUsers: db.ref('allUsers').orderByChild("newPoint")
   },
   methods: {
     storeData() {
         if (Object.keys(this.allUsers).includes(this.uid)) {
           this.$firebaseRefs.allUsers.child(this.uid).update({
-          newPoint: parseInt(this.oldScore) + parseInt(this.newPoint = 10)
+          newPoint: parseInt(this.oldScore) + parseInt(this.newPoint = 10),
+          user: this.user.email
           });
     } else {
       this.$firebaseRefs.allUsers.child(this.uid).set({
