@@ -71,7 +71,7 @@ methods: {
     position: absolute;
   }
   .timeBar {
-    width: 250px;
+    width: 200px;
     height: 40px;
     background-color: #eee;
     margin: auto;

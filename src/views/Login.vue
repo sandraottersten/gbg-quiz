@@ -1,4 +1,24 @@
 <template>
+
+<div>
+    
+    
+    <div id ="nav2">
+      
+          <router-link to="/"><button class="navbutton" type="button">Home</button></router-link>
+
+      <router-link to="/sign-up"><button class="navbutton" v-if="!user" type="button">Signup</button></router-link>
+      <router-link to="/login"><button class="navbutton" v-if="!user" type="button">Login</button></router-link>
+      <p><a v-if="user" @click="logout">Logout</a></p>
+    
+    
+</div> 
+    
+   
+
+<div id ="content">
+
+
   <div class="login">
     <h3>Sign In</h3>
     <input type="text" v-model="email" placeholder="Email">
@@ -9,7 +29,10 @@
     <p>You don't have an account yet? You can create one
       <router-link to="/sign-up">here</router-link>
     </p>
+      
+    </div>
   </div>
+     </div>
 </template>
 
 <script>

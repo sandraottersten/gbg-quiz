@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/sign-up"><button v-if="!user" type="button">Signup</button></router-link>
-      <router-link to="/login"><button v-if="!user" type="button">Login</button></router-link>
-      <p><a v-if="user" @click="logout">Logout</a></p>
-    </div>
+
+      
+      
     <router-view/>
+      
+      
   </div>
 </template>
+
+
 
 <script>
 import firebase from 'firebase'
@@ -47,7 +49,7 @@ body {
 background: lightblue url("gbg.gif"); 
     }
     
-#app {
+#content {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -58,32 +60,41 @@ background: lightblue url("gbg.gif");
   padding: 50px;
   width: 60%;
 margin: auto;
-margin-top: 100px;
+margin-top: 10px;
 font-size: 18px;
    opacity: 0.95;
 
 }
-#nav {
-  padding: 30px;
-border-bottom: 1px solid #70d3f3;
-margin-bottom: 20px;
+#nav2 {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  background-color: aliceblue;
+  border-radius: 20px;
+  padding: 10px 50px 0px 50px;
+  width: 60%;
+margin: auto;
+margin-bottom: 0px;
+margin-top: 100px;
+   opacity: 0.95;
 }
 
-#nav a {
+#nav2 a {
   font-weight: bold;
   color: #2484e4;
-  padding: 13px;
 text-transform: uppercase;
 text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
+#nav2 a.router-link-exact-active {
   color: #70d3f3;
   text-decoration: underline;
 
 }
     
-#nav a:hover{
+#nav2 a:hover{
   color: #70d3f3;
     transition: 0.4s;
 
@@ -107,7 +118,7 @@ border-radius: 30px;
 h1 {
 
 color:cornflowerblue;
-font-size: 30px;
+font-size:1.6em;
 font-family: 'Avenir', sans-serif;
 margin: 1px 1px 1px 1px;
  
@@ -127,7 +138,7 @@ h3 {
 color:cornflowerblue;
 font-size: 30px;
 font-family: 'Pattaya', sans-serif;
-margin: 1px 1px 1px 1px;
+margin: 1px 1px 5px 1px;
 }  
     
     
@@ -141,6 +152,7 @@ font-family: 'Pattaya', sans-serif;
 border: 1px solid deepskyblue;
 cursor: pointer;
 border-radius: 20px;
+outline: 0;
 
 
 }
@@ -182,6 +194,7 @@ font-weight: 600;
 border-radius: 20px;
 border: 1px solid deepskyblue;
 cursor: pointer;
+outline: 0;
 
 }
     
@@ -204,6 +217,7 @@ font-weight: 600;
 border: 1px solid deepskyblue;
 cursor: pointer;
 border-radius: 20px;
+outline: 0;
 
 
 }
@@ -228,6 +242,7 @@ font-family: 'Avenir', sans-serif;
 font-weight: 600;
 cursor: pointer;
 margin: 0px 10px 10px 0px;
+outline: 0;
 
 }
     
@@ -238,6 +253,70 @@ margin: 0px 10px 10px 0px;
 
 }
     
+.startgamebuttonsmall {
+
+background-color: #02b771;
+font-size: 25px;
+border-radius: 20px;
+border: 1px solid #02b771;
+margin-left: 10px;
+color: white;
+padding: 15px 17px 15px 17px;
+font-family: 'Avenir', sans-serif;
+font-weight: 600;
+cursor: pointer;
+margin: 0px 10px 10px 0px;
+outline: 0;
+
+}
+    
+.startgamebuttonsmall:hover {
+  background-color: mediumspringgreen;
+  color: white;
+  transition: 0.4s;
+  border: 1px solid mediumspringgreen;
+    
+
+}    
+    
+
+.navbutton {
+
+background-color: #02b771;
+font-size:1.2em;
+border-radius: 20px;
+border: 1px solid #02b771;
+margin-left: 10px;
+color: white;
+padding: 5px 17px 5px 17px;
+font-family: 'Avenir', sans-serif;
+font-weight: 600;
+cursor: pointer;
+margin: 0px 10px 10px 0px;
+outline: 0;
+width: 100px;
+
+
+}
+    
+.navbutton:hover {
+background-color: mediumspringgreen;
+border: 1px solid mediumspringgreen;
+color: white;
+transition: 0.4s;
+
+}
+    
+    
+.musicbutton {
+
+border: 0px;
+background: none;
+outline: 0;
+cursor: pointer;
+    }    
+    
+    
 input[type=text], input[type=password] {
   padding: 10px;
   margin: 8px;
@@ -246,13 +325,27 @@ font-size: 15px;
   border: 1px solid #70d3f3;
   border-radius: 4px;
   box-sizing: border-box;
-  text-transform: uppercase;
 font-family: 'Avenir', sans-serif;
 font-weight: 500;
+    -moz-appearance:textfield;
 
-
-  
+}
+    
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }    
+    
+.field {
+        
+    font-size: 15px;
+    padding: 8px;
+    color: dodgerblue;
+    font-weight: 600;  
+    width: 100px;
+    border: 1px solid cornflowerblue;
+    
+    }
     
     
     

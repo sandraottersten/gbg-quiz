@@ -1,13 +1,20 @@
 <template>
   <div>
+      
+      
+      <div id ="content">
+
+      
     <h3>Question</h3>
     <h1>{{questions[number].question}}</h1>
-    <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
+    <input class="field"  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
     <p>Bot guess: {{bot}} </p>
+          
+    </div>
   </div>
 </template>
 
@@ -103,3 +110,5 @@ export default {
     }
   };
 </script>
+
+
