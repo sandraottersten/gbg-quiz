@@ -7,6 +7,7 @@
       <button class="gamebutton" @click="afunction('history')">History</button>
       <button class="gamebutton" @click="afunction('food')">Food</button>
       <button class="gamebutton" @click="allCat()">All</button>
+      <FlashMessage></FlashMessage>
     </div>
     <router-link to="/playgame"><button class="gamebutton">Start Game</button></router-link>
     <button class="gamebutton" @click="logout">Logout</button>

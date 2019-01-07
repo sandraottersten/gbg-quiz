@@ -39,14 +39,14 @@ export default {
 
 
 <style>
-    
- @import url('https://fonts.googleapis.com/css?family=Pattaya');    
-    
-    
+
+ @import url('https://fonts.googleapis.com/css?family=Pattaya');
+
+
 body {
-background: lightblue url("gbg.gif"); 
+background: lightblue url("gbg.gif");
     }
-    
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -82,45 +82,45 @@ text-decoration: none;
   text-decoration: underline;
 
 }
-    
+
 #nav a:hover{
   color: #70d3f3;
     transition: 0.4s;
 
 }
-  
-    
+
+
 #highscore{
 
 background-color: #fec84e;
-background-image: linear-gradient(315deg, #fec84e 0%, #ffdea8 74%);    
+background-image: linear-gradient(315deg, #fec84e 0%, #ffdea8 74%);
 border: 2px solid gold;
-display: block;  
+display: block;
 width: 50%;
 padding: 50px;
 margin: auto;
 text-align: center;
 border-radius: 30px;
-    }     
-    
-    
+    }
+
+
 h1 {
 
 color:cornflowerblue;
 font-size: 30px;
 font-family: 'Avenir', sans-serif;
 margin: 1px 1px 1px 1px;
- 
+
 }
-    
+
 h2 {
 
 color:cornflowerblue;
 font-size: 50px;
 font-family: 'Pattaya', sans-serif;
 margin: 1px 1px 1px 1px;
-}    
-    
+}
+
 
 h3 {
 
@@ -128,9 +128,9 @@ color:cornflowerblue;
 font-size: 30px;
 font-family: 'Pattaya', sans-serif;
 margin: 1px 1px 1px 1px;
-}  
-    
-    
+}
+
+
 .startgamebutton {
 
 background-color: deepskyblue;
@@ -144,7 +144,7 @@ border-radius: 20px;
 
 
 }
-    
+
 .startgamebutton span {
   cursor: pointer;
   display: inline-block;
@@ -168,8 +168,8 @@ border-radius: 20px;
   opacity: 1;
   right: 0;
 }
-    
-    
+
+
 .guessbutton {
 
 background-color: deepskyblue;
@@ -184,14 +184,14 @@ border: 1px solid deepskyblue;
 cursor: pointer;
 
 }
-    
+
 .guessbutton:hover {
   background-color: skyblue;
   color: white;
   transition: 0.4s;
 
 }
-    
+
 .buttonsubmit {
 
 background-color: deepskyblue;
@@ -230,14 +230,14 @@ cursor: pointer;
 margin: 0px 10px 10px 0px;
 
 }
-    
+
 .gamebutton:hover {
   background-color: skyblue;
   color: white;
   transition: 0.4s;
 
 }
-    
+
 input[type=email], input[type=password] {
   padding: 10px;
   margin: 8px;
@@ -251,9 +251,21 @@ font-family: 'Avenir', sans-serif;
 font-weight: 500;
 
 
-  
-}    
-    
-    
-    
+
+}
+
+.myCustomClass {
+  color: white;
+  font-weight: bold;
+  background: salmon;
+  opacity: 0.9;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+}
+
+
 </style>

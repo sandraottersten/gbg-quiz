@@ -2,22 +2,28 @@
   <div>
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
-    <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
+      <flash-message class="myCustomClass"></flash-message>
+    <input id="guess" @input="newValue" type="number" onfocus="this.value=''" v-on:keypress.enter = "makeGuess"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
     <p>Bot guess: {{bot}} </p>
-    <Category />
+
+
+
   </div>
 </template>
 
 <script>
 
- 
+
 import Timer from '@/components/Timer.vue'
 import {db} from '../firebase-config'
 import Category from '@/components/Category'
+import Vue from 'vue';
+import VueFlashMessage from 'vue-flash-message';
+Vue.use(VueFlashMessage);
 
 export default {
   name: "PlayGame",
@@ -36,12 +42,12 @@ export default {
   firebase: {
   questions: db.ref('questions')
   },
- 
+
   components: {
     Timer,
     Category
   },
- 
+
   computed: {
       value() {
         return this.$store.getters.value;
@@ -63,7 +69,7 @@ export default {
         this.$store.state.arr;
       }
     },
- 
+
   methods: {
       stop() {
         this.$refs.form.stop()
@@ -81,22 +87,31 @@ export default {
         this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
       },
       makeGuess(value, number, bot) {
+        var input = document.getElementById("guess");
         if(this.value < this.questions[this.number].answer){
           this.$store.state.numOfGuesses++
           this.stop()
-          alert("högre");
+
           this.ranNumBot();
-          this.reset()
-          this.start()
- 
+          this.reset();
+          this.start();
+          this.flash('Higher', 'error', {
+            timeout: 1500,
+            important: true
+});
+input.value = "";
         }
         else if (this.value > this.questions[this.number].answer){
           this.$store.state.numOfGuesses++
           this.stop()
-          alert("lägre");
           this.ranNumBot();
-          this.reset()
-          this.start()
+          this.reset();
+          this.start();
+          this.flash('Lower', 'error', {
+            timeout: 1500,
+            important: true
+});
+input.value = "";
         }
         else {
           this.$store.state.numOfGuesses++
@@ -112,6 +127,7 @@ export default {
         var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
         document.getElementById("errormess").style.display = ret ? "none" : "inline";
         return ret;
+
      }
     }
   };
