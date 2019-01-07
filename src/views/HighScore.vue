@@ -11,8 +11,6 @@
 <div id="highscorecontent">
   <div id="highscore">
     <h2>High score list</h2>
-    <router-link to="/gamemenu"><button class="gamebutton">Back</button></router-link>
-    <button class="gamebutton" @click="logout">Logout</button>
     <List/>
     <HighscoreList />
   </div>    

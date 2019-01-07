@@ -1,10 +1,5 @@
 <template>
-  <div id="list">
-    <h2>Highscore input test</h2>
-    <label for="">Score</label>
-    <input type="number" name="newPoint" v-model="newPoint">
-    <button @click="storeData">Add highscore</button>
-  </div>
+  <div id="list"></div>
 </template>
 
 <script>
