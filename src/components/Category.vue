@@ -20,7 +20,7 @@
 
   export default {
     name: "GameMenu",
-    data (){
+    data () {
       return {
         theQuestion: '',
       }
@@ -28,11 +28,7 @@
     firebase: {
       questions: db.ref('questions'),
     },
-
-    components: {
-
-    },
-
+    components: {},
     methods: {
       randNum: function(){
         this.$store.state.number = Math.floor(Math.random() * this.question.length);
