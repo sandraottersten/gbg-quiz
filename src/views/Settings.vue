@@ -9,16 +9,21 @@
     </div><br>
     <router-link to="/playgame"><button class="gamebutton" @click="randNum">START GAME</button></router-link>
     <button class="gamebutton" @click="logout">Logout</button>
+  <Category />
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
-import {db} from '../firebase-config'
 
+  import Category from '@/components/Category.vue'
 
 export default {
   name: "GameMenu",
+  data() {
+      return {
+        theQuestion: ''
+      }
+  },
   firebase: {
     questions: db.ref('questions')
   },
@@ -36,6 +41,11 @@ export default {
           this.$router.replace("login");
         });
     }
-  }
-};
+    },
+
+    components: {
+      Category
+    },
+
+  };
 </script>

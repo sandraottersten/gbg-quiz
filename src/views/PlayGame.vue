@@ -1,13 +1,14 @@
 <template>
   <div>
     <h3>Question</h3>
-    <h1>{{questions[number].question}}</h1>
+    <h1>{{theQuestion}}</h1>
     <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
     <p>Bot guess: {{bot}} </p>
+    <Category />
   </div>
 </template>
 
@@ -16,7 +17,8 @@
  
 import Timer from '@/components/Timer.vue'
 import {db} from '../firebase-config'
- 
+import Category from '@/components/Category'
+
 export default {
   name: "PlayGame",
   data: function() {
@@ -36,7 +38,8 @@ export default {
   },
  
   components: {
-    Timer
+    Timer,
+    Category
   },
  
   computed: {
