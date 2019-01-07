@@ -34,12 +34,10 @@ export default {
   firebase: {
   questions: db.ref('questions')
   },
- 
   components: {
     Timer,
     Category
   },
- 
   computed: {
       value() {
         return this.$store.getters.value;
@@ -51,7 +49,6 @@ export default {
         return this.$store.state.bot;
       }
     },
- 
   methods: {
       stop() {
         this.$refs.form.stop()

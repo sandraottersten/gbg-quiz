@@ -1,9 +1,9 @@
 <template>
     <div>
         <ol>
-            <li v-for="point in allUsers.slice().reverse()" :key="point.id">
-            {{point.name}} {{point.newPoint}}
-            </li>
+        <li v-for="point in allUsers.slice().reverse()" :key="point.id">
+        {{point.name}} {{point.newPoint}}
+        </li>
         </ol>
     </div>
 </template>

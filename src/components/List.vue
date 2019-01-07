@@ -1,5 +1,6 @@
 <template>
-  <div id="list"></div>
+  <div id="list">
+  </div>
 </template>
 
 <script>
@@ -31,11 +32,10 @@ export default {
   },
   methods: {
     storeData() {
-        if (Object.keys(this.allUsers).includes(this.uid)) {
-          this.$firebaseRefs.allUsers.child(this.uid).update({
-          newPoint: parseInt(this.oldScore) + parseInt(this.newPoint = 10),
-          user: this.user.email
-          });
+      if (Object.keys(this.allUsers).includes(this.uid)) {
+        this.$firebaseRefs.allUsers.child(this.uid).update({
+        newPoint: parseInt(this.oldScore) + parseInt(this.newPoint = 10),
+        user: this.user.email});
     } else {
       this.$firebaseRefs.allUsers.child(this.uid).set({
         newPoint: this.newPoint,
@@ -45,5 +45,4 @@ export default {
     }
   }
 }
-
 </script>
