@@ -1,25 +1,39 @@
 <template>
   <div id="app">
     <div id="nav">
-      <!-- detta kommer bort -->
-      <router-link to="/home">Home</router-link>|
-      <router-link to="/gamemenu">GameMenu</router-link>|
-      <router-link to="/settings">Rules</router-link>|
-      <router-link to="/rules">Settings</router-link>|
-      <router-link to="/playgame">Playgame</router-link>|
-      <router-link to="/highScore">Highscore</router-link>|
-      <router-link to="/login">Login</router-link>|
-      <router-link to="/sign-up">Sign Up</router-link>|
-      <router-link to="/winner">Winner</router-link>
-      <!-- detta kommer bort -->
+      <router-link to="/sign-up"><button v-if="!user" type="button">Signup</button></router-link>
+      <router-link to="/login"><button v-if="!user" type="button">Login</button></router-link>
+      <p><a v-if="user" @click="logout">Logout</a></p>
     </div>
     <router-view/>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
-  name: "app"
+  name: "app",
+    data () {
+    return {
+      user: null
+    }
+  },
+  methods: {
+        logout() {
+      firebase.auth().signOut()
+        .then(() => {
+          this.$router.push({path: '/'});
+        });
+    }
+  },  created: function () {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          this.user = user;
+        } else {
+          this.user = null;
+        }
+      });
+    }
 };
 </script>
 
@@ -224,7 +238,7 @@ margin: 0px 10px 10px 0px;
 
 }
 
-input[type=text], input[type=password] {
+input[type=email], input[type=password] {
   padding: 10px;
   margin: 8px;
 font-size: 15px;

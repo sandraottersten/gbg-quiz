@@ -9,7 +9,7 @@
     <p>
       No account yet? Create one <router-link to="/sign-up">here</router-link>
     </p>
-    <button @click="logout">Logout</button>
+    <button class="gamebutton" @click="logout">Logout</button>
   </div>
 </template>
 
