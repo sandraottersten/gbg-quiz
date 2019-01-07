@@ -19,8 +19,8 @@
 
 
   <div class="sign-up">
-    <h3>Let's create you a new account!</h3>
-    <input type="text" v-model="email" placeholder="Email">
+    <p>Let's create you a new account!</p>
+    <input type="email" v-model="email" placeholder="Email">
     <br>
     <input type="password" v-model="password" placeholder="Password">
     <br>

@@ -1,11 +1,11 @@
 <template>
     <div>
         <h1>All time scorer</h1>
-        <ul>
+        <ol>
             <li v-for="point in allUsers" :key="point.id">
                 {{point.user}} {{point.newPoint}}
             </li>
-        </ul>
+        </ol>
     </div>
 </template>
 

@@ -317,7 +317,7 @@ cursor: pointer;
     }    
     
     
-input[type=text], input[type=password] {
+input[type=email], input[type=password] {
   padding: 10px;
   margin: 8px;
 font-size: 15px;

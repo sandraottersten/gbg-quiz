@@ -56,10 +56,8 @@ data() {
     winner() {
       return this.$store.state.winner;
     }
- 
   },
-    
-      methods: {
+  methods: {
     logout: function() {
       firebase
         .auth()

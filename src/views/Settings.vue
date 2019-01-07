@@ -24,34 +24,34 @@
     </div><br>
     <router-link to="/playgame"><button class="startgamebuttonsmall" @click="randNum">START GAME</button></router-link>
   </div>
-      
+        <Category />
+
     </div>
 </template>
 
 <script>
-import firebase from "firebase";
+import Category from '@/components/Category.vue'
 import {db} from '../firebase-config'
-
 
 export default {
   name: "GameMenu",
+  data() {
+      return {
+        theQuestion: ''
+      }
+  },
   firebase: {
     questions: db.ref('questions')
   },
-  components: {},
   methods: {
     randNum: function(){
       this.$store.state.number = Math.floor(Math.random() * this.questions.length);
       this.$store.state.numOfGuesses = 0
-    },
-    logout: function() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.replace("login");
-        });
     }
-  }
-};
+  },
+  components: {
+      Category
+    },
+
+  };
 </script>
