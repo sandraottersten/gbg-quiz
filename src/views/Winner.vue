@@ -14,21 +14,25 @@
       <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>
       <router-link to="/settings"><button class="gamebutton">Play again</button></router-link>
       <button class="gamebutton" @click="logout">Logout</button>
+      <List/>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
-import {db} from '../firebase-config'
+import {db, fb} from '../firebase-config'
+import List from "@/components/List"
 
 export default {
   name: "Winner",
+  components: {
+    List
+  },
   data() {
     return {
         images: ['http://i67.tinypic.com/155mdzn.png'],
         images2: ['http://i64.tinypic.com/i3uf0z.png']
-        }
+    }
   }, 
   firebase: {
     questions: db.ref('questions')
@@ -39,6 +43,9 @@ export default {
     },
     winner() {
       return this.$store.state.winner;
+    },
+    storeData() {
+      return
     }
   },
   methods: {
