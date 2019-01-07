@@ -14,8 +14,8 @@
 </template>
 
 <script>
-
-  import Category from '@/components/Category.vue'
+import Category from '@/components/Category.vue'
+import {db} from '../firebase-config'
 
 export default {
   name: "GameMenu",
