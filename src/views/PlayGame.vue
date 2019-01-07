@@ -1,9 +1,5 @@
-<template>
-      
-      
-      <div id ="content">
-
-      
+<template>  
+  <div id ="content">  
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
     <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
@@ -16,9 +12,7 @@
   </div>
 </template>
 
-<script>
-
- 
+<script> 
 import Timer from '@/components/Timer.vue'
 import {db} from '../firebase-config'
 import Category from '@/components/Category'

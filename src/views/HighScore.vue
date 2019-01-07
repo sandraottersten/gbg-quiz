@@ -1,23 +1,16 @@
 <template>
-
-<div>
-
-
-    
-<div id ="content">
-
-
-
-<div id="highscorecontent">
-  <div id="highscore">
-    <h2>High score list</h2>
-    <List/>
-    <HighscoreList />
-  </div>    
-  <img width="200px" v-for="img in images" v-bind:key="img">
-    
+<div> 
+  <div id ="content">
+    <div id="highscorecontent">
+      <div id="highscore">
+      <h2>High score list</h2>
+      <List/>
+      <HighscoreList />
+      </div>    
+    <img width="200px" v-for="img in images" v-bind:key="img"> 
     </div>
-</div></div>
+  </div>
+</div>
 </template>
 
 <script>
