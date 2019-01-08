@@ -1,10 +1,8 @@
 <template>
     <div>
-        <ol>
         <li v-for="point in allUsers.slice().reverse()" :key="point.id">
-        {{point.name}} {{point.newPoint}}
+        <b>{{point.name}}</b> {{point.newPoint}}
         </li>
-        </ol>
     </div>
 </template>
 
@@ -23,6 +21,15 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+
+li {
+    display: flex;
+    justify-content: space-between;
+}
+</style>
+
 
 
 
