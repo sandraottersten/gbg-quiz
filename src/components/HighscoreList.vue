@@ -23,7 +23,6 @@ export default {
 </script>
 
 <style scoped>
-
 li {
     display: flex;
     justify-content: space-between;
