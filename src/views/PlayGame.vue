@@ -119,8 +119,8 @@ export default {
         this.flash('Lower', 'error', {
           timeout: 1500,
           important: true
-      });
-      input.value = "";
+        });
+        input.value = "";
       }
       else if (this.value == this.$store.state.theAnswer && this.user){
         this.$store.state.numOfGuesses++
