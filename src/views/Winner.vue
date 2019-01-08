@@ -21,13 +21,10 @@
 
 <script>
 import {db, fb} from '../firebase-config'
-import List from "@/components/List"
 
 export default {
   name: "Winner",
-  components: {
-    List
-  },
+  components: {},
   data() {
     return {
         images: ['http://i67.tinypic.com/155mdzn.png'],
@@ -43,9 +40,6 @@ export default {
     },
     winner() {
       return this.$store.state.winner;
-    },
-    storeData() {
-      return
     }
   },
   methods: {

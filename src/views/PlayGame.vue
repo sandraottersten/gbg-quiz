@@ -14,7 +14,7 @@
 
 <script> 
 import Timer from '@/components/Timer.vue'
-import {db} from '../firebase-config'
+import {db, fb} from '../firebase-config'
 import Category from '@/components/Category'
 
 export default {
@@ -32,7 +32,8 @@ export default {
     }
   },
   firebase: {
-  questions: db.ref('questions')
+  questions: db.ref('questions'),
+  allUsers: db.ref('allUsers').orderByChild("newPoint")
   },
   components: {
     Timer,
@@ -47,9 +48,22 @@ export default {
       },
       bot() {
         return this.$store.state.bot;
+      },
+      uid() {
+      return fb.auth().currentUser.uid;
+      },
+      oldScore() {
+      return this.allUsers[this.uid].newPoint
       }
     },
-  methods: {
+    created () {
+      this.$bindAsObject('allUsers', db.ref('allUsers/'))
+    },
+    methods: {
+      storeData() {
+        this.$firebaseRefs.allUsers.child(this.uid).update({
+        newPoint: parseInt(this.oldScore) + parseInt(10)});
+      },
       stop() {
         this.$refs.form.stop()
       },
@@ -89,6 +103,7 @@ export default {
           //this.$store.state.winner = false
           this.show = false
           this.stop()
+          this.storeData()
           this.$router.push({ path: 'winner' })
         }
       },

@@ -4,7 +4,6 @@
       <div id="highscorecontent">
         <div id="highscore">
         <h2>High score list</h2>
-        <List/>
         <HighscoreList />
         </div>    
       <img width="200px" v-for="img in images" v-bind:key="img"> 
@@ -15,14 +14,12 @@
 
 <script>
 import firebase from "firebase";
-import List from "@/components/List";
 import HighscoreList from "@/components/HighscoreList"
 
 export default {
   name: "highscore",
   components: {
-    HighscoreList,
-    List
+    HighscoreList
   },
   data() {
     return {
