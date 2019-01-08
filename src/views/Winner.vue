@@ -14,9 +14,8 @@
       <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>
       <router-link to="/settings"><button class="gamebutton">Play again</button></router-link>
       <button class="gamebutton" @click="logout">Logout</button>
-      <List/>
     </div>
-  <div>
+  </div>
 </template>
 
 <script>

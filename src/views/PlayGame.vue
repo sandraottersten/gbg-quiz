@@ -14,7 +14,7 @@
 
 <script>
 import Timer from '@/components/Timer.vue'
-import {db} from '../firebase-config'
+import {db, fb} from '../firebase-config'
 import Vue from 'vue';
 import VueFlashMessage from 'vue-flash-message';
 Vue.use(VueFlashMessage);
@@ -56,6 +56,18 @@ export default {
       },
       oldScore() {
       return this.allUsers[this.uid].newPoint
+      },
+      theQuestion () {
+        return this.$store.state.theQuestion;
+      },
+      theAnswer() {
+        return this.$store.state.theAnswer;
+      },
+      num() {
+        this.$store.state.num;
+      },
+      arr() {
+        this.$store.state.arr;
       }
     },
     created () {
@@ -66,22 +78,6 @@ export default {
         this.$firebaseRefs.allUsers.child(this.uid).update({
         newPoint: parseInt(this.oldScore) + parseInt(10)});
       },
-      theQuestion (){
-        return this.$store.state.theQuestion;
-      },
-      theAnswer(){
-        return this.$store.state.theAnswer;
-      },
-      num() {
-        this.$store.state.num;
-      },
-
-      arr() {
-        this.$store.state.arr;
-      }
-    },
-
-  methods: {
       stop() {
         this.$refs.form.stop()
       },

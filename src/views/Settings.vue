@@ -8,7 +8,7 @@
       <button class="gamebutton" @click="afunction('food')">Food</button>
     </div>
     <br>
-    <router-link to="/playgame"><button class="startgamebuttonsmall" @click="randNum">START GAME</button></router-link>
+    <router-link to="/playgame"><button class="gamebutton">Start Game</button></router-link>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@
 import {db} from '../firebase-config'
 
 export default {
-  name: "GameMenu",
+  name: "Settings",
   data() {
       return {
         theQuestion: '',
