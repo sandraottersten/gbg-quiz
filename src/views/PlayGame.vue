@@ -2,20 +2,23 @@
   <div id ="content">  
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
-    <input  @input="newValue" type="number" onfocus="this.value=''" v-on:keypress = "OnlyNumbers"/>
+      <flash-message class="myCustomClass"></flash-message>
+    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
-    <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
+      <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
     <p>Bot guess: {{bot}} </p>
-    <Category />
   </div>
 </template>
 
-<script> 
+<script>
 import Timer from '@/components/Timer.vue'
-import {db, fb} from '../firebase-config'
-import Category from '@/components/Category'
+import {db} from '../firebase-config'
+import Vue from 'vue';
+import VueFlashMessage from 'vue-flash-message';
+Vue.use(VueFlashMessage);
+
 
 export default {
   name: "PlayGame",
@@ -37,7 +40,6 @@ export default {
   },
   components: {
     Timer,
-    Category
   },
   computed: {
       value() {
@@ -64,6 +66,22 @@ export default {
         this.$firebaseRefs.allUsers.child(this.uid).update({
         newPoint: parseInt(this.oldScore) + parseInt(10)});
       },
+      theQuestion (){
+        return this.$store.state.theQuestion;
+      },
+      theAnswer(){
+        return this.$store.state.theAnswer;
+      },
+      num() {
+        this.$store.state.num;
+      },
+
+      arr() {
+        this.$store.state.arr;
+      }
+    },
+
+  methods: {
       stop() {
         this.$refs.form.stop()
       },
@@ -77,25 +95,33 @@ export default {
         this.$store.dispatch('newValue', event.target.value)
       },
       ranNumBot() {
-        this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
+          this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
+            this.start();
       },
-      makeGuess(value, number, bot) {
-        if(this.value < this.questions[this.number].answer){
+        makeGuess(value, number, bot) {
+        var input = document.getElementById("guess");
+        if(this.value < this.$store.state.theAnswer){
           this.$store.state.numOfGuesses++
           this.stop()
-          alert("högre");
           this.ranNumBot();
-          this.reset()
-          this.start()
- 
+          this.reset();
+          this.flash('Higher', 'error', {
+            timeout: 1500,
+            important: true
+});
+input.value = "";
         }
-        else if (this.value > this.questions[this.number].answer){
+        else if (this.value > this.$store.state.theAnswer){
           this.$store.state.numOfGuesses++
           this.stop()
-          alert("lägre");
           this.ranNumBot();
-          this.reset()
-          this.start()
+          this.reset();
+          this.start();
+          this.flash('Lower', 'error', {
+            timeout: 1500,
+            important: true
+});
+input.value = "";
         }
         else {
           this.$store.state.numOfGuesses++
@@ -114,6 +140,7 @@ export default {
         return ret;
      }
     }
+
   };
 </script>
 

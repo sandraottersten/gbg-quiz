@@ -10,13 +10,13 @@
       <br>
       <img width="200px" v-for="img in images2" v-bind:key="img"><br>
       </h2>
-      <p>Correct answer is: {{this.questions[this.number].answer}}</p>
+      <p>Correct answer is: {{this.$store.state.theAnswer}}</p>
       <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>
       <router-link to="/settings"><button class="gamebutton">Play again</button></router-link>
       <button class="gamebutton" @click="logout">Logout</button>
       <List/>
     </div>
-  </div>
+  <div>
 </template>
 
 <script>
