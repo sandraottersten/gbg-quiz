@@ -6,7 +6,7 @@ import Home from './views/Home.vue'
 import PlayGame from './views/PlayGame.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
-import HighScore from './views/HighScore.vue'
+import Highscore from './views/Highscore.vue'
 import GameMenu from './views/GameMenu.vue'
 import Rules from './views/Rules.vue'
 import Settings from './views/Settings.vue'
@@ -50,7 +50,7 @@ const router = new Router({
     {
       path: '/highscore',
       name: 'highScore',
-      component: HighScore,
+      component: Highscore,
     },
     {
       path: '/settings',

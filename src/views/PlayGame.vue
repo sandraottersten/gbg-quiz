@@ -54,6 +54,9 @@ export default {
       uid() {
       return fb.auth().currentUser.uid;
       },
+      user() {
+        return fb.auth().currentUser;
+      },
       oldScore() {
       return this.allUsers[this.uid].newPoint
       },
@@ -119,13 +122,21 @@ input.value = "";
 });
 input.value = "";
         }
-        else {
+        else if (this.value == this.$store.state.theAnswer && this.user){
           this.$store.state.numOfGuesses++
           //when bot wins
           //this.$store.state.winner = false
           this.show = false
           this.stop()
           this.storeData()
+          this.$router.push({ path: 'winner' })
+        }
+        else {
+          this.$store.state.numOfGuesses++
+          //when bot wins
+          //this.$store.state.winner = false
+          this.show = false
+          this.stop()
           this.$router.push({ path: 'winner' })
         }
       },
