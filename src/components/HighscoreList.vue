@@ -1,12 +1,9 @@
 <template>
     <div>
-        <h1>All time scorer</h1>
         <ol>
-<li v-for="point in allUsers.slice().reverse()" :key="point.id">
-                {{point.name}} {{point.newPoint}}
-            </li>
-
-            
+        <li v-for="point in allUsers.slice().reverse()" :key="point.id">
+        {{point.name}} {{point.newPoint}}
+        </li>
         </ol>
     </div>
 </template>

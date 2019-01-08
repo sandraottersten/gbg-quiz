@@ -1,29 +1,19 @@
 <template>
-
-<div>
-    
-    
-
-    
-   
-
-<div id ="content">
-
-
-  <div class="login">
-    <h3>Sign In</h3>
-    <input type="email" v-model="email" placeholder="Email">
-    <br>
-    <input type="password" v-model="password" placeholder="Password">
-    <br>
-    <button class="buttonsubmit" @click="login">Connection</button>
-    <p>You don't have an account yet? You can create one
-      <router-link to="/sign-up">here</router-link>
-    </p>
-      
+  <div>
+    <div id ="content">
+      <div class="login">
+        <h3>Login</h3>
+        <input type="email" v-model="email" placeholder="Email">
+        <br>
+        <input type="password" v-model="password" placeholder="Password">
+        <br>
+        <button class="buttonsubmit" @click="login">Submit</button>
+        <p>You don't have an account yet? You can create one
+        <router-link to="/sign-up">here</router-link>
+        </p>
+      </div>
     </div>
   </div>
-     </div>
 </template>
 
 <script>
@@ -54,7 +44,3 @@ export default {
   }
 };
 </script>
-
-<!--Style this specific site -->
-<style scoped>
-</style>

@@ -4,8 +4,8 @@
     <div class="timeBar" style="position: relative; margin-top: 20px;">
       <p>{{ time }}</p>
       <div class="timeBar"
-           :style = "{width: barTime + '%'}"
-           style="background-color: rgb(83, 179, 238); position: absolute;">
+        :style = "{width: barTime + '%'}"
+        style="background-color: rgb(83, 179, 238); position: absolute;">
       </div>
     </div>
  </div>
@@ -14,46 +14,45 @@
 <script>
 export default {
   name: 'Timer',
-
-data() {
-  return {
-   isRunning: false,
-   barTimer: 10,
-   barTime: 100,
-   time:10,
-   timer:null,
-   sound:new Audio("http://s1download-universal-soundbank.com/wav/nudge.wav")
- }
-},
-mounted(){
-  this.start()
-},
-methods: {
-   start() {
-     this.isRunning = true
-     if (!this.timer) {
-        this.timer = setInterval( () => {
-          if (this.time > 0) {
-             this.time--
-             this.barTime = this.barTime - (100/this.barTimer)
-          } else {
-             this.sound.play()
-             clearInterval(this.timer)
-             this.reset()
-          }
+  data() {
+    return {
+      isRunning: false,
+      barTimer: 10,
+      barTime: 100,
+      time:10,
+      timer:null,
+      sound:new Audio("http://s1download-universal-soundbank.com/wav/nudge.wav")
+    }
+  },
+  mounted(){
+    this.start()
+  },
+  methods: {
+    start() {
+      this.isRunning = true
+      if (!this.timer) {
+          this.timer = setInterval( () => {
+            if (this.time > 0) {
+              this.time--
+              this.barTime = this.barTime - (100/this.barTimer)
+            } else {
+              this.sound.play()
+              clearInterval(this.timer)
+              this.reset()
+            }
         }, 1000 )
-     }
+      }
    },
-   stop() {
-     this.isRunning = false
-     clearInterval(this.timer)
-     this.timer = null
-   },
-   reset() {
+    stop() {
+      this.isRunning = false
+      clearInterval(this.timer)
+      this.timer = null
+    },
+    reset() {
       this.stop()
       this.time = 10
       this.barTime = 100
-   }
+    }
   }
 }
   </script>

@@ -1,37 +1,25 @@
 <template>
-
-<div>
-
-
-    
-<div id ="content">
-
-
-
-<div id="highscorecontent">
-  <div id="highscore">
-    <h2>High score list</h2>
-    <router-link to="/gamemenu"><button class="gamebutton">Back</button></router-link>
-    <button class="gamebutton" @click="logout">Logout</button>
-    <List/>
-    <HighscoreList />
-  </div>    
-  <img width="200px" v-for="img in images" v-bind:key="img">
-    
+  <div> 
+    <div id ="content">
+      <div id="highscorecontent">
+        <div id="highscore">
+        <h2>High score list</h2>
+        <HighscoreList />
+        </div>    
+      <img width="200px" v-for="img in images" v-bind:key="img"> 
+      </div>
     </div>
-</div></div>
+  </div>
 </template>
 
 <script>
 import firebase from "firebase";
-import List from "@/components/List";
 import HighscoreList from "@/components/HighscoreList"
 
 export default {
   name: "highscore",
   components: {
-    HighscoreList,
-    List
+    HighscoreList
   },
   data() {
     return {

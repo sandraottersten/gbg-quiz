@@ -1,31 +1,19 @@
 <template>
-
-<div>
-    
-    
-     
-    
-
-
-<div id ="content">
-
-
-  <div class="sign-up">
-    <p>Let's create you a new account!</p>
-    <input type="text" v-model="userName" placeholder="Username">
-    <br>
-    <input type="email" v-model="email" placeholder="Email">
-    <br>
-    <input type="password" v-model="password" placeholder="Password">
-    <br>
-    <button class="buttonsubmit" @click="signUp">Sign Up</button>
-    <br>
-    <span>or go back to
-      <router-link to="/login">login</router-link>.
-    </span>
+  <div>
+    <div id ="content">
+      <div class="sign-up">
+        <p>Let's create you a new account!</p>
+        <input type="text" v-model="username" placeholder="Username">
+        <br>
+        <input type="email" v-model="email" placeholder="Email">
+        <br>
+        <input type="password" v-model="password" placeholder="Password">
+        <br>
+        <button class="buttonsubmit" @click="signUp">Sign Up</button>
+        <br>
+      </div>
+    </div>
   </div>
-    </div>
-    </div>
 </template>
 
 <script>
@@ -38,7 +26,7 @@ export default {
     return {
       email: "",
       password: "",
-      userName: ""
+      username: ""
     };
   },
   created () {
@@ -59,16 +47,16 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           (user) => {
-            console.log(this.userName)
+            console.log(this.username)
 
             this.$router.replace("/");
             this.$firebaseRefs.allUsers.child(this.uid).set({
-              name: this.userName,
+              name: this.username,
               newPoint: 0,
               user: this.email
             })
-          },
-        )
+        },
+      )
     }
   }
 };
