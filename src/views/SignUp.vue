@@ -11,9 +11,6 @@
         <br>
         <button class="buttonsubmit" @click="signUp">Sign Up</button>
         <br>
-        <span>or go back to
-          <router-link to="/login">login</router-link>.
-        </span>
       </div>
     </div>
   </div>

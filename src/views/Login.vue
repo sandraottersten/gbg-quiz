@@ -2,7 +2,7 @@
   <div>
     <div id ="content">
       <div class="login">
-        <h3>Sign In</h3>
+        <h3>Login</h3>
         <input type="email" v-model="email" placeholder="Email">
         <br>
         <input type="password" v-model="password" placeholder="Password">
