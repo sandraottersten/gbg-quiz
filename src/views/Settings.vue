@@ -3,30 +3,17 @@
     <div id ="content">
       <h3>Pick a category {{theQuestion}}</h3>
       <div>
-      <button class="categorybutton" @click="afunction('trams')"><img src="http://i68.tinypic.com/24lucys.jpg"></button>
-      <button class="categorybutton" @click="afunction('history')"><img src="http://i63.tinypic.com/amp2rb.jpg"></button>
-      <button class="categorybutton" @click="afunction('food')"><img src="http://i67.tinypic.com/149mps1.jpg"></button>
-
+      <button class="categorybutton" @click="afunction('trams'), categoryButton = 1" v-bind:style="{'border':buttonSelector[1].categorySelected}"><img src="http://i68.tinypic.com/24lucys.jpg"></button>
+      <button class="categorybutton" @click="afunction('history'), categoryButton = 2" v-bind:style="{'border':buttonSelector[2].categorySelected}"><img src="http://i63.tinypic.com/amp2rb.jpg"></button>
+      <button class="categorybutton" @click="afunction('food'), categoryButton = 3" v-bind:style="{'border':buttonSelector[3].categorySelected}"><img src="http://i67.tinypic.com/149mps1.jpg"></button>
       <br><br>
 
-
   <h3> Choose your opponent </h3>
-      <button class="categorybutton" @click="afunction('easy')"><img src="http://i63.tinypic.com/10hj5fk.jpg"></button>
-      <button class="categorybutton" @click="afunction('history')"><img src="http://i68.tinypic.com/2dkn52x.jpg"></button>
-      <button class="categorybutton" @click="afunction('hard')"><img src="http://i64.tinypic.com/14jcaas.jpg"></button>
-
-
-
-
-
-    </div>
-
-
-
-
-
-
-    <br>
+      <button class="categorybutton" @click="activeButton = 4" v-bind:style="{'border':buttonSelector[4].opponentSelected}"><img src="http://i63.tinypic.com/10hj5fk.jpg"></button>
+      <button class="categorybutton" @click="activeButton = 5" v-bind:style="{'border':buttonSelector[5].opponentSelected}"><img src="http://i68.tinypic.com/2dkn52x.jpg"></button>
+      <button class="categorybutton" @click="activeButton = 6" v-bind:style="{'border':buttonSelector[6].opponentSelected}"><img src="http://i64.tinypic.com/14jcaas.jpg"></button>
+  </div>
+  <br>
     <router-link to="/playgame"><button class="gamebutton">Start Game</button></router-link>
     </div>
   </div>
@@ -40,8 +27,33 @@ export default {
   data() {
       return {
         theQuestion: '',
-        theAnswer: ''
+        theAnswer: '',
+        activeButton: 0,
+        categoryButton: 0
       }
+  }, 
+  computed: {
+      buttonSelector: function() {
+      let result = [];
+      for (var i = 0; i< 7; i++){
+        if (this.activeButton == i){
+          result.push({
+            opponentSelected: '1px black solid'
+            });
+        } else if ( this.categoryButton == i){
+          result.push({
+            categorySelected: '1px black solid'
+            });
+        } else {
+          result.push({
+            opponentSelected: 'none',
+            categorySelected: 'none'
+          });
+        }
+      }
+      return result;
+
+    }
   },
   firebase: {
     questions: db.ref('questions')
