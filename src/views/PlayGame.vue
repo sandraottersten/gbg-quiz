@@ -3,7 +3,7 @@
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
     <flash-message class="myCustomClass"></flash-message>
-    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"/>
+    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
     <Timer v-show="show" ref="form"/>

@@ -58,6 +58,14 @@ body {
   font-size: 18px;
   opacity: 0.95;
 }
+
+@media only screen and (max-width: 600px) {
+  #content {
+width: 95%;
+  }
+}
+
+
 #nav2 {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -98,6 +106,17 @@ body {
   text-align: center;
   border-radius: 30px;
 }
+
+@media only screen and (max-width: 600px) {
+  #highscore {
+width: 100%;
+padding: 10px;  
+font-size: 15px;
+}
+}
+
+
+
 h1 {
   color:cornflowerblue;
   font-size:1.6em;
@@ -110,6 +129,13 @@ h2 {
   font-family: 'Pattaya', sans-serif;
   margin: 1px 1px 1px 1px;
 }
+
+@media only screen and (max-width: 600px) {
+  h2 {
+font-size: 40px;
+}
+}
+
 h3 {
   color:cornflowerblue;
   font-size: 30px;
