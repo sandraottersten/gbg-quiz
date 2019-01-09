@@ -186,7 +186,7 @@ h3 {
 }
 .gamebutton {
   background-color: deepskyblue;
-  font-size: 15px;
+  font-size: 25px;
   border-radius: 20px;
   border: 1px solid deepskyblue;
   margin-left: 10px;
@@ -250,6 +250,38 @@ h3 {
   outline: 0;
   cursor: pointer;
 }     
+
+.categorybutton {
+  border: 0px;
+  background: none;
+  outline: 0;
+
+} 
+
+.categorybutton:hover {
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+        -webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+
+}
+
+img.gamemenu {
+margin: 7px;
+
+}
+
+img.gamemenu:hover {
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+        -webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+
+}
+
+
 input[type=email], input[type=password], input[type=text] {
   padding: 10px;
   margin: 8px;
