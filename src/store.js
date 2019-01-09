@@ -14,13 +14,11 @@ export default new Vuex.Store({
       theAnswer: '',
       arr: [],
       num: 0
-
   },
   getters: {
     value: state => {
       return state.value;
     }
-
   },
   mutations: {
     newValue: (state, payload) => {

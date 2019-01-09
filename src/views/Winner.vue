@@ -13,7 +13,7 @@
       <p>Correct answer is: {{this.$store.state.theAnswer}}</p>
       <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>
       <router-link to="/settings"><button class="gamebutton">Play again</button></router-link>
-      <button class="gamebutton" @click="logout">Logout</button>
+      <router-link to="/highscore"><button class="gamebutton">High Score</button></router-link>
     </div>
   </div>
 </template>
