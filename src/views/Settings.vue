@@ -4,8 +4,8 @@
       <h3>Pick a category {{theQuestion}}</h3>
       <div>
       <button class="categorybutton" @click="afunction('trams')"><img src="http://i68.tinypic.com/24lucys.jpg"></button>
-      <button class="categorybutton" @click="afunction('history')"><img src="http://i67.tinypic.com/34qso4o.jpg"></button>
-      <button class="categorybutton" @click="afunction('food')"><img src="http://i65.tinypic.com/2uqlopz.jpg"></button>
+      <button class="categorybutton" @click="afunction('history')"><img src="http://i63.tinypic.com/amp2rb.jpg"></button>
+      <button class="categorybutton" @click="afunction('food')"><img src="http://i67.tinypic.com/149mps1.jpg"></button>
 
       <br><br>
 
