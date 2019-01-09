@@ -14,8 +14,8 @@
         <br>     
         <audio id="player" src="http://k007.kiwi6.com/hotlink/3h77ek6oz8/gbgsong.mp3"></audio>
         <div>
-            <button class="musicbutton" onclick="document.getElementById('player').play()"><img src="http://i63.tinypic.com/262uou9.png" width="60px"></button>
-            <button class="musicbutton" onclick="document.getElementById('player').pause()"><img src="http://i68.tinypic.com/mj90k2.jpg" width="60px"></button>
+            <button class="musicbutton" onclick="document.getElementById('player').play()"><img src="../assets/Play.png" width="60px"></button>
+            <button class="musicbutton" onclick="document.getElementById('player').pause()"><img src="../assets/Pause.jpg" width="60px"></button>
         </div>
     </div>    
 </div>
