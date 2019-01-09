@@ -12,7 +12,7 @@
 
   <h3> Choose your opponent </h3>
       <button class="categorybutton" @click="afunction('easy')"><img src="http://i63.tinypic.com/10hj5fk.jpg"></button>
-      <button class="categorybutton" @click="afunction('history')"><img src="http://i68.tinypic.com/2dkn52x.jpg"></button>
+      <button class="categorybutton" @click="afunction('medium')"><img src="http://i68.tinypic.com/2dkn52x.jpg"></button>
       <button class="categorybutton" @click="afunction('hard')"><img src="http://i64.tinypic.com/14jcaas.jpg"></button>
 
 
