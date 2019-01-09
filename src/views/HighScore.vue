@@ -6,7 +6,7 @@
         <h2>High score list</h2>
         <HighscoreList />
         </div>    
-      <img width="200px" v-for="img in images" v-bind:key="img"> 
+      <img width="200px" v-for="img in images" v-bind:src="img"> 
       </div>
     </div>
   </div>
