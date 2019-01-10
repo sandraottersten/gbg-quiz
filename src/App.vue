@@ -77,8 +77,8 @@ width: 95%;
   padding: 10px 50px 0px 50px;
   width: 60%;
   margin: auto;
-  margin-bottom: 0px;
-  margin-top: 100px;
+  margin-bottom:40px;
+  margin-top: 40px;
   opacity: 0.95;
 }
 #nav2 a {
@@ -100,7 +100,7 @@ width: 95%;
   background-image: linear-gradient(315deg, #fec84e 0%, #ffdea8 74%);
   border: 2px solid gold;
   display: block;
-  width: 50%;
+  width: 90%;
   padding: 50px;
   margin: auto;
   text-align: center;
@@ -115,9 +115,17 @@ font-size: 15px;
 }
 }
 
+@media only screen and (max-width: 600px) {
+  #nav2 {
+width: 95%;
+margin-top: 5px;
+margin-bottom: 0px;
+}
+}
+
 h1 {
   color:cornflowerblue;
-  font-size:1.6em;
+  font-size:1.4em;
   font-family: 'Avenir', sans-serif;
   margin: 1px 1px 1px 1px;
 }
@@ -143,17 +151,36 @@ p {
   margin-bottom: 0rem;
 }
 
+#musicText {
+  font-size: 0.9rem;
+}
+
 @media only screen and (max-width: 600px) {
   h2 {
-font-size: 40px;
+font-size: 3rem;
 }
 }
 
+
+
 h3 {
   color:cornflowerblue;
-  font-size: 30px;
+  font-size: 2rem;
   font-family: 'Pattaya', sans-serif;
   margin: 1px 1px 5px 1px;
+}
+
+h4 {
+  color:cornflowerblue;
+  font-size: 2rem;
+  font-family: 'Pattaya', sans-serif;
+  margin: 1px 1px 5px 1px;
+}
+
+@media only screen and (max-width: 600px) {
+  p, h3 {
+font-size: 1.5rem;
+}
 }
 .startgamebutton {
   background-color: deepskyblue;
