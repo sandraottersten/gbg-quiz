@@ -1,16 +1,16 @@
-<template>  
-  <div id ="content">  
+<template>
+  <div id ="content">
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
-    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
+    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" ref="focused" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <p id="errormess" style="color: orangered; display: none"><br><br>Only numbers!* </p>
     <p id="playerTurn" v-show="playersTurn">It's the player's turn! </p>
     <p id="botTurn" v-show="!playersTurn">It's the bot's turn! </p>
-    <flash-message class="myCustomClass"></flash-message>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
     <p>Bot guess: {{bot}} </p>
+    <flash-message class="myCustomClass"></flash-message>
   </div>
 </template>
 
@@ -77,7 +77,7 @@ export default {
     },
     arr() {
      return this.$store.state.arr;
-    }, 
+    },
     choosenBot() {
       return this.$store.state.choosenBot;
     }
@@ -86,6 +86,10 @@ export default {
     this.$bindAsObject('allUsers', db.ref('allUsers/'))
   },
   methods: {
+    setFocus()
+    {
+      this.$refs.focused.focus();
+    },
     storeData() {
       this.$firebaseRefs.allUsers.child(this.uid).update({
       newPoint: parseInt(this.oldScore) + parseInt(10)});
@@ -185,17 +189,16 @@ export default {
         setTimeout(() => {
         document.getElementById("guess").disabled = true;
         }, 0);
-     }, 
+     },
      stopDisable() {
        setTimeout(() => {
          document.getElementById("guess").disabled = false;
           this.playersTurn = true;
           this.reset();
           this.start();
+          this.setFocus();
        }, 2500);
      }
     }
   };
 </script>
-
-
