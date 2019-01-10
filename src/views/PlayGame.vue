@@ -128,11 +128,11 @@ export default {
     }
     },
     calculateScore() {
-        if (this.$store.state.choosenBot == 1) {
+        if (this.$store.state.choosenBot == "Glenn" && this.$store.state.winner == true) {
           this.$store.commit('updateSessionScore', Math.floor((this.$store.state.numOfGuesses * 2) + 10));
-        } else if (this.$store.state.choosenBot == 2) {
+        } else if (this.$store.state.choosenBot == "Håkan" && this.$store.state.winner == true) {
           this.$store.commit('updateSessionScore', Math.floor((this.$store.state.numOfGuesses * 3) + 20));
-        } else {
+        } else if (this.$store.state.choosenBot == "Miriam" && this.$store.state.winner == true){
            this.$store.commit('updateSessionScore', Math.floor((this.$store.state.numOfGuesses * 4) + 30));
         }
     },
