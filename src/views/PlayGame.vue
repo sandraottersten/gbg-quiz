@@ -103,13 +103,13 @@ export default {
       this.$store.dispatch('newValue', event.target.value)
     },
     decideMinMax: function () {
-      var Min = this.$store.state.theAnswer;
-      if (this.$store.state.choosenBot = 1) {
-        Min - 80;
-      } else if (this.$store.state.choosenBot = 2) {
-        Min - 30;
-      } else if (this.$store.state.choosenBot = 3) {
-      Min - 5;
+      var Min = 0;
+      if (this.$store.state.choosenBot == 1) {
+        Min = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
+      } else if (this.$store.state.choosenBot == 2) {
+        Min = Math.floor(Math.random() * (30 - 1 + 1)) + 1;
+      } else {
+      this.$store.state.theAnswer;
     }
     console.log(Min);
 
