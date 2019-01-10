@@ -3,7 +3,7 @@
     <h1>{{theQuestion}}</h1>
     <input id="guess" class="field" @input="newValue" type="number" ref ="focused" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
-    <p id="errormess" style="color: orangered; display: none">Only numbers! </p>
+    <p id="errormess" style="color: orangered; display: none"><br>Only numbers! </p>
     <p id="playerTurn" v-show="playersTurn">Your turn! </p>
     <p id="botTurn" v-show="!playersTurn">Bot turn! </p>
     <Timer v-show="show" ref="form"/>
