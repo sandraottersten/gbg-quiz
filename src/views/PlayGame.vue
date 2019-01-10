@@ -1,5 +1,5 @@
-<template>  
-  <div id ="content">  
+<template>
+  <div id ="content">
     <h1>{{theQuestion}}</h1>
     <input id="guess" class="field" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" onfocus="this.value=''" v-on:keypress="OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
@@ -9,7 +9,7 @@
     <flash-message class="myCustomClass"></flash-message>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
-    <p>Bot guess: {{bot}} </p>
+    <p>{{choosenBot}} guess: {{bot}} </p>
   </div>
 </template>
 
@@ -84,7 +84,7 @@ export default {
     },
     arr() {
      return this.$store.state.arr;
-    }, 
+    },
     choosenBot() {
       return this.$store.state.choosenBot;
     }
@@ -111,9 +111,9 @@ export default {
     },
     decideMinMax: function () {
       var Min = 0;
-      if (this.$store.state.choosenBot == 1) {
+      if (this.$store.state.choosenBot == "Glenn's") {
         Min = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-      } else if (this.$store.state.choosenBot == 2) {
+      } else if (this.$store.state.choosenBot == "Håkan's") {
         Min = Math.floor(Math.random() * (30 - 1 + 1)) + 1;
       } else {
       this.$store.state.theAnswer;
@@ -192,7 +192,7 @@ export default {
         setTimeout(() => {
         document.getElementById("guess").disabled = true;
         }, 0);
-     }, 
+     },
      stopDisable() {
        setTimeout(() => {
          document.getElementById("guess").disabled = false;
@@ -206,5 +206,3 @@ export default {
 
   
 </script>
-
-
