@@ -17,7 +17,7 @@ import firebase from "firebase";
 import HighscoreList from "@/components/HighscoreList"
 
 export default {
-  name: "highscore",
+  name: "Highscore",
   components: {
     HighscoreList
   },

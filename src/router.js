@@ -49,7 +49,7 @@ const router = new Router({
     },
     {
       path: '/highscore',
-      name: 'highScore',
+      name: 'Highscore',
       component: Highscore,
     },
     {
