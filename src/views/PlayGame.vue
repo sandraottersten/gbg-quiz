@@ -1,11 +1,12 @@
 <template>  
   <div id ="content">  
-    <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
-    <flash-message class="myCustomClass"></flash-message>
-    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
+    <input id="guess" class="field" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
-    <span id="errormess" style="color: orangered; display: none"><br><br>* Endast siffror! </span>
+    <p id="errormess" style="color: orangered; display: none"><br><br>Only numbers!* </p>
+    <p id="playerTurn" v-show="playersTurn">It's the player's turn! </p>
+    <p id="botTurn" v-show="!playersTurn">It's the bot's turn! </p>
+    <flash-message class="myCustomClass"></flash-message>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
     <p>Bot guess: {{bot}} </p>
@@ -17,7 +18,10 @@ import Timer from '@/components/Timer.vue'
 import {db, fb} from '../firebase-config'
 import Vue from 'vue';
 import VueFlashMessage from 'vue-flash-message';
+import { timeout } from 'q';
+import { functions } from 'firebase';
 Vue.use(VueFlashMessage);
+require('vue-flash-message/dist/vue-flash-message.min.css');
 
 
 export default {
@@ -31,7 +35,8 @@ export default {
       userGuess: 0,
       maxGuess: 0,
       minGuess: 0,
-      show: true
+      show: true,
+      playersTurn: true,
     }
   },
   firebase: {
@@ -58,7 +63,7 @@ export default {
       return fb.auth().currentUser;
     },
     oldScore() {
-    return this.allUsers[this.uid].newPoint
+    return this.allUsers[this.uid].newPoint;
     },
     theQuestion () {
       return this.$store.state.theQuestion;
@@ -67,10 +72,13 @@ export default {
       return this.$store.state.theAnswer;
     },
     num() {
-      this.$store.state.num;
+      return  this.$store.state.num;
     },
     arr() {
-      this.$store.state.arr;
+     return this.$store.state.arr;
+    }, 
+    choosenBot() {
+      return this.$store.state.choosenBot;
     }
   },
   created () {
@@ -93,51 +101,77 @@ export default {
     newValue(event) {
       this.$store.dispatch('newValue', event.target.value)
     },
-    ranNumBot() {
-        this.$store.state.bot = Math.floor(Math.random() * 100) + 1;
-          this.start();
+    decideMinMax: function () {
+      var Min = 0;
+      if (this.$store.state.choosenBot == 1) {
+        Min = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
+      } else if (this.$store.state.choosenBot == 2) {
+        Min = Math.floor(Math.random() * (30 - 1 + 1)) + 1;
+      } else {
+      this.$store.state.theAnswer;
+    }
+    console.log(Min);
+
+    },
+    ranNumBot(min, max) {
+        min = this.$store.state.theAnswer - Math.ceil(min);
+        max = Math.floor(max) + this.$store.state.theAnswer;
+       this.disableInput();
+        var rng = Math.floor(Math.random() * (max - min)) + min;
+        if (this.botGuesses.includes(rng) !== true) {
+                this.botGuesses.push(rng);
+                this.$store.state.bot = rng;
+                console.log(rng + " pushed in");
+            } else {
+              console.log(rng + " already inside");
+              console.log(this.botGuesses);
+              this.ranNumBot(min, max);
+            }
     },
     makeGuess(value, number, bot) {
+      this.ranNumBot(this.$store.state.theAnswer,100);
+      this.stopDisable();
       var input = document.getElementById("guess");
       if(this.value < this.$store.state.theAnswer){
-        this.$store.state.numOfGuesses++
-        this.stop()
-        this.ranNumBot();
+        this.$store.state.numOfGuesses++;
+        this.playersTurn = false;
+        this.stop();
         this.reset();
         this.flash('Higher', 'error', {
-          timeout: 1500,
+          timeout: 2000,
           important: true
         });
         input.value = "";
       }
       else if (this.value > this.$store.state.theAnswer){
-        this.$store.state.numOfGuesses++
-        this.stop()
-        this.ranNumBot();
+        this.$store.state.numOfGuesses++;
+        this.playersTurn = false;
+        this.stop();
         this.reset();
         this.start();
         this.flash('Lower', 'error', {
-          timeout: 1500,
+          timeout: 2000,
           important: true
         });
         input.value = "";
       }
       else if (this.value == this.$store.state.theAnswer && this.user){
-        this.$store.state.numOfGuesses++
+        this.$store.state.numOfGuesses++;
+        this.playersTurn = false;
         //when bot wins
         //this.$store.state.winner = false
-        this.show = false
-        this.stop()
-        this.storeData()
-        this.$router.push({ path: 'winner' })
+        this.show = false;
+        this.stop();
+        this.storeData();
+        this.$router.push({ path: 'winner' });
       }
       else {
-        this.$store.state.numOfGuesses++
+        this.$store.state.numOfGuesses++;
         //when bot wins
         //this.$store.state.winner = false
-        this.show = false
-        this.stop()
-        this.$router.push({ path: 'winner' })
+        this.show = false;
+        this.stop();
+        this.$router.push({ path: 'winner' });
       }
     },
     OnlyNumbers(e) {
@@ -145,9 +179,22 @@ export default {
       var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
       document.getElementById("errormess").style.display = ret ? "none" : "inline";
       return ret;
+    },
+     disableInput() {
+        setTimeout(() => {
+        document.getElementById("guess").disabled = true;
+        }, 0);
+     }, 
+     stopDisable() {
+       setTimeout(() => {
+         document.getElementById("guess").disabled = false;
+          this.playersTurn = true;
+          this.reset();
+          this.start();
+       }, 2500);
+     }
     }
-  }
-};
+  };
 </script>
 
 

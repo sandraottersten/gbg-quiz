@@ -281,6 +281,8 @@ h3 {
   border: 0px;
   background: none;
   outline: 0;
+  margin: 10px;
+  padding: 0px;
 
 } 
 
@@ -320,9 +322,10 @@ input[type=email], input[type=password], input[type=text] {
   font-weight: 500;
   -moz-appearance:textfield;
 }
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}       
+  
+
+
+
 .field {   
   font-size: 15px;
   padding: 8px;
@@ -330,5 +333,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   font-weight: 600;  
   width: 100px;
   border: 1px solid cornflowerblue;
-}    
+}
+
+
+
+
+
 </style>

@@ -77,5 +77,7 @@ export default {
     transition: width 1000ms;
     border-radius: 5px;
     text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
   }
   </style>
