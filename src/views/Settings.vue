@@ -47,7 +47,7 @@ export default {
         if (this.activeButton == i){
           result.push({
             opponentSelected: '5px seagreen dotted'
-            
+
             });
         } else if ( this.categoryButton == i){
           result.push({
@@ -84,11 +84,11 @@ export default {
     selectedBot: function(oppo) {
 
       if (oppo === 'easy') {
-        this.$store.state.choosenBot = 1;
+        this.$store.state.choosenBot = "Glenn";
       } else if (oppo === 'medium') {
-        this.$store.state.choosenBot = 2;
+        this.$store.state.choosenBot = "Håkan";
       }else {
-        this.$store.state.choosenBot = 3;
+        this.$store.state.choosenBot = "Miriam";
     }
     console.log(this.$store.state.choosenBot);
 
