@@ -1,5 +1,6 @@
 <template>
   <div id ="content">
+    <h1>{{theQuestion}}</h1>
     <input id="guess" class="field" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <p id="errormess" style="color: orangered; display: none"><br><br>Only numbers!* </p>
