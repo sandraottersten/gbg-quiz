@@ -4,8 +4,8 @@
       <router-link to="/"><button class="navbutton" type="button">Home</button></router-link>
       <router-link to="/login"><button class="navbutton" v-if="!user" type="button">Login</button></router-link>
       <button class="navbutton" v-if="user" @click="logout" type="button">Logout</button>
-    </div> 
-    <router-view/>    
+    </div>
+    <router-view/>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
 
 body {
   background: lightblue url("gbg.gif");
-}    
+}
 #content {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -82,7 +82,7 @@ body {
 #nav2 a.router-link-exact-active {
   color: #70d3f3;
   text-decoration: underline;
-}  
+}
 #nav2 a:hover {
   color: #70d3f3;
   transition: 0.4s;
@@ -115,7 +115,7 @@ h3 {
   font-size: 30px;
   font-family: 'Pattaya', sans-serif;
   margin: 1px 1px 5px 1px;
-}   
+}
 .startgamebutton {
   background-color: deepskyblue;
   font-size: 30px;
@@ -202,7 +202,7 @@ h3 {
   background-color: skyblue;
   color: white;
   transition: 0.4s;
-}  
+}
 .startgamebuttonsmall {
   background-color: #02b771;
   font-size: 25px;
@@ -222,7 +222,7 @@ h3 {
   color: white;
   transition: 0.4s;
   border: 1px solid mediumspringgreen;
-}    
+}
 .navbutton {
   background-color: #02b771;
   font-size:1.2em;
@@ -237,19 +237,19 @@ h3 {
   margin: 0px 10px 10px 0px;
   outline: 0;
   width: 100px;
-}   
+}
 .navbutton:hover {
   background-color: mediumspringgreen;
   border: 1px solid mediumspringgreen;
   color: white;
   transition: 0.4s;
-}  
+}
 .musicbutton {
   border: 0px;
   background: none;
   outline: 0;
   cursor: pointer;
-}     
+}
 
 .categorybutton {
   border: 0px;
@@ -258,7 +258,7 @@ h3 {
   margin: 10px;
   padding: 0px;
 
-} 
+}
 
 .categorybutton:hover {
         filter: alpha(opacity=50);
@@ -267,6 +267,13 @@ h3 {
         -moz-transition: opacity .15s ease-in-out;
         transition: opacity .15s ease-in-out;
 
+}
+
+.myCustomClass {
+  width: 9rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2.5rem;
 }
 
 img.gamemenu {
@@ -298,12 +305,12 @@ input[type=email], input[type=password], input[type=text] {
 }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
-}       
-.field {   
+}
+.field {
   font-size: 15px;
   padding: 8px;
   color: dodgerblue;
-  font-weight: 600;  
+  font-weight: 600;
   width: 100px;
   border: 1px solid cornflowerblue;
 }

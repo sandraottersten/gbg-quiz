@@ -8,12 +8,21 @@
       <button class="categorybutton" @click="afunction('food'), categoryButton = 3, checkSelect()" v-bind:style="{'border':buttonSelector[3].categorySelected}"><img src="../assets/Food.jpg"></button>
       <br><br>
   <h3> Choose your opponent </h3>
-      <button class="categorybutton" @click="activeButton = 4, selectedBot('easy'), checkSelect()" v-bind:style="{'border':buttonSelector[4].opponentSelected}"><img src="../assets/Glenn.jpg"></button>
-      <button class="categorybutton" @click="activeButton = 5,  selectedBot('medium'), checkSelect()" v-bind:style="{'border':buttonSelector[5].opponentSelected}"><img src="../assets/Hakan.jpg"></button>
-      <button class="categorybutton" @click="activeButton = 6,  selectedBot('hard'), checkSelect()" v-bind:style="{'border':buttonSelector[6].opponentSelected}"><img src="../assets/Miriam.jpg"></button>
-  </div>
-  <br>
-    <router-link to="/playgame"><button v-show="optionsSelected" class="gamebutton">Start Game</button></router-link>
+      <button class="categorybutton" @click="afunction('easy')"><img src="http://i63.tinypic.com/10hj5fk.jpg"></button>
+      <button class="categorybutton" @click="afunction('medium')"><img src="http://i68.tinypic.com/2dkn52x.jpg"></button>
+      <button class="categorybutton" @click="afunction('hard')"><img src="http://i64.tinypic.com/14jcaas.jpg"></button>
+
+
+
+    </div>
+
+
+
+
+
+
+    <br>
+    <router-link to="/playgame"><button class="gamebutton">Start Game</button></router-link>
     </div>
   </div>
 </template>
@@ -35,7 +44,7 @@ export default {
         optionsSelected: false
 
       }
-  }, 
+  },
   computed: {
       buttonSelector: function() {
       let result = [];
@@ -73,16 +82,18 @@ export default {
       this.$store.state.theQuestion = arr[num].question;
       this.$store.state.theAnswer = arr[num].answer;
       this.$store.state.numOfGuesses = 0;
-    }, 
+      this.$store.state.value = 0;
+      this.$store.state.bot = 0;
+    },
     selectedBot: function(oppo) {
-      
+
       if (oppo === 'easy') {
         this.$store.state.choosenBot = 1;
       } else if (oppo === 'medium') {
         this.$store.state.choosenBot = 2;
       }else {
         this.$store.state.choosenBot = 3;
-    } 
+    }
     console.log(this.$store.state.choosenBot);
 
     },
@@ -92,6 +103,6 @@ export default {
     }
     }
   },
-  
+
 };
 </script>
