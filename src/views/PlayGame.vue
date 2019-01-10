@@ -17,8 +17,6 @@
 
 
 
-
-
 <script>
 import Timer from '@/components/Timer.vue'
 import {db, fb} from '../firebase-config'
@@ -28,8 +26,6 @@ import { timeout } from 'q';
 import { functions } from 'firebase';
 Vue.use(VueFlashMessage);
 require('vue-flash-message/dist/vue-flash-message.min.css');
-
-
 
 
 

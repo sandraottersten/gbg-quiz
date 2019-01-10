@@ -43,6 +43,7 @@ export default {
         if (this.activeButton == i){
           result.push({
             opponentSelected: '5px seagreen dotted'
+            
             });
         } else if ( this.categoryButton == i){
           result.push({
