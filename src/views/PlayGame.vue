@@ -1,7 +1,7 @@
 <template>
   <div id ="content">
     <h1>{{theQuestion}}</h1>
-    <input id="guess" @input="newValue" type="number" ref ="focused" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
+    <input id="guess" class="field" @input="newValue" type="number" ref ="focused" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <p id="errormess" style="color: orangered; display: none">Only numbers! </p>
     <p id="playerTurn" v-show="playersTurn">Your turn! </p>
@@ -17,6 +17,8 @@
 </template>
 
 
+
+
 <script>
 import Timer from '@/components/Timer.vue'
 import {db, fb} from '../firebase-config'
@@ -26,6 +28,7 @@ import { timeout } from 'q';
 import { functions } from 'firebase';
 Vue.use(VueFlashMessage);
 require('vue-flash-message/dist/vue-flash-message.min.css');
+
 
 
 export default {
