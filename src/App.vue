@@ -281,6 +281,8 @@ h3 {
   border: 0px;
   background: none;
   outline: 0;
+  margin: 10px;
+  padding: 0px;
 
 } 
 
@@ -330,5 +332,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   font-weight: 600;  
   width: 100px;
   border: 1px solid cornflowerblue;
-}    
+}
+
+
 </style>
