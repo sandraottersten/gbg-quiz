@@ -41,6 +41,7 @@ export default {
               this.reset();
               this.$store.state.winner = false;
               this.$store.state.timerIsOut = true;
+              this.$store.state.botWins = false;
               this.$router.push({ path: 'winner' });
             }
         }, 1000 )
