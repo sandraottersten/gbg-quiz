@@ -37,7 +37,7 @@ export default {
       maxGuess: 0,
       minGuess: 0,
       show: true,
-      playersTurn: true
+      playersTurn: true,
     }
   },
   firebase: {
@@ -64,7 +64,7 @@ export default {
       return fb.auth().currentUser;
     },
     oldScore() {
-    return this.allUsers[this.uid].newPoint
+    return this.allUsers[this.uid].newPoint;
     },
     theQuestion () {
       return this.$store.state.theQuestion;
@@ -73,10 +73,13 @@ export default {
       return this.$store.state.theAnswer;
     },
     num() {
-      this.$store.state.num;
+      return  this.$store.state.num;
     },
     arr() {
-      this.$store.state.arr;
+     return this.$store.state.arr;
+    }, 
+    choosenBot() {
+      return this.$store.state.choosenBot;
     }
   },
   created () {
@@ -99,9 +102,21 @@ export default {
     newValue(event) {
       this.$store.dispatch('newValue', event.target.value)
     },
+    decideMinMax: function () {
+      var Min = this.$store.state.theAnswer;
+      if (this.$store.state.choosenBot = 1) {
+        Min - 80;
+      } else if (this.$store.state.choosenBot = 2) {
+        Min - 30;
+      } else if (this.$store.state.choosenBot = 3) {
+      Min - 5;
+    }
+    console.log(Min);
+
+    },
     ranNumBot(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
+        min = this.$store.state.theAnswer - Math.ceil(min);
+        max = Math.floor(max) + this.$store.state.theAnswer;
        this.disableInput();
         var rng = Math.floor(Math.random() * (max - min)) + min;
         if (this.botGuesses.includes(rng) !== true) {
@@ -115,7 +130,7 @@ export default {
             }
     },
     makeGuess(value, number, bot) {
-      this.ranNumBot(1,1000);
+      this.ranNumBot(this.$store.state.theAnswer,100);
       this.stopDisable();
       var input = document.getElementById("guess");
       if(this.value < this.$store.state.theAnswer){
@@ -174,7 +189,7 @@ export default {
      stopDisable() {
        setTimeout(() => {
          document.getElementById("guess").disabled = false;
-           this.playersTurn = true;
+          this.playersTurn = true;
           this.reset();
           this.start();
        }, 2500);

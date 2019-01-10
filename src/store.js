@@ -11,7 +11,7 @@ export default new Vuex.Store({
       numOfGuesses: 0,
       winner: true,
       theQuestion: '',
-      theAnswer: '',
+      theAnswer: 0,
       arr: [],
       num: 0,
       choosenBot: 0
