@@ -44,7 +44,7 @@ body {
   background: lightblue url("gbg.gif");
 }
 #content {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Century Gothic, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -58,8 +58,16 @@ body {
   font-size: 18px;
   opacity: 0.95;
 }
+
+@media only screen and (max-width: 600px) {
+  #content {
+width: 95%;
+  }
+}
+
+
 #nav2 {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Century Gothic, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -98,6 +106,17 @@ body {
   text-align: center;
   border-radius: 30px;
 }
+
+@media only screen and (max-width: 600px) {
+  #highscore {
+width: 100%;
+padding: 10px;
+font-size: 15px;
+}
+}
+
+
+
 h1 {
   color:cornflowerblue;
   font-size:1.6em;
@@ -110,6 +129,13 @@ h2 {
   font-family: 'Pattaya', sans-serif;
   margin: 1px 1px 1px 1px;
 }
+
+@media only screen and (max-width: 600px) {
+  h2 {
+font-size: 40px;
+}
+}
+
 h3 {
   color:cornflowerblue;
   font-size: 30px;
@@ -301,11 +327,17 @@ input[type=email], input[type=password], input[type=text] {
   box-sizing: border-box;
   font-family: 'Avenir', sans-serif;
   font-weight: 500;
-  -moz-appearance:textfield;
-}
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+  margin: 0;
 }
+
+input[type=number]::-webkit-outer-spin-button {
+
+}
+
+
+
+
 .field {
   font-size: 15px;
   padding: 8px;
@@ -313,7 +345,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   font-weight: 600;
   width: 100px;
   border: 1px solid cornflowerblue;
-}
+  -moz-appearance:textfield;
+    -webkit-appearance:textfield;
 
+  }
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance:none;
+
+}
 
 </style>

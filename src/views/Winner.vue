@@ -26,8 +26,8 @@ export default {
   components: {},
   data() {
     return {
-        images: ['http://i67.tinypic.com/155mdzn.png'],
-        images2: ['http://i64.tinypic.com/i3uf0z.png']
+        images: ['http://i66.tinypic.com/xauiyp.gif'],
+        images2: ['http://i67.tinypic.com/ei0c9u.gif']
     }
   }, 
   firebase: {

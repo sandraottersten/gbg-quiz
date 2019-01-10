@@ -7,6 +7,8 @@
         <HighscoreList />
         </div>    
       <img width="200px" v-for="img in images" v-bind:src="img"> 
+           <br><br> <router-link to="/gamemenu"><button class="gamebutton">Back</button></router-link>
+
       </div>
     </div>
   </div>

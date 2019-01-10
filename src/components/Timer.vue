@@ -68,6 +68,7 @@ export default {
     right: 0;
     margin: auto;
     position: absolute;
+    margin-top: -9px;
   }
   .timeBar {
     width: 200px;
@@ -77,5 +78,7 @@ export default {
     transition: width 1000ms;
     border-radius: 5px;
     text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
   }
   </style>

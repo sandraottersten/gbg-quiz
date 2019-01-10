@@ -51,11 +51,11 @@ export default {
       for (var i = 0; i< 7; i++){
         if (this.activeButton == i){
           result.push({
-            opponentSelected: '1px black solid'
+            opponentSelected: '5px seagreen dotted'
             });
         } else if ( this.categoryButton == i){
           result.push({
-            categorySelected: '1px black solid'
+            categorySelected: '5px seagreen dotted'
             });
         } else {
           result.push({
@@ -88,11 +88,11 @@ export default {
     selectedBot: function(oppo) {
 
       if (oppo === 'easy') {
-        this.$store.state.choosenBot = 1;
+        this.$store.state.choosenBot = "Glenn's";
       } else if (oppo === 'medium') {
-        this.$store.state.choosenBot = 2;
+        this.$store.state.choosenBot = "Håkan's";
       }else {
-        this.$store.state.choosenBot = 3;
+        this.$store.state.choosenBot = "Miriam's";
     }
     console.log(this.$store.state.choosenBot);
 
