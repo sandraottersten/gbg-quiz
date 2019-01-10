@@ -204,6 +204,7 @@ font-size: 1.5rem;
   cursor: pointer;
   border-radius: 20px;
   outline: 0;
+  margin-top: 20px;
 }
 .startgamebutton span {
   cursor: pointer;
@@ -273,7 +274,7 @@ font-size: 1.5rem;
   font-family: 'Avenir', sans-serif;
   font-weight: 600;
   cursor: pointer;
-  margin: 0px 10px 10px 0px;
+  margin: 10px 10px 10px 0px;
   outline: 0;
 }
 .gamebutton:hover {

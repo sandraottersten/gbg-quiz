@@ -34,7 +34,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            this.$router.replace("highscore");
+            this.$router.replace("home");
           },
           err => {
             alert("Whops, something wrong happend!" + err.message);

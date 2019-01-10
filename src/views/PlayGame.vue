@@ -1,5 +1,5 @@
-<template>  
-  <div id ="content">  
+<template>
+  <div id ="content">
     <h1>{{theQuestion}}</h1>
     <input id="guess" class="field" @input="newValue" type="number" ref ="focused" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
@@ -9,7 +9,7 @@
     <Timer v-show="show" ref="form"/>
     <div class="botText">
       <p class="specifikBot">My guess: {{value}}</p>
-      <p class="specifikBot" id="bot"> Bot guess: {{bot}} </p>
+      <p class="specifikBot" id="bot"> {{choosenBot}} guess: {{bot}} </p>
     </div>
     <flash-message class="myCustomClass"></flash-message>
     <br>
@@ -80,7 +80,7 @@ export default {
     },
     choosenBot() {
       return this.$store.state.choosenBot;
-    }, 
+    },
     maxGuess() {
       return this.$store.state.maxGuess;
     },
@@ -157,7 +157,7 @@ export default {
           this.$store.state.timerIsOut = false;
           this.stop();
           this.$router.push({ path: 'winner' });
-        } 
+        }
     },
     makeGuess(value, number, bot) {
       this.ranNumBot();
