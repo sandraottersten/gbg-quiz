@@ -7,8 +7,10 @@
     <p id="playerTurn" v-show="playersTurn">Your turn! </p>
     <p id="botTurn" v-show="!playersTurn">Bot turn! </p>
     <Timer v-show="show" ref="form"/>
-    <p>My guess: {{value}} </p>
-    <p>Bot guess: {{bot}} </p>
+    <div class="botText">
+      <p class="specifikBot">My guess: {{value}}</p>
+      <p class="specifikBot"> Bot guess: {{bot}} </p>
+    </div>
     <flash-message class="myCustomClass"></flash-message>
     <br>
   </div>
@@ -198,4 +200,14 @@ export default {
   };
 </script>
 
-
+<style scoped>
+.botText {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+.specifikBot {
+  border: 1px solid black;
+  padding: 5px 15px 5px 5px;
+}
+</style>
