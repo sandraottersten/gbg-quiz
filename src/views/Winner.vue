@@ -1,6 +1,7 @@
 <template>
   <div> 
     <div id ="content">  
+          <Timer v-show="show" ref="form"/>
       <h2 v-show="winner">You won! 
       <br>
       <img width="200px" v-for="img in images" v-bind:src="img">
@@ -22,19 +23,24 @@
 </template>
 
 <script>
-import {db, fb} from '../firebase-config'
+import {db, fb} from '../firebase-config';
+import Timer from '@/components/Timer.vue';
+
 
 export default {
   name: "Winner",
-  components: {},
   data() {
     return {
+        show: false,
         images: ['http://i66.tinypic.com/xauiyp.gif'],
         images2: ['http://i67.tinypic.com/ei0c9u.gif']
     }
   }, 
   firebase: {
     questions: db.ref('questions')
+  },
+  components: {
+    Timer,
   },
   computed: {
     number() {
@@ -49,6 +55,7 @@ export default {
     timerIsOut() {
       return this.$store.state.timerIsOut;
     }
+
   },
   methods: {
     logout: function() {
@@ -58,7 +65,14 @@ export default {
         .then(() => {
           this.$router.replace("login");
       });
+    },
+    stop() {
+      this.$refs.form.stop();
     }
+  },
+  mounted(){
+    this.stop();
   }
+  
 };
 </script>

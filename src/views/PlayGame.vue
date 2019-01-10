@@ -18,8 +18,8 @@
 
 
 <script>
-import Timer from '@/components/Timer.vue'
-import {db, fb} from '../firebase-config'
+import Timer from '@/components/Timer.vue';
+import {db, fb} from '../firebase-config';
 import Vue from 'vue';
 import VueFlashMessage from 'vue-flash-message';
 import { timeout } from 'q';
@@ -37,7 +37,6 @@ export default {
       botGuesses: [],
       highLow: '',
       userGuess: 0,
-      show: true,
       playersTurn: true,
     }
   },
@@ -90,7 +89,7 @@ export default {
     }
   },
   created () {
-    this.$bindAsObject('allUsers', db.ref('allUsers/'))
+    this.$bindAsObject('allUsers', db.ref('allUsers/'));
   },
   methods: {
     setFocus()
@@ -124,7 +123,6 @@ export default {
         this.$store.commit('updateMin', 2);
         this.$store.commit('updateMax', 6);
     }
-    console.log(this.minGuess, this.maxGuess);
     },
     ranNumBot() {
         var min = this.$store.state.theAnswer - this.minGuess;
@@ -145,7 +143,6 @@ export default {
           this.$store.state.winner = false;
           this.$store.state.botWins = true;
           this.$store.state.timerIsOut = false;
-          this.show = false;
           this.stop();
           this.$router.push({ path: 'winner' });
         } 
@@ -182,19 +179,12 @@ export default {
         this.playersTurn = false;
         //when bot wins
         this.$store.state.winner = true;
+        this.$store.state.botWins = false;
         this.show = false;
         this.stop();
         this.storeData();
         this.$router.push({ path: 'winner' });
       } 
-      else if (this.bot == this.$store.state.theAnswer){
-        this.playersTurn = false;
-        //when bot wins
-        this.$store.state.winner = false;
-        this.show = false;
-        this.stop();
-        this.$router.push({ path: 'winner' });
-      }
       else {
         this.$store.state.numOfGuesses++;
         //when bot wins
@@ -216,17 +206,22 @@ export default {
         }, 0);
      },
      stopDisable() {
-       setTimeout(() => {
+       if (this.$store.state.bot !== this.$store.state.theAnswer) {
+         setTimeout(() => {
          document.getElementById("guess").disabled = false;
           this.playersTurn = true;
           this.reset();
           this.start();
           this.setFocus();
        }, 2500);
+       }
      }
     },
     mounted: function() {
       this.decideMinMax();
+    },
+    beforeDestroy: function() {
+      this.stop();
     }
   };
 </script>
