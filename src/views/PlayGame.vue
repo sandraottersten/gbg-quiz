@@ -116,10 +116,10 @@ export default {
       this.$store.dispatch('newValue', event.target.value)
     },
     decideMinMax() {
-      if (this.$store.state.choosenBot == 1) {
+      if (this.$store.state.choosenBot == "Glenn") {
         this.$store.commit('updateMin', 6);
         this.$store.commit('updateMax', 30);
-      } else if (this.$store.state.choosenBot == 2) {
+      } else if (this.$store.state.choosenBot == "Håkan") {
         this.$store.commit('updateMin', 6);
         this.$store.commit('updateMax', 15);
       } else {
@@ -194,7 +194,6 @@ export default {
         this.$store.state.botWins = false;
         this.show = false;
         this.stop();
-        this.storeData();
         this.$router.push({ path: 'winner' });
       } 
     },

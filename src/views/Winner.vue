@@ -61,6 +61,7 @@ export default {
     },
     totalScore() {
       return this.$store.state.totalScore;
+    },
     choosenBot() {
       return this.$store.state.choosenBot;
     }
