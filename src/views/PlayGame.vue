@@ -167,7 +167,7 @@ export default {
         this.$store.state.numOfGuesses++;
         this.playersTurn = false;
         //when bot wins
-        //this.$store.state.winner = false
+        this.$store.state.winner = true;
         this.show = false;
         this.stop();
         this.storeData();
@@ -176,7 +176,7 @@ export default {
       else {
         this.$store.state.numOfGuesses++;
         //when bot wins
-        //this.$store.state.winner = false
+        this.$store.state.winner = true;
         this.show = false;
         this.stop();
         this.$router.push({ path: 'winner' });
