@@ -42,10 +42,10 @@ export default {
 
 body {
   background: lightblue url("gbg.gif");
-}    
+}
 
-button:focus { 
-outline:0 !important; 
+button:focus {
+outline:0 !important;
 }
 
 #content {
@@ -82,8 +82,8 @@ width: 95%;
   padding: 10px 50px 0px 50px;
   width: 60%;
   margin: auto;
-  margin-bottom: 0px;
-  margin-top: 50px;
+  margin-bottom:40px;
+  margin-top: 40px;
   opacity: 0.95;
   outline: none;
 
@@ -137,13 +137,13 @@ margin-bottom: 0px;
 
 h1 {
   color:cornflowerblue;
-  font-size:1.4em;
+  font-size:2.3em;
   font-family: 'Avenir', sans-serif;
   margin: 1px 1px 1px 1px;
 }
 h2 {
   color:cornflowerblue;
-  font-size: 47px;
+  font-size: 5rem;
   font-family: 'Pattaya', sans-serif;
   margin: 1px 1px 1px 1px;
 }
