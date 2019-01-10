@@ -143,6 +143,8 @@ export default {
         } else {
           this.playersTurn = false;
           this.$store.state.winner = false;
+          this.$store.state.botWins = true;
+          this.$store.state.timerIsOut = false;
           this.show = false;
           this.stop();
           this.$router.push({ path: 'winner' });

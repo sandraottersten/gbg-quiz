@@ -16,7 +16,9 @@ export default new Vuex.Store({
       num: 0,
       choosenBot: "",
       maxGuess: 0,
-      minGuess: 0
+      minGuess: 0,
+      botWins: false,
+      timerIsOut: false
   },
   getters: {
     value: state => {

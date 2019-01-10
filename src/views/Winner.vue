@@ -11,6 +11,8 @@
       <img width="200px" v-for="img in images2" v-bind:src="img">
       <br>
       </h2>
+      <p v-show="botWins">The bot has guessed right.</p>
+      <p v-show="timerIsOut">The timer ran out!</p>
       <p>Correct answer is: {{this.$store.state.theAnswer}}</p>
       <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>
       <router-link to="/settings"><button class="gamebutton">Play again</button></router-link>
@@ -40,6 +42,12 @@ export default {
     },
     winner() {
       return this.$store.state.winner;
+    },
+    botWins() {
+      return this.$store.state.botWins;
+    },
+    timerIsOut() {
+      return this.$store.state.timerIsOut;
     }
   },
   methods: {

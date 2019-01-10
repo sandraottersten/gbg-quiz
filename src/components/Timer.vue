@@ -36,10 +36,11 @@ export default {
               this.time--
               this.barTime = this.barTime - (100/this.barTimer)
             } else {
-              this.sound.play()
-              clearInterval(this.timer)
-              this.reset()
-              this.$store.state.winner = false
+              this.sound.play();
+              clearInterval(this.timer);
+              this.reset();
+              this.$store.state.winner = false;
+              this.$store.state.timerIsOut = true;
               this.$router.push({ path: 'winner' });
             }
         }, 1000 )
