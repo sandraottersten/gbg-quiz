@@ -90,8 +90,6 @@ export default {
       }else {
         this.$store.state.choosenBot = 3;
     }
-    console.log(this.$store.state.choosenBot);
-
     },
     checkSelect() {
       if (this.categoryButton && this.activeButton > 0) {

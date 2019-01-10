@@ -86,6 +86,9 @@ export default {
     },
     minGuess() {
       return this.$store.state.minGuess;
+    },
+     sessionScore() {
+       return this.$store.state.sessionScore;
     }
   },
   created () {
@@ -123,6 +126,15 @@ export default {
         this.$store.commit('updateMin', 2);
         this.$store.commit('updateMax', 6);
     }
+    },
+    calculateScore() {
+        if (this.$store.state.choosenBot == 1) {
+          this.$store.commit('updateSessionScore', Math.floor((this.$store.state.numOfGuesses * 2) + 10));
+        } else if (this.$store.state.choosenBot == 2) {
+          this.$store.commit('updateSessionScore', Math.floor((this.$store.state.numOfGuesses * 3) + 20));
+        } else {
+           this.$store.commit('updateSessionScore', Math.floor((this.$store.state.numOfGuesses * 4) + 30));
+        }
     },
     ranNumBot() {
         var min = this.$store.state.theAnswer - this.minGuess;
@@ -174,7 +186,7 @@ export default {
         });
         input.value = "";
       }
-      else if (this.value == this.$store.state.theAnswer && this.user){
+      else if (this.value == this.$store.state.theAnswer){
         this.$store.state.numOfGuesses++;
         this.playersTurn = false;
         //when bot wins
@@ -185,14 +197,6 @@ export default {
         this.storeData();
         this.$router.push({ path: 'winner' });
       } 
-      else {
-        this.$store.state.numOfGuesses++;
-        //when bot wins
-        this.$store.state.winner = true;
-        this.show = false;
-        this.stop();
-        this.$router.push({ path: 'winner' });
-      }
     },
       OnlyNumbers(e) {
       var keyCode = e.which;
@@ -222,6 +226,7 @@ export default {
     },
     beforeDestroy: function() {
       this.stop();
+      this.calculateScore();
     }
   };
 </script>

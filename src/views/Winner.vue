@@ -14,6 +14,7 @@
       </h2>
       <p v-show="botWins">The bot has guessed right.</p>
       <p v-show="timerIsOut">The timer ran out!</p>
+      <p>Your score: {{this.sessionScore}}</p>
       <p>Correct answer is: {{this.$store.state.theAnswer}}</p>
       <p>Number of guesses: {{this.$store.state.numOfGuesses}}</p>
       <router-link to="/settings"><button class="gamebutton">Play again</button></router-link>
@@ -54,6 +55,12 @@ export default {
     },
     timerIsOut() {
       return this.$store.state.timerIsOut;
+    },
+     sessionScore() {
+       return this.$store.state.sessionScore;
+    },
+    totalScore() {
+      return this.$store.state.totalScore;
     }
 
   },
