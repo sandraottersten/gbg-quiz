@@ -42,11 +42,11 @@ export default {
       for (var i = 0; i< 7; i++){
         if (this.activeButton == i){
           result.push({
-            opponentSelected: '1px black solid'
+            opponentSelected: '5px seagreen dotted'
             });
         } else if ( this.categoryButton == i){
           result.push({
-            categorySelected: '1px black solid'
+            categorySelected: '5px seagreen dotted'
             });
         } else {
           result.push({

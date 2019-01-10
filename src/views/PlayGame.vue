@@ -4,8 +4,8 @@
     <input id="guess" class="field" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <p id="errormess" style="color: orangered; display: none"><br><br>Only numbers!* </p>
-    <p id="playerTurn" v-show="playersTurn">It's the player's turn! </p>
-    <p id="botTurn" v-show="!playersTurn">It's the bot's turn! </p>
+    <p id="playerTurn" v-show="playersTurn">Your turn! </p>
+    <p id="botTurn" v-show="!playersTurn">Opponents turn! </p>
     <flash-message class="myCustomClass"></flash-message>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
@@ -176,7 +176,7 @@ export default {
     },
     OnlyNumbers(e) {
       var keyCode = e.which;
-      var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
+      var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 8 && keyCode <= 13) || this.numberKeys.indexOf(keyCode) != -1);
       document.getElementById("errormess").style.display = ret ? "none" : "inline";
       return ret;
     },

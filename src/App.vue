@@ -44,7 +44,7 @@ body {
   background: lightblue url("gbg.gif");
 }    
 #content {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Century Gothic, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -67,7 +67,7 @@ width: 95%;
 
 
 #nav2 {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Century Gothic, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -320,7 +320,12 @@ input[type=email], input[type=password], input[type=text] {
   box-sizing: border-box;
   font-family: 'Avenir', sans-serif;
   font-weight: 500;
-  -moz-appearance:textfield;
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number]::-webkit-outer-spin-button { 
+
 }
   
 
@@ -333,10 +338,15 @@ input[type=email], input[type=password], input[type=text] {
   font-weight: 600;  
   width: 100px;
   border: 1px solid cornflowerblue;
-}
+  -moz-appearance:textfield;
+    -webkit-appearance:textfield;
 
+  }
 
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance:none;
 
-
+}   
 
 </style>
