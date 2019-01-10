@@ -14,7 +14,9 @@ export default new Vuex.Store({
       theAnswer: 0,
       arr: [],
       num: 0,
-      choosenBot: ""
+      choosenBot: "",
+      maxGuess: 0,
+      minGuess: 0
   },
   getters: {
     value: state => {
@@ -24,7 +26,12 @@ export default new Vuex.Store({
   mutations: {
     newValue: (state, payload) => {
       state.value = payload;
-    }
+    },
+    updateMax: (state, amount) => {
+      state.maxGuess = amount
+    },
+    updateMin: (state, amount) => 
+    state.minGuess = amount
   },
   actions: {
     newValue: ({commit}, payload) => {

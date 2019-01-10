@@ -33,8 +33,6 @@ export default {
       botGuesses: [],
       highLow: '',
       userGuess: 0,
-      maxGuess: 0,
-      minGuess: 0,
       show: true,
       playersTurn: true,
     }
@@ -79,6 +77,12 @@ export default {
     },
     choosenBot() {
       return this.$store.state.choosenBot;
+    }, 
+    maxGuess() {
+      return this.$store.state.maxGuess;
+    },
+    minGuess() {
+      return this.$store.state.minGuess;
     }
   },
   created () {
@@ -101,35 +105,39 @@ export default {
     newValue(event) {
       this.$store.dispatch('newValue', event.target.value)
     },
-    decideMinMax: function () {
-      var Min = 0;
-      if (this.$store.state.choosenBot == "Glenn's") {
-        Min = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-      } else if (this.$store.state.choosenBot == "Håkan's") {
-        Min = Math.floor(Math.random() * (30 - 1 + 1)) + 1;
+    decideMinMax() {
+      if (this.$store.state.choosenBot == 1) {
+        this.$store.commit('updateMin', 6);
+        this.$store.commit('updateMax', 30);
+      } else if (this.$store.state.choosenBot == 2) {
+        this.$store.commit('updateMin', 6);
+        this.$store.commit('updateMax', 15);
       } else {
-      this.$store.state.theAnswer;
+        this.$store.commit('updateMin', 2);
+        this.$store.commit('updateMax', 6);
     }
-    console.log(Min);
-
+    console.log(this.minGuess, this.maxGuess);
     },
-    ranNumBot(min, max) {
-        min = this.$store.state.theAnswer - Math.ceil(min);
-        max = Math.floor(max) + this.$store.state.theAnswer;
-       this.disableInput();
+    ranNumBot() {
+        var min = this.$store.state.theAnswer - this.minGuess;
+        var max = this.$store.state.theAnswer + this.maxGuess;
+        this.disableInput();
         var rng = Math.floor(Math.random() * (max - min)) + min;
-        if (this.botGuesses.includes(rng) !== true) {
-                this.botGuesses.push(rng);
-                this.$store.state.bot = rng;
-                console.log(rng + " pushed in");
-            } else {
-              console.log(rng + " already inside");
-              console.log(this.botGuesses);
-              this.ranNumBot(min, max);
+      if (this.botGuesses.includes(rng) !== true ) {
+              this.botGuesses.push(rng);
+              this.$store.state.bot = rng;
+              console.log(rng + " pushed in");
+          } 
+          else {
+            console.log(rng + " already inside");
+            console.log(this.botGuesses);
+            if (this.botGuesses.length !== (max - min)) {
+              this.ranNumBot();
             }
+        }
     },
     makeGuess(value, number, bot) {
-      this.ranNumBot(this.$store.state.theAnswer,100);
+      this.ranNumBot();
       this.stopDisable();
       var input = document.getElementById("guess");
       if(this.value < this.$store.state.theAnswer){
@@ -164,6 +172,14 @@ export default {
         this.stop();
         this.storeData();
         this.$router.push({ path: 'winner' });
+      } 
+      else if (this.bot == this.$store.state.theAnswer){
+        this.playersTurn = false;
+        //when bot wins
+        this.$store.state.winner = false;
+        this.show = false;
+        this.stop();
+        this.$router.push({ path: 'winner' });
       }
       else {
         this.$store.state.numOfGuesses++;
@@ -193,6 +209,9 @@ export default {
           this.start();
        }, 2500);
      }
+    },
+    mounted: function() {
+      this.decideMinMax();
     }
   };
 </script>
