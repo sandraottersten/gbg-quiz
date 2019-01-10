@@ -121,20 +121,24 @@ export default {
     ranNumBot() {
         var min = this.$store.state.theAnswer - this.minGuess;
         var max = this.$store.state.theAnswer + this.maxGuess;
-        this.disableInput();
         var rng = Math.floor(Math.random() * (max - min)) + min;
-      if (this.botGuesses.includes(rng) !== true ) {
-              this.botGuesses.push(rng);
-              this.$store.state.bot = rng;
-              console.log(rng + " pushed in");
-          } 
-          else {
-            console.log(rng + " already inside");
-            console.log(this.botGuesses);
-            if (this.botGuesses.length !== (max - min)) {
-              this.ranNumBot();
-            }
+        this.disableInput();
+        if (rng !== this.$store.state.theAnswer) {
+          if (this.botGuesses.includes(rng) !== true ) {
+            this.botGuesses.push(rng);
+            this.$store.state.bot = rng;
+        } else {
+          if (this.botGuesses.length !== (max - min)) {
+            this.ranNumBot();
+          }
         }
+        } else {
+          this.playersTurn = false;
+          this.$store.state.winner = false;
+          this.show = false;
+          this.stop();
+          this.$router.push({ path: 'winner' });
+        } 
     },
     makeGuess(value, number, bot) {
       this.ranNumBot();
