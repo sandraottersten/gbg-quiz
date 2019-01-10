@@ -13,9 +13,10 @@
       <button class="categorybutton" @click="activeButton = 4, selectedBot('easy'), checkSelect()" v-bind:style="{'border':buttonSelector[4].opponentSelected}"><img src="../assets/Glenn.jpg"></button>
       <button class="categorybutton" @click="activeButton = 5,  selectedBot('medium'), checkSelect()" v-bind:style="{'border':buttonSelector[5].opponentSelected}"><img src="../assets/Hakan.jpg"></button>
       <button class="categorybutton" @click="activeButton = 6,  selectedBot('hard'), checkSelect()" v-bind:style="{'border':buttonSelector[6].opponentSelected}"><img src="../assets/Miriam.jpg"></button>
+      <br>
+      <br>
+      <router-link to="/playgame"><button v-show="optionsSelected" class="gamebutton">Start Game</button></router-link>
     </div>
-    <br>
-    <router-link to="/playgame"><button v-show="optionsSelected" class="gamebutton">Start Game</button></router-link>
   </div>
 </template>
 
