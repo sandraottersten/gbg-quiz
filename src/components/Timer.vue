@@ -39,6 +39,8 @@ export default {
               this.sound.play()
               clearInterval(this.timer)
               this.reset()
+              this.$store.state.winner = false
+              this.$router.push({ path: 'winner' });
             }
         }, 1000 )
       }
@@ -55,8 +57,7 @@ export default {
     }
   }
 }
-  </script>
-
+</script>
 <style scoped>
   html {
     box-sizing:border-box;
@@ -68,6 +69,7 @@ export default {
     right: 0;
     margin: auto;
     position: absolute;
+    margin-top: -9px;
   }
   .timeBar {
     width: 200px;
@@ -77,7 +79,7 @@ export default {
     transition: width 1000ms;
     border-radius: 5px;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 0px;
     margin-bottom: 10px;
   }
   </style>

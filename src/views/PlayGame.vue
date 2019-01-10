@@ -1,17 +1,21 @@
-<template>
-  <div id ="content">
+<template>  
+  <div id ="content">  
     <h1>{{theQuestion}}</h1>
-    <input id="guess" class="field" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
+    <input id="guess" class="field" @input="newValue" type="number" ref ="focused" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
-    <p id="errormess" style="color: orangered; display: none"><br><br>Only numbers!* </p>
-    <p id="playerTurn" v-show="playersTurn">It's the player's turn! </p>
-    <p id="botTurn" v-show="!playersTurn">It's the bot's turn! </p>
-    <flash-message class="myCustomClass"></flash-message>
+    <p id="errormess" style="color: orangered; display: none">Only numbers! </p>
+    <p id="playerTurn" v-show="playersTurn">Your turn! </p>
+    <p id="botTurn" v-show="!playersTurn">Bot turn! </p>
     <Timer v-show="show" ref="form"/>
-    <p>My guess: {{value}} </p>
-    <p>{{choosenBot}} guess: {{bot}} </p>
+    <div class="botText">
+      <p class="specifikBot">My guess: {{value}}</p>
+      <p class="specifikBot" id="bot"> Bot guess: {{bot}} </p>
+    </div>
+    <flash-message class="myCustomClass"></flash-message>
+    <br>
   </div>
 </template>
+
 
 <script>
 import Timer from '@/components/Timer.vue'
@@ -89,6 +93,10 @@ export default {
     this.$bindAsObject('allUsers', db.ref('allUsers/'))
   },
   methods: {
+    setFocus()
+    {
+      this.$refs.focused.focus();
+    },
     storeData() {
       this.$firebaseRefs.allUsers.child(this.uid).update({
       newPoint: parseInt(this.oldScore) + parseInt(10)});
@@ -171,7 +179,7 @@ export default {
         this.$store.state.numOfGuesses++;
         this.playersTurn = false;
         //when bot wins
-        //this.$store.state.winner = false
+        this.$store.state.winner = true;
         this.show = false;
         this.stop();
         this.storeData();
@@ -188,15 +196,15 @@ export default {
       else {
         this.$store.state.numOfGuesses++;
         //when bot wins
-        //this.$store.state.winner = false
+        this.$store.state.winner = true;
         this.show = false;
         this.stop();
         this.$router.push({ path: 'winner' });
       }
     },
-    OnlyNumbers(e) {
+      OnlyNumbers(e) {
       var keyCode = e.which;
-      var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
+      var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 8 && keyCode <= 13) || this.numberKeys.indexOf(keyCode) != -1);
       document.getElementById("errormess").style.display = ret ? "none" : "inline";
       return ret;
     },
@@ -211,6 +219,7 @@ export default {
           this.playersTurn = true;
           this.reset();
           this.start();
+          this.setFocus();
        }, 2500);
      }
     },
@@ -219,3 +228,22 @@ export default {
     }
   };
 </script>
+
+<style scoped>
+.botText {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+.specifikBot {
+  border: 3px solid lavender;
+  border-radius: 15px;
+  padding: 15px;
+  background: white;
+  color: RoyalBlue;
+}
+
+#bot {
+  color: DodgerBlue;
+}
+</style>

@@ -7,13 +7,15 @@
       <button class="categorybutton" @click="afunction('history'), categoryButton = 2, checkSelect()" v-bind:style="{'border':buttonSelector[2].categorySelected}"><img src="../assets/History.jpg"></button>
       <button class="categorybutton" @click="afunction('food'), categoryButton = 3, checkSelect()" v-bind:style="{'border':buttonSelector[3].categorySelected}"><img src="../assets/Food.jpg"></button>
       <br><br>
-  <h3> Choose your opponent </h3>
+      <h3> Choose your opponent </h3>
+      </div>
+      <br>
       <button class="categorybutton" @click="activeButton = 4, selectedBot('easy'), checkSelect()" v-bind:style="{'border':buttonSelector[4].opponentSelected}"><img src="../assets/Glenn.jpg"></button>
       <button class="categorybutton" @click="activeButton = 5,  selectedBot('medium'), checkSelect()" v-bind:style="{'border':buttonSelector[5].opponentSelected}"><img src="../assets/Hakan.jpg"></button>
       <button class="categorybutton" @click="activeButton = 6,  selectedBot('hard'), checkSelect()" v-bind:style="{'border':buttonSelector[6].opponentSelected}"><img src="../assets/Miriam.jpg"></button>
-  </div>
-  <br>
-    <router-link to="/playgame"><button v-show="optionsSelected" class="gamebutton">Start Game</button></router-link>
+      <br>
+      <br>
+      <router-link to="/playgame"><button v-show="optionsSelected" class="gamebutton">Start Game</button></router-link>
     </div>
   </div>
 </template>
@@ -44,11 +46,12 @@ export default {
       for (var i = 0; i< 7; i++){
         if (this.activeButton == i){
           result.push({
-            opponentSelected: '1px black solid'
+            opponentSelected: '5px seagreen dotted'
+            
             });
         } else if ( this.categoryButton == i){
           result.push({
-            categorySelected: '1px black solid'
+            categorySelected: '5px seagreen dotted'
             });
         } else {
           result.push({
@@ -75,6 +78,8 @@ export default {
       this.$store.state.theQuestion = arr[num].question;
       this.$store.state.theAnswer = arr[num].answer;
       this.$store.state.numOfGuesses = 0;
+      this.$store.state.value = 0;
+      this.$store.state.bot = 0;
     },
     selectedBot: function(oppo) {
 

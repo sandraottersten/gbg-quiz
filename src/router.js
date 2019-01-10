@@ -16,62 +16,63 @@ import Winner from './views/Winner.vue'
 Vue.use(Router);
 
 const router = new Router({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes: [{
-            path: '/',
-            redirect: 'home',
-        },
-        {
-            path: '*',
-            redirect: '/home'
-        },
-        {
-            path: '/home',
-            name: 'home',
-            component: Home,
-        },
-        {
-            path: '/login',
-            name: 'login',
-            component: Login
-        },
-        {
-            path: '/sign-up',
-            name: 'signUp',
-            component: SignUp
-        },
-        {
-            path: '/gamemenu',
-            name: 'gamemenu',
-            component: GameMenu,
-        },
-        {
-            path: '/highscore',
-            name: 'highScore',
-            component: Highscore,
-        },
-        {
-            path: '/settings',
-            name: 'settings',
-            component: Settings,
-        },
-        {
-            path: '/rules',
-            name: 'rules',
-            component: Rules,
-        },
-        {
-            path: '/playgame',
-            name: 'playgame',
-            component: PlayGame
-        },
-        {
-            path: '/winner',
-            name: 'winner',
-            component: Winner,
-        }
-    ]
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: '/',
+      redirect: 'home',
+    },
+    {
+      path: '*',
+      redirect: '/home'
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/sign-up',
+      name: 'signUp',
+      component: SignUp
+    },
+    {
+      path: '/gamemenu',
+      name: 'gamemenu',
+      component: GameMenu,
+    },
+    {
+      path: '/highscore',
+      name: 'Highscore',
+      component: Highscore,
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings,
+    },
+    {
+      path: '/rules',
+      name: 'rules',
+      component: Rules,
+    },
+    {
+      path: '/playgame',
+      name: 'playgame',
+      component: PlayGame
+    },
+    {
+      path: '/winner',
+      name: 'winner',
+      component: Winner,
+    }
+  ]
 })
 
 router.beforeEach((to, from, next) => {
