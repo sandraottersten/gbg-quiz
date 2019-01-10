@@ -1,16 +1,18 @@
 <template>
   <div id ="content">
-    <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
-    <input id="guess" class="field" @input="newValue" type="number" autofocus="this.value=''" ref="focused" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
+    <input id="guess" @input="newValue" type="number" ref ="focused" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
-    <p id="errormess" style="color: orangered; display: none"><br><br>Only numbers!* </p>
-    <p id="playerTurn" v-show="playersTurn">It's the player's turn! </p>
-    <p id="botTurn" v-show="!playersTurn">It's the bot's turn! </p>
+    <p id="errormess" style="color: orangered; display: none">Only numbers! </p>
+    <p id="playerTurn" v-show="playersTurn">Your turn! </p>
+    <p id="botTurn" v-show="!playersTurn">Bot turn! </p>
     <Timer v-show="show" ref="form"/>
-    <p>My guess: {{value}} </p>
-    <p>Bot guess: {{bot}} </p>
+    <div class="botText">
+      <p class="specifikBot">My guess: {{value}}</p>
+      <p class="specifikBot"> Bot guess: {{bot}} </p>
+    </div>
     <flash-message class="myCustomClass"></flash-message>
+    <br>
   </div>
 </template>
 
@@ -210,3 +212,15 @@ export default {
     }
   };
 </script>
+
+<style scoped>
+.botText {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+.specifikBot {
+  border: 1px solid black;
+  padding: 5px 15px 5px 5px;
+}
+</style>
