@@ -296,9 +296,10 @@ input[type=email], input[type=password], input[type=text] {
   font-weight: 500;
   -moz-appearance:textfield;
 }
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}       
+  
+
+
+
 .field {   
   font-size: 15px;
   padding: 8px;
@@ -307,6 +308,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   width: 100px;
   border: 1px solid cornflowerblue;
 }
+
+
+
 
 
 </style>
