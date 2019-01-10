@@ -2,7 +2,6 @@
   <div id ="content">  
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
-
     <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <p id="errormess" style="color: orangered; display: none">Only numbers! </p>
@@ -176,7 +175,9 @@ export default {
        setTimeout(() => {
          document.getElementById("guess").disabled = false;
            this.playersTurn = true;
-       }, 2000);
+          this.reset();
+          this.start();
+       }, 2500);
      }
     }
   };
