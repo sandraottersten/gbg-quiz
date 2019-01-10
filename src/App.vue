@@ -115,8 +115,6 @@ font-size: 15px;
 }
 }
 
-
-
 h1 {
   color:cornflowerblue;
   font-size:1.6em;
@@ -125,9 +123,24 @@ h1 {
 }
 h2 {
   color:cornflowerblue;
-  font-size: 50px;
+  font-size: 5rem;
   font-family: 'Pattaya', sans-serif;
   margin: 1px 1px 1px 1px;
+}
+h3{
+  color:cornflowerblue;
+  font-size: 25px;
+  font-family: 'Pattaya', sans-serif;
+  margin: 1px 1px 1px 1px;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  color: midnightblue;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
 }
 
 @media only screen and (max-width: 600px) {

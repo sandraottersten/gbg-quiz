@@ -39,6 +39,7 @@ export default {
               this.sound.play()
               clearInterval(this.timer)
               this.reset()
+            
             }
         }, 1000 )
       }

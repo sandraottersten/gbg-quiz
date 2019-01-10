@@ -2,11 +2,11 @@
   <div>
     <div id="content">
         <h2>The GBG Game</h2>
-        <h4>How well do you really know your Gothenburg?</h4>
-        <p>Test your skills here against our players:  Easy-Glenn, Mediocre-Håkan or Hardcore-Mirijam.</p>
+        <h3>How well do you really know your Gothenburg?</h3>
+        <p>Test your skills here against our players: Easy-Glenn, Mediocre-Håkan or Hardcore-Mirijam.
         And don't forget to first push the black play icon below for some music to get into the right mood!</p>
-        <h4>Good luck!</h4>
-        
+        <h3>Good luck!</h3>
+
         <router-link to="/gamemenu"><button class="startgamebutton"> <span>Go for it </span></button></router-link>
         <br>
         <br>
