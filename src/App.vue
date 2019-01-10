@@ -42,7 +42,12 @@ export default {
 
 body {
   background: lightblue url("gbg.gif");
+}    
+
+button:focus { 
+outline:0 !important; 
 }
+
 #content {
   font-family: Century Gothic, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -77,9 +82,11 @@ width: 95%;
   padding: 10px 50px 0px 50px;
   width: 60%;
   margin: auto;
-  margin-bottom:40px;
-  margin-top: 40px;
+  margin-bottom: 0px;
+  margin-top: 50px;
   opacity: 0.95;
+  outline: none;
+
 }
 #nav2 a {
   font-weight: bold;
@@ -108,6 +115,11 @@ width: 95%;
 }
 
 @media only screen and (max-width: 600px) {
+
+#nav2 {
+  width: 90%;
+}
+
   #highscore {
 width: 100%;
 padding: 10px;
@@ -131,7 +143,7 @@ h1 {
 }
 h2 {
   color:cornflowerblue;
-  font-size: 5rem;
+  font-size: 47px;
   font-family: 'Pattaya', sans-serif;
   margin: 1px 1px 1px 1px;
 }
@@ -323,6 +335,8 @@ font-size: 1.5rem;
   outline: 0;
   margin: 10px;
   padding: 0px;
+  outline: 0;
+
 
 }
 
@@ -344,6 +358,8 @@ font-size: 1.5rem;
 
 img.gamemenu {
 margin: 7px;
+outline: 0;
+
 
 }
 
@@ -371,12 +387,6 @@ input[type=email], input[type=password], input[type=text] {
   margin: 0;
 }
 
-input[type=number]::-webkit-outer-spin-button {
-
-}
-
-
-
 
 .field {
   font-size: 15px;
@@ -386,7 +396,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100px;
   border: 1px solid cornflowerblue;
   -moz-appearance:textfield;
-    -webkit-appearance:textfield;
+  -webkit-appearance:textfield;
 
   }
 
