@@ -1,7 +1,7 @@
 <template>  
   <div id ="content">  
     <h1>{{theQuestion}}</h1>
-    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
+    <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  ref="focused" v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <p id="errormess" style="color: orangered; display: none">Only numbers! </p>
     <p id="playerTurn" v-show="playersTurn">Your turn! </p>
@@ -16,6 +16,11 @@
   </div>
 </template>
 
+
+
+
+
+
 <script>
 import Timer from '@/components/Timer.vue'
 import {db, fb} from '../firebase-config'
@@ -25,6 +30,9 @@ import { timeout } from 'q';
 import { functions } from 'firebase';
 Vue.use(VueFlashMessage);
 require('vue-flash-message/dist/vue-flash-message.min.css');
+
+
+
 
 
 export default {
@@ -79,7 +87,7 @@ export default {
     },
     arr() {
      return this.$store.state.arr;
-    }, 
+    },
     choosenBot() {
       return this.$store.state.choosenBot;
     }
@@ -88,6 +96,10 @@ export default {
     this.$bindAsObject('allUsers', db.ref('allUsers/'))
   },
   methods: {
+    setFocus()
+    {
+      this.$refs.focused.focus();
+    },
     storeData() {
       this.$firebaseRefs.allUsers.child(this.uid).update({
       newPoint: parseInt(this.oldScore) + parseInt(10)});
@@ -106,9 +118,9 @@ export default {
     },
     decideMinMax: function () {
       var Min = 0;
-      if (this.$store.state.choosenBot == 1) {
+      if (this.$store.state.choosenBot == "Glenn's") {
         Min = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-      } else if (this.$store.state.choosenBot == 2) {
+      } else if (this.$store.state.choosenBot == "Håkan's") {
         Min = Math.floor(Math.random() * (30 - 1 + 1)) + 1;
       } else {
       this.$store.state.theAnswer;
@@ -177,9 +189,9 @@ export default {
         this.$router.push({ path: 'winner' });
       }
     },
-    OnlyNumbers(e) {
+      OnlyNumbers(e) {
       var keyCode = e.which;
-      var ret = ((keyCode >= 48 && keyCode <= 57) || this.numberKeys.indexOf(keyCode) != -1);
+      var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 8 && keyCode <= 13) || this.numberKeys.indexOf(keyCode) != -1);
       document.getElementById("errormess").style.display = ret ? "none" : "inline";
       return ret;
     },
@@ -187,13 +199,14 @@ export default {
         setTimeout(() => {
         document.getElementById("guess").disabled = true;
         }, 0);
-     }, 
+     },
      stopDisable() {
        setTimeout(() => {
          document.getElementById("guess").disabled = false;
           this.playersTurn = true;
           this.reset();
           this.start();
+          this.setFocus();
        }, 2500);
      }
     }

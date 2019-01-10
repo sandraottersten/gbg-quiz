@@ -37,18 +37,18 @@ export default {
         optionsSelected: false
 
       }
-  }, 
+  },
   computed: {
       buttonSelector: function() {
       let result = [];
       for (var i = 0; i< 7; i++){
         if (this.activeButton == i){
           result.push({
-            opponentSelected: '1px black solid'
+            opponentSelected: '5px seagreen dotted'
             });
         } else if ( this.categoryButton == i){
           result.push({
-            categorySelected: '1px black solid'
+            categorySelected: '5px seagreen dotted'
             });
         } else {
           result.push({
@@ -75,16 +75,18 @@ export default {
       this.$store.state.theQuestion = arr[num].question;
       this.$store.state.theAnswer = arr[num].answer;
       this.$store.state.numOfGuesses = 0;
-    }, 
+      this.$store.state.value = 0;
+      this.$store.state.bot = 0;
+    },
     selectedBot: function(oppo) {
-      
+
       if (oppo === 'easy') {
-        this.$store.state.choosenBot = 1;
+        this.$store.state.choosenBot = "Glenn's";
       } else if (oppo === 'medium') {
-        this.$store.state.choosenBot = 2;
+        this.$store.state.choosenBot = "Håkan's";
       }else {
-        this.$store.state.choosenBot = 3;
-    } 
+        this.$store.state.choosenBot = "Miriam's";
+    }
     console.log(this.$store.state.choosenBot);
 
     },
@@ -94,6 +96,6 @@ export default {
     }
     }
   },
-  
+
 };
 </script>
