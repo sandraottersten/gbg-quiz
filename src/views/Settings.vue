@@ -35,7 +35,7 @@ export default {
         optionsSelected: false
 
       }
-  }, 
+  },
   computed: {
       buttonSelector: function() {
       let result = [];
@@ -73,16 +73,16 @@ export default {
       this.$store.state.theQuestion = arr[num].question;
       this.$store.state.theAnswer = arr[num].answer;
       this.$store.state.numOfGuesses = 0;
-    }, 
+    },
     selectedBot: function(oppo) {
-      
+
       if (oppo === 'easy') {
-        this.$store.state.choosenBot = 1;
+        this.$store.state.choosenBot = "Glenn's";
       } else if (oppo === 'medium') {
-        this.$store.state.choosenBot = 2;
+        this.$store.state.choosenBot = "Håkan's";
       }else {
-        this.$store.state.choosenBot = 3;
-    } 
+        this.$store.state.choosenBot = "Miriam's";
+    }
     console.log(this.$store.state.choosenBot);
 
     },
@@ -92,6 +92,6 @@ export default {
     }
     }
   },
-  
+
 };
 </script>

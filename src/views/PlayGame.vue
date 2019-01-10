@@ -1,5 +1,5 @@
-<template>  
-  <div id ="content">  
+<template>
+  <div id ="content">
     <h3>Question</h3>
     <h1>{{theQuestion}}</h1>
     <input id="guess" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
@@ -10,7 +10,7 @@
     <flash-message class="myCustomClass"></flash-message>
     <Timer v-show="show" ref="form"/>
     <p>My guess: {{value}} </p>
-    <p>Bot guess: {{bot}} </p>
+    <p>{{choosenBot}} guess: {{bot}} </p>
   </div>
 </template>
 
@@ -77,7 +77,7 @@ export default {
     },
     arr() {
      return this.$store.state.arr;
-    }, 
+    },
     choosenBot() {
       return this.$store.state.choosenBot;
     }
@@ -185,7 +185,7 @@ export default {
         setTimeout(() => {
         document.getElementById("guess").disabled = true;
         }, 0);
-     }, 
+     },
      stopDisable() {
        setTimeout(() => {
          document.getElementById("guess").disabled = false;
@@ -197,5 +197,3 @@ export default {
     }
   };
 </script>
-
-
