@@ -58,6 +58,14 @@ body {
   font-size: 18px;
   opacity: 0.95;
 }
+
+@media only screen and (max-width: 600px) {
+  #content {
+width: 95%;
+  }
+}
+
+
 #nav2 {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -98,6 +106,17 @@ body {
   text-align: center;
   border-radius: 30px;
 }
+
+@media only screen and (max-width: 600px) {
+  #highscore {
+width: 100%;
+padding: 10px;  
+font-size: 15px;
+}
+}
+
+
+
 h1 {
   color:cornflowerblue;
   font-size:1.6em;
@@ -110,6 +129,13 @@ h2 {
   font-family: 'Pattaya', sans-serif;
   margin: 1px 1px 1px 1px;
 }
+
+@media only screen and (max-width: 600px) {
+  h2 {
+font-size: 40px;
+}
+}
+
 h3 {
   color:cornflowerblue;
   font-size: 30px;
@@ -186,7 +212,7 @@ h3 {
 }
 .gamebutton {
   background-color: deepskyblue;
-  font-size: 15px;
+  font-size: 25px;
   border-radius: 20px;
   border: 1px solid deepskyblue;
   margin-left: 10px;
@@ -250,6 +276,38 @@ h3 {
   outline: 0;
   cursor: pointer;
 }     
+
+.categorybutton {
+  border: 0px;
+  background: none;
+  outline: 0;
+
+} 
+
+.categorybutton:hover {
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+        -webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+
+}
+
+img.gamemenu {
+margin: 7px;
+
+}
+
+img.gamemenu:hover {
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+        -webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+
+}
+
+
 input[type=email], input[type=password], input[type=text] {
   padding: 10px;
   margin: 8px;

@@ -6,7 +6,7 @@ import Home from './views/Home.vue'
 import PlayGame from './views/PlayGame.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
-import Highscore from './views/Highscore.vue'
+import Highscore from './views/HighScore.vue'
 import GameMenu from './views/GameMenu.vue'
 import Rules from './views/Rules.vue'
 import Settings from './views/Settings.vue'
@@ -76,17 +76,17 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  var requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  var currentUser = firebase.auth().currentUser;
+    var requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    var currentUser = firebase.auth().currentUser;
 
-  if (requiresAuth && !currentUser) {
-    next('/login');
-  } else if (to.path == '/login' && currentUser) {
-    next('/');
+    if (requiresAuth && !currentUser) {
+        next('/login');
+    } else if (to.path == '/login' && currentUser) {
+        next('/');
 
-  } else {
-    next(); 
-  }
+    } else {
+        next();
+    }
 
 });
 
