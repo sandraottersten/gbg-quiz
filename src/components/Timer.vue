@@ -39,7 +39,8 @@ export default {
               this.sound.play()
               clearInterval(this.timer)
               this.reset()
-            
+              this.$store.state.winner = false
+              this.$router.push({ path: 'winner' });
             }
         }, 1000 )
       }
@@ -56,8 +57,7 @@ export default {
     }
   }
 }
-  </script>
-
+</script>
 <style scoped>
   html {
     box-sizing:border-box;
