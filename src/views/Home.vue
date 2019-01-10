@@ -4,7 +4,7 @@
         <h2>The GBG Game</h2>
         <h3>How well do you really know your Gothenburg?</h3>
         <p>Test your skills here against our players: <br>
-          Easy-Glenn, Mediocre-Håkan or Hardcore-Mirijam.</p>
+          Glenn, Håkan or Mirijam.</p>
         <p id="musicText">And don't forget to first push play icon below for some music to get into the right mood!</p>
         <h4>Good luck!</h4>
 
