@@ -1,7 +1,7 @@
 <template>  
   <div id ="content">  
     <h1>{{theQuestion}}</h1>
-    <input id="guess" class="field" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" v-on:keypress = "OnlyNumbers"/>
+    <input id="guess" class="field" @input="newValue" type="number" autofocus="this.value=''" v-on:keypress.enter = "makeGuess" onfocus="this.value=''" v-on:keypress="OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <p id="errormess" style="color: orangered; display: none"><br><br>Only numbers!* </p>
     <p id="playerTurn" v-show="playersTurn">Your turn! </p>
@@ -13,6 +13,11 @@
   </div>
 </template>
 
+
+
+
+
+
 <script>
 import Timer from '@/components/Timer.vue'
 import {db, fb} from '../firebase-config'
@@ -22,6 +27,9 @@ import { timeout } from 'q';
 import { functions } from 'firebase';
 Vue.use(VueFlashMessage);
 require('vue-flash-message/dist/vue-flash-message.min.css');
+
+
+
 
 
 export default {
@@ -174,11 +182,11 @@ export default {
         this.$router.push({ path: 'winner' });
       }
     },
-    OnlyNumbers(e) {
+      OnlyNumbers(e) {
       var keyCode = e.which;
       var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 8 && keyCode <= 13) || this.numberKeys.indexOf(keyCode) != -1);
       document.getElementById("errormess").style.display = ret ? "none" : "inline";
-      return ret;
+      return ret;  
     },
      disableInput() {
         setTimeout(() => {
@@ -194,7 +202,9 @@ export default {
        }, 2500);
      }
     }
-  };
+}
+
+  
 </script>
 
 
