@@ -8,9 +8,9 @@
       <button class="categorybutton" @click="afunction('food'), categoryButton = 3, checkSelect()" v-bind:style="{'border':buttonSelector[3].categorySelected}"><img src="../assets/Food.jpg"></button>
       <br><br>
   <h3> Choose your opponent </h3>
-      <button class="categorybutton" @click="activeButton = 4, checkSelect()" v-bind:style="{'border':buttonSelector[4].opponentSelected}"><img src="../assets/Glenn.jpg"></button>
-      <button class="categorybutton" @click="activeButton = 5, checkSelect()" v-bind:style="{'border':buttonSelector[5].opponentSelected}"><img src="../assets/Hakan.jpg"></button>
-      <button class="categorybutton" @click="activeButton = 6, checkSelect()" v-bind:style="{'border':buttonSelector[6].opponentSelected}"><img src="../assets/Miriam.jpg"></button>
+      <button class="categorybutton" @click="activeButton = 4, selectedBot('easy'), checkSelect()" v-bind:style="{'border':buttonSelector[4].opponentSelected}"><img src="../assets/Glenn.jpg"></button>
+      <button class="categorybutton" @click="activeButton = 5, selectedBot('medium'), checkSelect()" v-bind:style="{'border':buttonSelector[5].opponentSelected}"><img src="../assets/Hakan.jpg"></button>
+      <button class="categorybutton" @click="activeButton = 6, selectedBot('hard'), checkSelect()" v-bind:style="{'border':buttonSelector[6].opponentSelected}"><img src="../assets/Miriam.jpg"></button>
   </div>
   <br>
     <router-link to="/playgame"><button v-show="optionsSelected" class="gamebutton">Start Game</button></router-link>
@@ -20,6 +20,7 @@
 
 <script>
 import {db} from '../firebase-config'
+import { functions } from 'firebase';
 
 export default {
   name: "Settings",
@@ -69,8 +70,19 @@ export default {
       var num = Math.floor(Math.random() * arr.length);
       this.$store.state.theQuestion = arr[num].question;
       this.$store.state.theAnswer = arr[num].answer;
-      this.$store.state.numOfGuesses = 0
+      this.$store.state.numOfGuesses = 0;
     }, 
+    selectedBot: function(oppo) {
+      var bot = this.$store.state.choosenBot;
+      if (oppo === 'easy') {
+        bot = 1;
+      } if (oppo === 'medium') {
+        bot = 2;
+      }if (oppo === 'hard') {
+        bot = 3;
+    } 
+    return bot;
+    },
     checkSelect() {
       if (this.categoryButton && this.activeButton > 0) {
       this.optionsSelected = true;

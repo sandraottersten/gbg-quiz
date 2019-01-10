@@ -13,7 +13,8 @@ export default new Vuex.Store({
       theQuestion: '',
       theAnswer: '',
       arr: [],
-      num: 0
+      num: 0,
+      choosenBot: 0
   },
   getters: {
     value: state => {
