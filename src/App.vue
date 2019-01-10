@@ -219,7 +219,7 @@ font-size: 1.5rem;
   font-size: 15px;
   margin: 5px;
   color: white;
-  padding: 7px;
+  padding: 10px;
   font-family: 'Avenir', sans-serif;
   font-weight: 600;
   border-radius: 20px;

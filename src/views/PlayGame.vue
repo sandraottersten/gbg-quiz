@@ -9,16 +9,12 @@
     <Timer v-show="show" ref="form"/>
     <div class="botText">
       <p class="specifikBot">My guess: {{value}}</p>
-      <p class="specifikBot"> Bot guess: {{bot}} </p>
+      <p class="specifikBot" id="bot"> Bot guess: {{bot}} </p>
     </div>
     <flash-message class="myCustomClass"></flash-message>
     <br>
   </div>
 </template>
-
-
-
-
 
 
 <script>
@@ -30,9 +26,6 @@ import { timeout } from 'q';
 import { functions } from 'firebase';
 Vue.use(VueFlashMessage);
 require('vue-flash-message/dist/vue-flash-message.min.css');
-
-
-
 
 
 export default {
@@ -220,7 +213,14 @@ export default {
     margin: 1rem;
 }
 .specifikBot {
-  border: 1px solid black;
-  padding: 5px 15px 5px 5px;
+  border: 3px solid lavender;
+  border-radius: 15px;
+  padding: 15px;
+  background: white;
+  color: RoyalBlue;
+}
+
+#bot {
+  color: DodgerBlue;
 }
 </style>
