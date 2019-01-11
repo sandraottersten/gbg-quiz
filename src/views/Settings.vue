@@ -46,12 +46,12 @@ export default {
       for (var i = 0; i< 7; i++){
         if (this.activeButton == i){
           result.push({
-            opponentSelected: '5px seagreen dotted'
+            opponentSelected: '3px deepskyblue solid'
 
             });
         } else if ( this.categoryButton == i){
           result.push({
-            categorySelected: '5px seagreen dotted'
+            categorySelected: '3px deepskyblue solid'
             });
         } else {
           result.push({

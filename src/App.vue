@@ -56,23 +56,15 @@ outline:0 !important;
   color: #2c3e50;
   background-color: aliceblue;
   border-radius: 20px;
-  padding: 50px;
-  width: 60%;
-  margin: auto;
-  margin-top: 10px;
+  padding: 30px;
+  width: 95%;
+  margin: 20px 10px;
   font-size: 18px;
   opacity: 0.95;
 }
 
-@media only screen and (max-width: 600px) {
-  #content {
-width: 95%;
-  }
-}
-
-
 #nav2 {
-  font-family: Century Gothic, Helvetica, Arial, sans-serif;
+  font-family: 'Pattaya', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -80,7 +72,7 @@ width: 95%;
   background-color: aliceblue;
   border-radius: 20px;
   padding: 10px 50px 0px 50px;
-  width: 60%;
+  width: 85%;
   margin: auto;
   margin-bottom:40px;
   margin-top: 40px;
@@ -112,27 +104,6 @@ width: 95%;
   margin: auto;
   text-align: center;
   border-radius: 30px;
-}
-
-@media only screen and (max-width: 600px) {
-
-#nav2 {
-  width: 90%;
-}
-
-  #highscore {
-width: 100%;
-padding: 10px;
-font-size: 15px;
-}
-}
-
-@media only screen and (max-width: 600px) {
-  #nav2 {
-width: 95%;
-margin-top: 5px;
-margin-bottom: 0px;
-}
 }
 
 h1 {
@@ -167,14 +138,6 @@ p {
   font-size: 0.9rem;
 }
 
-@media only screen and (max-width: 600px) {
-  h2 {
-font-size: 3rem;
-}
-}
-
-
-
 h3 {
   color:cornflowerblue;
   font-size: 2rem;
@@ -189,11 +152,6 @@ h4 {
   margin: 1px 1px 5px 1px;
 }
 
-@media only screen and (max-width: 600px) {
-  p, h3 {
-font-size: 1.5rem;
-}
-}
 .startgamebutton {
   background-color: deepskyblue;
   font-size: 30px;
@@ -233,7 +191,7 @@ font-size: 1.5rem;
   margin: 5px;
   color: white;
   padding: 10px;
-  font-family: 'Avenir', sans-serif;
+  font-family: 'Pattaya', sans-serif;
   font-weight: 600;
   border-radius: 20px;
   border: 1px solid deepskyblue;
@@ -251,7 +209,7 @@ font-size: 1.5rem;
   color: white;
   padding: 8px;
   margin: 10px;
-  font-family: 'Avenir', sans-serif;
+  font-family: 'Pattaya', sans-serif;
   font-weight: 600;
   border: 1px solid deepskyblue;
   cursor: pointer;
@@ -271,7 +229,7 @@ font-size: 1.5rem;
   margin-left: 10px;
   color: white;
   padding: 5px 17px 5px 17px;
-  font-family: 'Avenir', sans-serif;
+  font-family: 'Pattaya', sans-serif;
   font-weight: 600;
   cursor: pointer;
   margin: 10px 10px 10px 0px;
@@ -303,14 +261,15 @@ font-size: 1.5rem;
   border: 1px solid mediumspringgreen;
 }
 .navbutton {
-  background-color: #02b771;
+  
+  background-color: deepskyblue;
   font-size:1.2em;
   border-radius: 20px;
-  border: 1px solid #02b771;
+  border: 1px solid deepskyblue;
   margin-left: 10px;
   color: white;
   padding: 5px 17px 5px 17px;
-  font-family: 'Avenir', sans-serif;
+  font-family: 'Pattaya', sans-serif;
   font-weight: 600;
   cursor: pointer;
   margin: 0px 10px 10px 0px;
@@ -318,8 +277,8 @@ font-size: 1.5rem;
   width: 100px;
 }
 .navbutton:hover {
-  background-color: mediumspringgreen;
-  border: 1px solid mediumspringgreen;
+  background-color: skyblue;
+  border: 1px solid skyblue;
   color: white;
   transition: 0.4s;
 }
@@ -337,31 +296,24 @@ font-size: 1.5rem;
   margin: 10px;
   padding: 0px;
   outline: 0;
-
-
 }
-
 .categorybutton:hover {
         filter: alpha(opacity=50);
         opacity: 0.5;
         -webkit-transition: opacity .15s ease-in-out;
         -moz-transition: opacity .15s ease-in-out;
         transition: opacity .15s ease-in-out;
-
 }
 
 .myCustomClass {
-  width: 9rem;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 2.5rem;
+  margin: auto;
+  font-size: 1.6rem;
+  width: 200px;
 }
 
 img.gamemenu {
 margin: 7px;
 outline: 0;
-
-
 }
 
 img.gamemenu:hover {
@@ -370,7 +322,6 @@ img.gamemenu:hover {
         -webkit-transition: opacity .15s ease-in-out;
         -moz-transition: opacity .15s ease-in-out;
         transition: opacity .15s ease-in-out;
-
 }
 
 
@@ -394,16 +345,75 @@ input[type=email], input[type=password], input[type=text] {
   padding: 8px;
   color: dodgerblue;
   font-weight: 600;
-  width: 100px;
+  width: 160px;
   border: 1px solid cornflowerblue;
   -moz-appearance:textfield;
   -webkit-appearance:textfield;
 
   }
 
+  #guessHigher {
+    margin: 0px;
+    padding: 0px;
+    color: red;
+  }
+
+  #guessLower {
+    margin: 0px;
+    padding: 0px;
+    color: red;
+  }
+
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   -moz-appearance:none;
+}
+
+#content h1 {
+  font-family: 'Pattaya', sans-serif;
+  margin-bottom: 50px;
+}
+
+#content h3 {
+  font-size: 2.5rem;
+}
+
+.flash__wrapper {
+  font-size: 0,5rem;
+}
+
+@media only screen and (max-width: 600px) {
+
+  #nav2 {
+width: 95%;
+margin-top: 5px;
+margin-bottom: 0px;
+}
+
+  #highscore {
+width: 100%;
+padding: 10px;
+font-size: 15px;
+}
+
+ h2 {
+font-size: 3rem;
+}
+
+#content h2 {
+    font-size: 4rem;
+  }
+  p, h3 {
+font-size: 1.5rem;
+}
+}
+
+@media only screen and (min-width: 600px) {
+  #content {
+  width: 85%;
+  margin: auto;
+      padding: 40px 270px;
+  }
 
 }
 

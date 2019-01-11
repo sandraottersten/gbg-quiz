@@ -13,6 +13,7 @@
     "vue": "^2.5.17",
     "vue-flash-message": "^0.7.2",
     "vue-router": "^3.0.1",
+    "vue-visible": "^1.0.2",
     "vuefire": "^1.4.5",
     "vuex": "^3.0.1"
   },

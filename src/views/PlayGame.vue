@@ -1,17 +1,20 @@
 <template>
   <div id ="content">
     <h1>{{theQuestion}}</h1>
-    <input id="guess" class="field" @input="newValue" type="number" ref ="focused" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
+    <input :maxlength="4" placeholder="Try your luck!" id="guess" class="field" @input="newValue"
+    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"  ref ="focused" autofocus="this.value=''" v-on:keypress.enter = "makeGuess"  v-on:keypress = "OnlyNumbers"/>
     <button class="guessbutton" @click="makeGuess">Make a guess</button>
     <p id="errormess" style="color: orangered; display: none"><br>Only numbers! </p>
     <p id="playerTurn" v-show="playersTurn">Your turn! </p>
-    <p id="botTurn" v-show="!playersTurn">Bot turn! </p>
+    <p id="botTurn" v-show="!playersTurn">Bot's turn! </p>
+    <p id="guessHigher" v-visible="guessHigher">Guess higher!</p>
+    <p id="guessLower" v-visible="guessLower">Guess lower! </p>
+
     <Timer v-show="show" ref="form"/>
     <div class="botText">
       <p class="specifikBot">My guess: {{value}}</p>
       <p class="specifikBot" id="bot"> {{choosenBot}} guess: {{bot}} </p>
     </div>
-    <flash-message class="myCustomClass"></flash-message>
     <br>
   </div>
 </template>
@@ -24,8 +27,9 @@ import Vue from 'vue';
 import VueFlashMessage from 'vue-flash-message';
 import { timeout } from 'q';
 import { functions } from 'firebase';
+import VueVisible from 'vue-visible';
+Vue.use(VueVisible);
 Vue.use(VueFlashMessage);
-require('vue-flash-message/dist/vue-flash-message.min.css');
 
 
 export default {
@@ -38,6 +42,8 @@ export default {
       highLow: '',
       userGuess: 0,
       playersTurn: true,
+      guessHigher: false,
+      guessLower: false
     }
   },
   firebase: {
@@ -156,7 +162,7 @@ export default {
           this.$store.state.botWins = true;
           this.$store.state.timerIsOut = false;
           this.stop();
-          this.$router.push({ path: 'winner' });
+          this.$router.push({ path: 'Winner' });
         }
     },
     makeGuess(value, number, bot) {
@@ -168,7 +174,8 @@ export default {
         this.playersTurn = false;
         this.stop();
         this.reset();
-        this.flash('Higher', 'error', {
+        this.guessHigher = true;
+        this.flash('Guess Higher', 'error', {
           timeout: 2000,
           important: true
         });
@@ -180,7 +187,8 @@ export default {
         this.stop();
         this.reset();
         this.start();
-        this.flash('Lower', 'error', {
+        this.guessLower = true;
+        this.flash('Guess Lower', 'error', {
           timeout: 2000,
           important: true
         });
@@ -194,7 +202,7 @@ export default {
         this.$store.state.botWins = false;
         this.show = false;
         this.stop();
-        this.$router.push({ path: 'winner' });
+        this.$router.push({ path: 'Winner' });
       } 
     },
       OnlyNumbers(e) {
@@ -216,6 +224,8 @@ export default {
           this.reset();
           this.start();
           this.setFocus();
+          this.guessHigher = false;
+          this.guessLower = false;
        }, 2500);
        }
      }
@@ -226,6 +236,10 @@ export default {
     beforeDestroy: function() {
       this.stop();
       this.calculateScore();
+    },beforeMount: function() {
+      if (this.theQuestion == "") {
+      this.$router.push({ path: 'Home' })
+      };
     }
   };
 </script>
@@ -239,11 +253,10 @@ export default {
 .specifikBot {
   border: 3px solid lavender;
   border-radius: 15px;
-  padding: 15px;
+  padding: 10px 30px;
   background: white;
   color: RoyalBlue;
 }
-
 #bot {
   color: DodgerBlue;
 }
