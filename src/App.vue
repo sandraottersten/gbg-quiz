@@ -4,6 +4,8 @@
       <router-link to="/"><button class="navbutton" type="button">Home</button></router-link>
       <router-link to="/login"><button class="navbutton" v-if="!user" type="button">Login</button></router-link>
       <button class="navbutton" v-if="user" @click="logout" type="button">Logout</button>
+      <audio id="player" src="http://k007.kiwi6.com/hotlink/3h77ek6oz8/gbgsong.mp3"></audio>
+      <div><button id="musicbutton" v-bind:class = "{active: isClicked }" @click="togglePlay(), isClicked = !isClicked"><img src="./assets/Play.png" width="60px"></button></div>
     </div>
     <router-view/>
   </div>
@@ -15,7 +17,8 @@ export default {
   name: "app",
     data () {
     return {
-      user: null
+      user: null,
+      isClicked: false
     }
   },
   methods: {
@@ -24,7 +27,16 @@ export default {
         .then(() => {
           this.$router.push({path: '/'});
         });
+    }, 
+    togglePlay() {
+    var audio = document.getElementById("player");
+    if (audio.paused) {
+        audio.play();
+    }else{
+        audio.pause();
+        audio.currentTime = 0
     }
+  }
   },  created: function () {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -64,14 +76,15 @@ outline:0 !important;
 }
 
 #nav2 {
+  display: flex;
+  align-items: baseline;
   font-family: 'Pattaya', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   background-color: aliceblue;
   border-radius: 20px;
-  padding: 10px 50px 0px 50px;
+  padding: 10px 15px;
   width: 85%;
   margin: auto;
   margin-bottom:40px;
@@ -80,6 +93,11 @@ outline:0 !important;
   outline: none;
 
 }
+
+#nav2 div:last-child{
+    margin-left: auto;
+}
+
 #nav2 a {
   font-weight: bold;
   color: #2484e4;
@@ -282,7 +300,7 @@ h4 {
   color: white;
   transition: 0.4s;
 }
-.musicbutton {
+#musicbutton {
   border: 0px;
   background: none;
   outline: 0;
@@ -355,13 +373,13 @@ input[type=email], input[type=password], input[type=text] {
   #guessHigher {
     margin: 0px;
     padding: 0px;
-    color: red;
+    color: #0C4DA2;
   }
 
   #guessLower {
     margin: 0px;
     padding: 0px;
-    color: red;
+    color: #0C4DA2;
   }
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
@@ -371,7 +389,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 #content h1 {
   font-family: 'Pattaya', sans-serif;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 #content h3 {
@@ -381,6 +399,24 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .flash__wrapper {
   font-size: 0,5rem;
 }
+
+.botText {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.specifikBot {
+  border: 3px solid lavender;
+  border-radius: 15px;
+  padding: 10px 30px;
+  background: white;
+  color: RoyalBlue;
+  margin: 5px;
+}
+#bot {
+  color: DodgerBlue;
+}
+
 
 @media only screen and (max-width: 600px) {
 
@@ -406,13 +442,20 @@ font-size: 3rem;
   p, h3 {
 font-size: 1.5rem;
 }
+
+.botText {
+  font-size: 20px;
+  padding: 10px 10px;
+  margin: auto;
+  display: flex;
+}
 }
 
 @media only screen and (min-width: 600px) {
   #content {
   width: 85%;
   margin: auto;
-      padding: 40px 270px;
+      padding: 40px 10px;
   }
 
 }

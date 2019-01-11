@@ -12,8 +12,8 @@
 
     <Timer v-show="show" ref="form"/>
     <div class="botText">
-      <p class="specifikBot">My guess: {{value}}</p>
-      <p class="specifikBot" id="bot"> {{choosenBot}} guess: {{bot}} </p>
+      <p class="specifikBot">My guess: <br>{{value}}</p>
+      <p class="specifikBot" id="bot"> {{choosenBot}} guess: <br>{{bot}} </p>
     </div>
     <br>
   </div>
@@ -244,20 +244,3 @@ export default {
   };
 </script>
 
-<style scoped>
-.botText {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem;
-}
-.specifikBot {
-  border: 3px solid lavender;
-  border-radius: 15px;
-  padding: 10px 30px;
-  background: white;
-  color: RoyalBlue;
-}
-#bot {
-  color: DodgerBlue;
-}
-</style>

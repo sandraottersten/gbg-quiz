@@ -3,19 +3,17 @@
     <div id ="content">
       <h3>Pick a category {{theQuestion}}</h3>
       <div>
-      <button class="categorybutton" @click="afunction('trams'), categoryButton = 1, checkSelect()" v-bind:style="{'border':buttonSelector[1].categorySelected}"><img src="../assets/Trams.jpg"></button>
-      <button class="categorybutton" @click="afunction('history'), categoryButton = 2, checkSelect()" v-bind:style="{'border':buttonSelector[2].categorySelected}"><img src="../assets/History.jpg"></button>
-      <button class="categorybutton" @click="afunction('food'), categoryButton = 3, checkSelect()" v-bind:style="{'border':buttonSelector[3].categorySelected}"><img src="../assets/Food.jpg"></button>
-      <br><br>
-      <h3> Choose your opponent </h3>
+      <button class="categorybutton" @click="afunction('trams'), categoryButton = 1, checkSelect()" ><img v-bind:style="{'outline':buttonSelector[1].categorySelected}" src="../assets/Trams.jpg"></button>
+      <button class="categorybutton" @click="afunction('history'), categoryButton = 2, checkSelect()" ><img v-bind:style="{'outline':buttonSelector[2].categorySelected}" src="../assets/History.jpg"></button>
+      <button class="categorybutton" @click="afunction('food'), categoryButton = 3, checkSelect()" ><img v-bind:style="{'outline':buttonSelector[3].categorySelected}" src="../assets/Food.jpg"></button>
       </div>
-      <br>
-      <button class="categorybutton" @click="activeButton = 4, selectedBot('easy'), checkSelect()" v-bind:style="{'border':buttonSelector[4].opponentSelected}"><img src="../assets/Glenn.jpg"></button>
-      <button class="categorybutton" @click="activeButton = 5,  selectedBot('medium'), checkSelect()" v-bind:style="{'border':buttonSelector[5].opponentSelected}"><img src="../assets/Hakan.jpg"></button>
-      <button class="categorybutton" @click="activeButton = 6,  selectedBot('hard'), checkSelect()" v-bind:style="{'border':buttonSelector[6].opponentSelected}"><img src="../assets/Miriam.jpg"></button>
-      <br>
-      <br>
-      <router-link to="/playgame"><button v-show="optionsSelected" class="gamebutton">Start Game</button></router-link>
+      <h3> Choose your opponent </h3>
+      <div>
+      <button class="categorybutton" @click="activeButton = 4, selectedBot('easy'), checkSelect()"><img v-bind:style="{'outline':buttonSelector[4].opponentSelected}" src="../assets/Glenn.jpg"></button>
+      <button class="categorybutton" @click="activeButton = 5,  selectedBot('medium'), checkSelect()"><img  v-bind:style="{'outline':buttonSelector[5].opponentSelected}" src="../assets/Hakan.jpg"></button>
+      <button class="categorybutton" @click="activeButton = 6,  selectedBot('hard'), checkSelect()" ><img v-bind:style="{'outline':buttonSelector[6].opponentSelected}" src="../assets/Miriam.jpg"></button>
+      </div>
+      <router-link to="/playgame"><button  v-visible="optionsSelected" class="gamebutton">Start Game</button></router-link>
     </div>
   </div>
 </template>
@@ -46,12 +44,12 @@ export default {
       for (var i = 0; i< 7; i++){
         if (this.activeButton == i){
           result.push({
-            opponentSelected: '3px deepskyblue solid'
+            opponentSelected: '2px deepskyblue solid'
 
             });
         } else if ( this.categoryButton == i){
           result.push({
-            categorySelected: '3px deepskyblue solid'
+            categorySelected: '2px deepskyblue solid'
             });
         } else {
           result.push({

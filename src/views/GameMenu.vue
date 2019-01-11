@@ -5,6 +5,7 @@
       <router-link to="/rules"><img class="gamemenu" src="../assets/How_to_play.jpg"></router-link>
       <router-link to="/settings"><img class="gamemenu" src="../assets/Start_game.jpg"></router-link>
     </div>
+            
   </div>
 </template>
 
